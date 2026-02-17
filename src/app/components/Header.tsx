@@ -24,15 +24,16 @@ export function Header() {
   };
 
   return (
-    // sticky: header nằm trong document flow → content bên dưới bị đẩy xuống khi menu mở
-    <div className="sticky top-0 z-50">
+    // mobile: sticky (in flow → menu pushes content down)
+    // desktop: fixed (out of flow → floating pill stays fixed, no content overlap)
+    <div className="sticky top-0 z-50 md:fixed md:left-0 md:right-0 md:pointer-events-none">
       {/* Header pill */}
       <div className="flex justify-center px-4 pt-4">
         <motion.header
           initial={reducedMotion ? false : { y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={reducedMotion ? { duration: 0 } : undefined}
-          className={`w-full max-w-5xl transition-all duration-300 ${
+          className={`w-full max-w-5xl transition-all duration-300 md:pointer-events-auto ${
             scrolled
               ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-[var(--brand)]/5 border border-white/50"
               : "bg-transparent"

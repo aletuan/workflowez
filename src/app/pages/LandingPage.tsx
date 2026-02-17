@@ -11,7 +11,7 @@ export function LandingPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="md:pt-24">
         <Hero />
         <Features />
         <Benefits />
