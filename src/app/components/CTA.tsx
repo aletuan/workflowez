@@ -16,8 +16,36 @@ export function CTA() {
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[var(--accent-gradient-via)]/40 rounded-full blur-[var(--blur-md)] translate-y-1/3 -translate-x-1/3 group-hover:bg-[var(--accent-gradient-via)]/50 transition-colors duration-700"></div>
           </div>
 
-          {/* Pattern Overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+          {/* 3D Grid Structure */}
+          {/* Back wall — flat grid fading from center */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `linear-gradient(color-mix(in srgb, var(--brand) 45%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--brand) 45%, transparent) 1px, transparent 1px)`,
+              backgroundSize: "60px 60px",
+              maskImage: "radial-gradient(ellipse 80% 55% at 50% 40%, rgba(0,0,0,0.85) 0%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse 80% 55% at 50% 40%, rgba(0,0,0,0.85) 0%, transparent 100%)",
+            }}
+          />
+          {/* Floor grid — perspective 3D, animated toward viewer */}
+          <div className="absolute bottom-0 inset-x-0 overflow-hidden" style={{ height: "58%" }}>
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: "-50%",
+                right: "-50%",
+                top: 0,
+                backgroundImage: `linear-gradient(color-mix(in srgb, var(--brand) 70%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--brand) 70%, transparent) 1px, transparent 1px)`,
+                backgroundSize: "60px 60px",
+                transform: "perspective(500px) rotateX(72deg)",
+                transformOrigin: "bottom center",
+                maskImage: "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, transparent 100%)",
+                WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 50%, transparent 100%)",
+              }}
+            />
+          </div>
+
 
           <div className="relative z-10 max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-[color-mix(in_srgb,var(--brand)_70%,white)] font-bold text-sm mb-8 border border-white/5">
