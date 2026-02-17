@@ -89,11 +89,11 @@
     "badge": "Start automating today"
   },
   "demo": {
-    "title": "Meet AI Advisor",
+    "title": "Meet Advisor Agent",
     "subtitle": "Experience conversational AI powered by your business knowledge. Guideline about training, policies, product features and much more...",
     "backToHome": "Back to Home",
     "values": {
-      "title": "Why use AI Advisor?",
+      "title": "Why use Advisor Agent?",
       "items": [
         { "title": "Internal Q&A", "desc": "Employees look up salary, leave, and processes themselves—no waiting for HR to reply.", "icon": "users", "prompt": "I have questions about leave policy and compensation." },
         { "title": "Training & Support", "desc": "Help new employees get familiar with the environment & their role faster. AI guides them through checklists and FAQs.", "icon": "graduation", "prompt": "What is the onboarding process for new hires?" },
@@ -106,9 +106,9 @@
       "role": "AI CONCIERGE",
       "domain": "Advisor"
     },
-    "chatTitle": "AI Advisor",
+    "chatTitle": "Advisor Agent",
     "chatSubtitle": "Powered by Workflowez",
-    "chatWelcome": "Hi! I'm Alex, your AI Advisor. Ask me anything about training, company policies, or product features!",
+    "chatWelcome": "Hi! I'm Alex, your Advisor Agent.",
     "quickPrompts": ["What should a new hire do first?", "What's the remote work policy?", "I have a product issue, need help?", "How long does onboarding take?"],
     "chatPlaceholder": "Ask about onboarding, policies, or product features...",
     "chatEmpty": "Start the conversation — ask about training, policies, or product features.",
@@ -120,7 +120,7 @@
       "I'd be happy to help! Could you provide more context about what you're trying to accomplish? That will help me give you a more precise answer."
     ],
     "ctaBanner": {
-      "text": "Like this AI Advisor?",
+      "text": "Like this Advisor Agent?",
       "sub": "Build your own for your business — no coding required.",
       "button": "Start for free"
     }
