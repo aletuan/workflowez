@@ -102,13 +102,13 @@
       ]
     },
     "advisor": {
-      "name": "Alex",
+      "name": "Trang",
       "role": "AI CONCIERGE",
       "domain": "Cố vấn"
     },
     "chatTitle": "Advisor Agent",
     "chatSubtitle": "Powered by Workflowez",
-    "chatWelcome": "Xin chào! Tôi là Alex, Advisor Agent của bạn.",
+    "chatWelcome": "Xin chào! Tôi là Trang, Advisor Agent của bạn.",
     "quickPrompts": ["Nhân viên mới cần làm gì đầu tiên?", "Chính sách làm việc từ xa?", "Gặp lỗi sản phẩm, cần hỗ trợ?", "Quy trình onboarding mất bao lâu?"],
     "chatPlaceholder": "Hỏi về onboarding, chính sách hoặc tính năng sản phẩm...",
     "chatEmpty": "Bắt đầu cuộc trò chuyện — hỏi về đào tạo, chính sách hoặc tính năng sản phẩm.",
