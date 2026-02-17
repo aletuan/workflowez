@@ -3,7 +3,7 @@
 **Branch:** `feature/ai-advisor`  
 **Date:** February 2026  
 **Scope:** First product demo — conversational AI advisor powered by n8n + RAG  
-**Status:** Planning
+**Status:** Phase 1 in progress (Foundation with mock)
 
 ---
 
@@ -49,10 +49,12 @@ Topics are configurable via n8n workflow and Qdrant collections.
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 1 | Add routing (react-router) | Pending | Route `/demo` or `/advisor` for the chat demo |
-| 2 | Create `ChatBox` component | Pending | Message list + input; basic styling |
-| 3 | Define chat API client | Pending | `fetch` or `axios`; env var for n8n endpoint |
-| 4 | Wire chat send/receive | Pending | POST user message; display assistant reply |
+| 1 | Add routing (react-router) | Done | Routes `/` (LandingPage), `/demo` (DemoPage) |
+| 2 | Create `ChatBox` component | Done | MessageList, MessageBubble, ChatInput; i18n |
+| 3 | Define chat API client | Deferred | Use mock first; add real client when n8n ready |
+| 4 | Wire chat send/receive | Done | Mock via `useChat` hook; simulates ~800ms delay |
+| 5 | Demo page layout | Done | Business value section + ChatBox side-by-side |
+| 6 | Wire "Xem demo" / "Watch Demo" | Done | Hero SecondaryButton `to="/demo"` |
 
 ### Phase 2: UX & Polish
 
@@ -67,31 +69,33 @@ Topics are configurable via n8n workflow and Qdrant collections.
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 9 | Demo entry point | Pending | CTA "Try AI Advisor" → `/demo` or modal |
+| 9 | Demo entry point | Done | Hero "Watch Demo" / "Xem demo" → `/demo` |
 | 10 | Environment config | Pending | `VITE_N8N_CHAT_URL` or similar |
 | 11 | Session/conversation ID | Pending | If backend supports multi-turn with session |
 
 ---
 
-## 4. Suggested File Structure
+## 4. File Structure (Current)
 
 ```
 src/
 ├── app/
-│   └── routes/                    # If using react-router
-│       └── DemoPage.tsx           # /demo - Chat demo page
-├── components/
-│   └── chat/
-│       ├── ChatBox.tsx            # Main chat container
-│       ├── MessageList.tsx        # Scrollable messages
-│       ├── MessageBubble.tsx      # Single message (user/assistant)
-│       └── ChatInput.tsx         # Input + send button
-├── services/
-│   └── chatApi.ts                 # n8n chat API client
+│   ├── App.tsx                    # Routes: /, /demo
+│   ├── pages/
+│   │   ├── LandingPage.tsx        # / - Main landing
+│   │   └── DemoPage.tsx           # /demo - Business value + ChatBox
+│   └── components/
+│       └── chat/
+│           ├── ChatBox.tsx        # Main chat container
+│           ├── MessageList.tsx    # Scrollable messages
+│           ├── MessageBubble.tsx  # Single message (user/assistant)
+│           └── ChatInput.tsx      # Input + send button
 ├── hooks/
-│   └── useChat.ts                 # Chat state, send, history
+│   └── useChat.ts                 # Chat state, send, mock responses
+├── services/
+│   └── chatApi.ts                 # (Phase 2) n8n chat API client
 └── config/
-    └── chat.ts                    # API URL, topic presets
+    └── chat.ts                    # (Phase 2) API URL, topic presets
 ```
 
 ---
@@ -153,14 +157,19 @@ Adapt to actual n8n workflow schema.
 
 ---
 
-## 9. Next Steps
+## 9. Demo Page Design (Phase 1)
 
-1. **Confirm n8n chat API** — Endpoint URL, request/response format, auth (if any)
-2. **Add react-router** — Set up `/demo` route
-3. **Build minimal ChatBox** — Input + send + display reply
-4. **Integrate real API** — Replace mock with n8n endpoint
-5. **Wire CTA** — "Try AI Advisor" links to `/demo`
+- **Layout:** Two-column on desktop (values left, chat right); stacked on mobile
+- **Business value section:** 3 value props (Instant answers, Onboarding & training, Policy awareness) — explains why AI Advisor matters
+- **Chat box:** Mock responses; placeholder for n8n API in Phase 2
+- **Entry:** Hero "Watch Demo" / "Xem demo" button navigates to `/demo`
+
+## 10. Next Steps
+
+1. **Phase 2 UX** — Loading/error states, topic selector, mobile polish
+2. **Confirm n8n chat API** — Endpoint URL, request/response format, auth (if any)
+3. **Integrate real API** — Replace mock in `useChat` with `chatApi.ts` client
 
 ---
 
-*Document version: 1.0*
+*Document version: 1.1*

@@ -88,6 +88,29 @@
     "note": "Không cần thẻ tín dụng • Hủy bất cứ lúc nào",
     "badge": "Bắt đầu tự động hóa ngay hôm nay"
   },
+  "demo": {
+    "title": "Gặp AI Advisor",
+    "subtitle": "Trải nghiệm AI hội thoại dựa trên kiến thức doanh nghiệp của bạn. Hướng dẫn về đào tạo, chính sách, tính năng sản phẩm và nhiều hơn nữa...",
+    "backToHome": "Về trang chủ",
+    "values": {
+      "title": "Tại sao dùng AI Advisor?",
+      "items": [
+        { "title": "Trả lời tức thì", "desc": "Nhận câu trả lời 24/7 từ tài liệu được lập chỉ mục—không cần chờ HR hay bộ phận hỗ trợ.", "icon": "zap" },
+        { "title": "Đào tạo & onboarding", "desc": "Thành viên mới học nhanh hơn. AI hướng dẫn họ qua checklist và FAQ.", "icon": "graduation" },
+        { "title": "Nhận thức chính sách", "desc": "Giới thiệu chính sách mới hoặc cập nhật sản phẩm qua hội thoại tự nhiên.", "icon": "file" },
+        { "title": "Hỗ trợ sản phẩm", "desc": "Trả lời câu hỏi sản phẩm, xử lý sự cố và hướng dẫn người dùng—24/7 không cần xếp hàng.", "icon": "headphones" }
+      ]
+    },
+    "advisor": {
+      "name": "Alex",
+      "role": "AI CONCIERGE",
+      "domain": "Cố vấn"
+    },
+    "chatTitle": "AI Advisor",
+    "chatSubtitle": "Powered by Workflowez • Hướng dẫn về đào tạo, chính sách, tính năng sản phẩm và nhiều hơn nữa...",
+    "chatPlaceholder": "Hỏi về onboarding, chính sách hoặc tính năng sản phẩm...",
+    "chatEmpty": "Bắt đầu cuộc trò chuyện — hỏi về đào tạo, chính sách hoặc tính năng sản phẩm."
+  },
   "footer": {
     "desc": "Trao quyền cho các doanh nghiệp vừa và nhỏ với quy trình tự động hóa dựa trên AI. Xây dựng, triển khai và mở rộng mà không cần viết mã.",
     "cols": {

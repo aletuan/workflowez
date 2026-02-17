@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
+import { Link } from "react-router";
 
 interface SecondaryButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> {
   children: ReactNode;
@@ -8,6 +9,8 @@ interface SecondaryButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonEleme
   className?: string;
   /** When set, renders as <a> for navigation */
   href?: string;
+  /** When set, renders as React Router Link (client-side navigation) */
+  to?: string;
 }
 
 const variants = {
@@ -26,22 +29,22 @@ export function SecondaryButton({
   variant = "default",
   className = "",
   href,
+  to,
   ...props
 }: SecondaryButtonProps) {
   const classes = `${baseClasses(variant)} ${className}`.trim();
+  const iconEl = icon && <span className={variant === "default" ? "text-[var(--brand)]" : ""}>{icon}</span>;
 
+  if (to) {
+    return <Link to={to} className={classes}>{iconEl}{children}</Link>;
+  }
   if (href) {
-    return (
-      <a href={href} className={classes}>
-        {icon && <span className={variant === "default" ? "text-[var(--brand)]" : ""}>{icon}</span>}
-        {children}
-      </a>
-    );
+    return <a href={href} className={classes}>{iconEl}{children}</a>;
   }
 
   return (
     <button className={classes} {...props}>
-      {icon && <span className={variant === "default" ? "text-[var(--brand)]" : ""}>{icon}</span>}
+      {iconEl}
       {children}
     </button>
   );

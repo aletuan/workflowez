@@ -88,6 +88,29 @@
     "note": "No credit card required • Cancel anytime",
     "badge": "Start automating today"
   },
+  "demo": {
+    "title": "Meet AI Advisor",
+    "subtitle": "Experience conversational AI powered by your business knowledge. Guideline about training, policies, product features and much more...",
+    "backToHome": "Back to Home",
+    "values": {
+      "title": "Why use AI Advisor?",
+      "items": [
+        { "title": "Instant answers", "desc": "Get 24/7 answers from your indexed documents—no waiting for HR or support.", "icon": "zap" },
+        { "title": "Onboarding & training", "desc": "New members learn faster. The AI guides them through checklists and FAQs.", "icon": "graduation" },
+        { "title": "Policy awareness", "desc": "Introduce new policies or product updates through natural conversation.", "icon": "file" },
+        { "title": "Product support", "desc": "Answer product questions, troubleshoot issues, and guide users—24/7 without a queue.", "icon": "headphones" }
+      ]
+    },
+    "advisor": {
+      "name": "Alex",
+      "role": "AI CONCIERGE",
+      "domain": "Advisor"
+    },
+    "chatTitle": "AI Advisor",
+    "chatSubtitle": "Powered by Workflowez • Guideline about training, policies, product features and much more...",
+    "chatPlaceholder": "Ask about onboarding, policies, or product features...",
+    "chatEmpty": "Start the conversation — ask about training, policies, or product features."
+  },
   "footer": {
     "desc": "Empowering SMBs with AI-driven automation workflows. Build, deploy, and scale without writing code.",
     "cols": {
