@@ -20,8 +20,8 @@ export function Pricing() {
           {/* Starter Plan */}
           <div className="bg-white/70 backdrop-blur-md p-8 rounded-[var(--section-radius)] border border-gray-100 hover:border-[var(--brand)]/30 transition-colors">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">{t.pricing.starter.title}</h3>
-            <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-5xl font-extrabold text-gray-900 tracking-tight">$0</span>
+            <div className="flex items-baseline gap-1 mb-6 flex-wrap min-w-0">
+              <span className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">{t.pricing.starter.price}</span>
               <span className="text-gray-500 font-medium">{t.pricing.month}</span>
             </div>
             <p className="text-gray-500 mb-8 font-medium">{t.pricing.starter.desc}</p>
@@ -51,8 +51,8 @@ export function Pricing() {
               </span>
             </div>
             <h3 className="text-2xl font-bold mb-2">{t.pricing.pro.title}</h3>
-            <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-6xl font-extrabold tracking-tight">$49</span>
+            <div className="flex items-baseline gap-1 mb-6 flex-wrap min-w-0">
+              <span className="text-3xl md:text-4xl font-extrabold tracking-tight">{t.pricing.pro.price}</span>
               <span className="text-gray-400 font-medium">{t.pricing.month}</span>
             </div>
             <p className="text-gray-400 mb-8 font-medium">{t.pricing.pro.desc}</p>
@@ -74,8 +74,8 @@ export function Pricing() {
           {/* Business Plan */}
           <div className="bg-white/70 backdrop-blur-md p-8 rounded-[var(--section-radius)] border border-gray-100 hover:border-[var(--brand)]/30 transition-colors">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">{t.pricing.business.title}</h3>
-            <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-5xl font-extrabold text-gray-900 tracking-tight">$199</span>
+            <div className="flex items-baseline gap-1 mb-6 flex-wrap min-w-0">
+              <span className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">{t.pricing.business.price}</span>
               <span className="text-gray-500 font-medium">{t.pricing.month}</span>
             </div>
             <p className="text-gray-500 mb-8 font-medium">{t.pricing.business.desc}</p>

@@ -37,7 +37,7 @@
   "benefits": {
     "quote": "Workflow EZ hiểu nhu cầu kinh doanh của chúng tôi hơn bất kỳ công cụ nào khác.",
     "title": "Xây dựng cho các đội ngũ phát triển nhanh",
-    "eyebrow": "Why Choose Us",
+    "eyebrow": "Tại sao chọn chúng tôi",
     "items": [
       { "id": "connect-apps", "title": "Kết nối ứng dụng của bạn", "desc": "Tích hợp với hơn 500 công cụ bao gồm Slack, Salesforce, HubSpot và Notion chỉ trong vài cú nhấp chuột." },
       { "id": "build-workflow", "title": "Xây dựng quy trình của bạn", "desc": "Sử dụng trình xây dựng trực quan để lập bản đồ logic. Thêm các bước AI để xử lý văn bản, phân tích dữ liệu hoặc tạo nội dung." },
@@ -59,12 +59,14 @@
     "month": "/tháng",
     "starter": {
       "title": "Khởi động",
+      "price": "Miễn phí",
       "desc": "Hoàn hảo cho cá nhân và người làm việc tự do.",
       "cta": "Bắt đầu miễn phí",
       "features": ["5 quy trình hoạt động", "100 lần chạy mỗi tháng", "Tích hợp cơ bản"]
     },
     "pro": {
       "title": "Chuyên nghiệp",
+      "price": "199.000₫",
       "tag": "Phổ biến",
       "desc": "Dành cho nhóm nhỏ và doanh nghiệp đang phát triển.",
       "cta": "Dùng thử miễn phí",
@@ -72,6 +74,7 @@
     },
     "business": {
       "title": "Doanh nghiệp",
+      "price": "499.000₫",
       "desc": "Tính năng nâng cao cho đội ngũ mở rộng.",
       "cta": "Liên hệ kinh doanh",
       "features": ["Quy trình không giới hạn", "50,000 lần chạy mỗi tháng", "Phân tích nâng cao", "Quản lý tài khoản riêng"]
@@ -83,7 +86,7 @@
     "primary": "Bắt đầu ngay",
     "secondary": "Đặt lịch Demo",
     "note": "Không cần thẻ tín dụng • Hủy bất cứ lúc nào",
-    "badge": "Start automating today"
+    "badge": "Bắt đầu tự động hóa ngay hôm nay"
   },
   "footer": {
     "desc": "Trao quyền cho các doanh nghiệp vừa và nhỏ với quy trình tự động hóa dựa trên AI. Xây dựng, triển khai và mở rộng mà không cần viết mã.",
@@ -92,6 +95,6 @@
       "resources": "Tài nguyên",
       "company": "Công ty"
     },
-    "copyright": "© 2026 Workflow EZ Inc. Bảo lưu mọi quyền."
+    "copyright": "© 2026 Workflow EZ Inc. Bảo lưu bản quyền."
   }
 }

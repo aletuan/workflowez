@@ -59,12 +59,14 @@
     "month": "/mo",
     "starter": {
       "title": "Starter",
+      "price": "$0",
       "desc": "Perfect for individuals and hobbyists.",
       "cta": "Get Started Free",
       "features": ["5 active workflows", "100 runs per month", "Basic integrations"]
     },
     "pro": {
       "title": "Pro",
+      "price": "$49",
       "tag": "Popular",
       "desc": "For small teams and growing businesses.",
       "cta": "Start Free Trial",
@@ -72,6 +74,7 @@
     },
     "business": {
       "title": "Business",
+      "price": "$199",
       "desc": "Advanced features for scaling teams.",
       "cta": "Contact Sales",
       "features": ["Unlimited workflows", "50,000 runs per month", "Advanced analytics", "Dedicated account manager"]
