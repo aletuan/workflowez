@@ -1,9 +1,15 @@
 import { motion } from "motion/react";
 import { ArrowRight, Play, CheckCircle2, Star, Sparkles } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
+import { PrimaryButton } from "./shared/PrimaryButton";
+import { SecondaryButton } from "./shared/SecondaryButton";
 
 export function Hero() {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
+  const motionTransition = reducedMotion ? { duration: 0 } : { duration: 0.6, ease: "easeOut" as const };
 
   return (
     <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
@@ -14,13 +20,13 @@ export function Hero() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={reducedMotion ? false : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={motionTransition}
           >
             {/* New Badge Style */}
-            <div className="inline-flex items-center gap-2 pl-2 pr-4 py-1.5 rounded-full bg-white border border-violet-100 shadow-sm text-violet-700 text-sm font-semibold mb-8 hover:scale-105 transition-transform cursor-default">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-violet-100">
+            <div className="inline-flex items-center gap-2 pl-2 pr-4 py-1.5 rounded-full bg-white border border-[var(--brand-light)] shadow-sm text-[var(--brand-dark)] text-sm font-semibold mb-8 hover:scale-105 transition-transform cursor-default">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--brand-light)]">
                 <Star className="w-3.5 h-3.5 fill-current" />
               </span>
               {t.hero.badge}
@@ -28,8 +34,8 @@ export function Hero() {
             
             <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-8 leading-[1.1]">
               {t.hero.title_line1} <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 animate-gradient">
-                 Customer Value First
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--brand)] via-[var(--accent-gradient-via)] to-[var(--accent-gradient-to)] animate-gradient">
+                {t.hero.title_line2}
               </span>
             </h1>
             
@@ -38,13 +44,12 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <button className="px-8 py-4 bg-gray-900 text-white font-bold rounded-2xl hover:bg-violet-600 hover:scale-105 transition-all shadow-xl shadow-violet-500/20 flex items-center justify-center gap-2 group">
-                {t.hero.startFree} 
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-100 hover:border-violet-200 hover:bg-violet-50/50 transition-all flex items-center justify-center gap-2">
-                <Play className="w-4 h-4 fill-current text-violet-600" /> {t.hero.watchDemo}
-              </button>
+              <PrimaryButton icon={<ArrowRight className="w-5 h-5" />}>
+                {t.hero.startFree}
+              </PrimaryButton>
+              <SecondaryButton icon={<Play className="w-4 h-4 fill-current" />}>
+                {t.hero.watchDemo}
+              </SecondaryButton>
             </div>
 
             <div className="flex items-center gap-6 text-sm font-medium text-gray-500">
@@ -60,9 +65,9 @@ export function Hero() {
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={reducedMotion ? false : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
             className="relative"
           >
             {/* Abstract Decorative Elements behind image */}
@@ -73,12 +78,12 @@ export function Hero() {
               <div className="grid grid-cols-2 gap-4 p-4">
                 {/* Main Card */}
                 <div className="col-span-2 relative aspect-video rounded-3xl overflow-hidden shadow-lg group cursor-pointer">
-                  <img 
+                  <ImageWithFallback 
                     src="https://images.unsplash.com/photo-1762328862557-e0a36587cd3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGF0Ym90JTIwY3VzdG9tZXIlMjBzZXJ2aWNlJTIwbW9iaWxlJTIwYXBwJTIwaW50ZXJmYWNlfGVufDF8fHx8MTc3MTI2NTk2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
                     alt="AI Sales Assistant" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-violet-900/90 via-violet-900/20 to-transparent p-6 flex flex-col justify-end">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-dark)]/90 via-[var(--brand-dark)]/20 to-transparent p-6 flex flex-col justify-end">
                     <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-lg text-white text-xs font-bold mb-2 w-fit">AI AGENT</span>
                     <p className="text-white font-bold text-lg">{t.hero.img_sales}</p>
                     <p className="text-white/80 text-sm">{t.hero.img_sales_desc}</p>
@@ -87,7 +92,7 @@ export function Hero() {
 
                 {/* Secondary Cards */}
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg group cursor-pointer">
-                  <img 
+                  <ImageWithFallback 
                     src="https://images.unsplash.com/photo-1604088308691-59fb736f0b2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwcmVjZWlwdCUyMGV4cGVuc2UlMjBtYW5hZ2VtZW50JTIwZGFzaGJvYXJkfGVufDF8fHx8MTc3MTI2NTk2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
                     alt="Receipt Management" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -98,7 +103,7 @@ export function Hero() {
                 </div>
 
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg group cursor-pointer">
-                  <img 
+                  <ImageWithFallback 
                     src="https://images.unsplash.com/photo-1659479749984-d48333116052?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5hbmNpYWwlMjBjYXNoJTIwZmxvdyUyMGNoYXJ0JTIwdGFibGV0JTIwaW50ZXJmYWNlfGVufDF8fHx8MTc3MTI2NTk2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
                     alt="Cash Flow Visualization" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -112,9 +117,9 @@ export function Hero() {
             
             {/* Floating Element */}
             <motion.div 
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-8 -right-8 bg-white p-4 rounded-2xl shadow-xl shadow-violet-500/10 border border-violet-50 hidden md:block"
+              animate={reducedMotion ? { y: 0 } : { y: [-10, 10, -10] }}
+              transition={reducedMotion ? { duration: 0 } : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-8 -right-8 bg-white p-4 rounded-2xl shadow-xl shadow-[var(--brand)]/10 border border-[var(--brand-light)] hidden md:block"
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">

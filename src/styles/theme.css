@@ -2,6 +2,19 @@
 
 :root {
   --font-size: 16px;
+  /* Brand colors — replaces scattered violet/fuchsia */
+  --brand: #7c3aed;
+  --brand-light: #ede9fe;
+  --brand-dark: #5b21b6;
+  --accent-gradient-from: #7c3aed;
+  --accent-gradient-via: #c026d3;
+  --accent-gradient-to: #ec4899;
+  /* Layout tokens */
+  --section-radius: 2.5rem;
+  --card-radius: 2rem;
+  --blur-sm: 80px;
+  --blur-md: 100px;
+  --blur-lg: 120px;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -79,6 +92,9 @@
 }
 
 @theme inline {
+  --color-brand: var(--brand);
+  --color-brand-light: var(--brand-light);
+  --color-brand-dark: var(--brand-dark);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

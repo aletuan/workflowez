@@ -1,12 +1,14 @@
 import { motion } from "motion/react";
 import { Star } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 const avatars = ["MC", "JS", "DM"];
 const authors = ["Michael Chen", "Jessica Stark", "David Miller"];
 
 export function Testimonials() {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
 
   return (
     <section id="testimonials" className="py-24 bg-white relative">
@@ -24,21 +26,21 @@ export function Testimonials() {
         <div className="grid md:grid-cols-3 gap-8">
           {t.testimonials.items.map((item: any, i: number) => (
             <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={item.id}
+              initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              transition={reducedMotion ? { duration: 0 } : { delay: i * 0.1 }}
               className="bg-gray-50 p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 border border-transparent hover:border-gray-100 group"
             >
               <div className="flex gap-1 mb-8">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                {[...Array(5)].map((_, starIndex) => (
+                  <Star key={starIndex} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
               <p className="text-lg text-gray-700 mb-10 leading-relaxed font-medium">"{item.quote}"</p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-violet-500/30">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[var(--brand)] to-[var(--accent-gradient-via)] flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-[var(--brand)]/30">
                   {avatars[i]}
                 </div>
                 <div>
