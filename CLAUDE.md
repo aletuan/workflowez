@@ -51,3 +51,11 @@ Use design tokens (e.g. `var(--brand)`, `var(--brand-light)`) for brand colors. 
 - `src/app/components/ui/` — shadcn/ui primitives (MIT-licensed, see `ATTRIBUTIONS.md`)
 - `src/app/components/shared/` — `Section`, `PrimaryButton`, `SecondaryButton` (support variants and optional `href`)
 - `src/app/components/figma/ImageWithFallback.tsx` — image rendering with fallbacks
+
+### UI Patterns
+
+**Decorative glow blob** — used to add visual depth behind product demo cards or chat boxes:
+```tsx
+<div className="absolute -top-8 -right-8 w-24 h-24 bg-cyan-300 rounded-3xl rotate-12 blur-xl opacity-60 animate-pulse pointer-events-none" />
+```
+Place inside a `relative` container. Swap color as needed (`bg-yellow-300` in Hero, `bg-cyan-300` on Demo chat box). Requires `overflow-hidden` on the parent if the glow should be clipped, or leave without it to let it bleed outside.

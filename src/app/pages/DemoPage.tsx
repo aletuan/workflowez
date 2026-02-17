@@ -84,17 +84,15 @@ export function DemoPage() {
           </div>
 
           {/* Chat box - right */}
-          <div className="lg:col-span-7 space-y-3">
+          <div className="lg:col-span-7 space-y-3 relative">
+            <div className="absolute -top-8 -right-8 w-24 h-24 bg-cyan-300 rounded-3xl rotate-12 blur-xl opacity-60 animate-pulse pointer-events-none" />
             <ChatBox
               messages={messages}
               isLoading={isLoading}
               onSend={sendMessage}
               quickPrompts={t.demo.quickPrompts}
             />
-            {/* S7: trust badge below chat */}
-            <p className="text-center text-xs text-gray-400 font-medium">
-              Không cần tài khoản &nbsp;·&nbsp; Powered by Workflowez
-            </p>
+
           </div>
         </div>
 
