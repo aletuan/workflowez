@@ -45,7 +45,7 @@ export function Features() {
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={reducedMotion ? { duration: 0 } : { delay: index * 0.1 }}
-              className="relative bg-white/60 backdrop-blur-lg p-8 rounded-[var(--card-radius)] border border-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-[var(--brand)]/20 hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
+              className="relative bg-white/80 backdrop-blur-lg p-5 md:p-8 rounded-[var(--card-radius)] border border-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-[var(--brand)]/20 hover:-translate-y-1 transition-all duration-300 group overflow-hidden cursor-pointer"
             >
               {/* Hover Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[var(--brand-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -58,7 +58,7 @@ export function Features() {
                   <ArrowUpRight className="w-5 h-5 text-gray-300 group-hover:text-[var(--brand)] transition-colors" />
                 </div>
                 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[var(--brand-dark)] transition-colors">{feature.title}</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-[var(--brand-dark)] transition-colors">{feature.title}</h3>
                 <p className="text-gray-600 leading-relaxed group-hover:text-gray-700">{feature.desc}</p>
               </div>
             </motion.div>
