@@ -16,7 +16,12 @@ export function DemoPage() {
   const { messages, isLoading, sendMessage } = useChat(t.demo.chatWelcome, t.demo.mockResponses);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative overflow-x-hidden">
+      {/* S5: subtle background — brand gradient top + soft blob behind chat */}
+      <div className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-[var(--brand-light)]/50 to-transparent" />
+        <div className="absolute top-24 right-[-10%] w-[600px] h-[600px] rounded-full bg-[var(--brand)]/5 blur-3xl" />
+      </div>
       {/* Demo header */}
       <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur-md">
         <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
@@ -51,7 +56,8 @@ export function DemoPage() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
           {/* Business values - left */}
           <div className="lg:col-span-5 space-y-6">
-            <h2 className="text-xl font-bold text-gray-900">
+            {/* S6: center-align heading to match page H1 */}
+            <h2 className="text-xl font-bold text-gray-900 text-center lg:text-left">
               {t.demo.values.title}
             </h2>
             {/* S3: cards are clickable — sends the associated prompt to chat */}
@@ -78,13 +84,17 @@ export function DemoPage() {
           </div>
 
           {/* Chat box - right */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 space-y-3">
             <ChatBox
               messages={messages}
               isLoading={isLoading}
               onSend={sendMessage}
               quickPrompts={t.demo.quickPrompts}
             />
+            {/* S7: trust badge below chat */}
+            <p className="text-center text-xs text-gray-400 font-medium">
+              Không cần tài khoản &nbsp;·&nbsp; Powered by Workflowez
+            </p>
           </div>
         </div>
 
