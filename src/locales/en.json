@@ -88,6 +88,43 @@
     "note": "No credit card required • Cancel anytime",
     "badge": "Start automating today"
   },
+  "demo": {
+    "title": "Meet AI Advisor",
+    "subtitle": "Experience conversational AI powered by your business knowledge. Guideline about training, policies, product features and much more...",
+    "backToHome": "Back to Home",
+    "values": {
+      "title": "Why use AI Advisor?",
+      "items": [
+        { "title": "Internal Q&A", "desc": "Employees look up salary, leave, and processes themselves—no waiting for HR to reply.", "icon": "users", "prompt": "I have questions about leave policy and compensation." },
+        { "title": "Training & Support", "desc": "Help new employees get familiar with the environment & their role faster. AI guides them through checklists and FAQs.", "icon": "graduation", "prompt": "What is the onboarding process for new hires?" },
+        { "title": "Policy awareness", "desc": "Introduce new policies or product updates through natural conversation.", "icon": "file", "prompt": "What is the company's remote work policy?" },
+        { "title": "Product support", "desc": "Answer product questions, troubleshoot issues, and guide users—24/7 without a queue.", "icon": "headphones", "prompt": "I'm having a product issue, can you help?" }
+      ]
+    },
+    "advisor": {
+      "name": "Alex",
+      "role": "AI CONCIERGE",
+      "domain": "Advisor"
+    },
+    "chatTitle": "AI Advisor",
+    "chatSubtitle": "Powered by Workflowez",
+    "chatWelcome": "Hi! I'm Alex, your AI Advisor. Ask me anything about training, company policies, or product features!",
+    "quickPrompts": ["What should a new hire do first?", "What's the remote work policy?", "I have a product issue, need help?", "How long does onboarding take?"],
+    "chatPlaceholder": "Ask about onboarding, policies, or product features...",
+    "chatEmpty": "Start the conversation — ask about training, policies, or product features.",
+    "mockResponses": [
+      "Based on our company knowledge base, new members should complete the onboarding checklist within their first week. The checklist includes: 1) IT setup, 2) Team introductions, 3) Role-specific training modules.",
+      "Our remote work policy allows flexible hours with core collaboration windows from 10am-2pm. Employees need manager approval for full remote and must have a dedicated workspace.",
+      "The latest release adds AI-powered workflow suggestions. You can enable them in Settings → Workflows → Enable suggestions. The system analyzes your patterns and recommends optimizations.",
+      "For product feature questions, I recommend checking the release notes or scheduling a walkthrough with the product team. Is there a specific feature you'd like to learn more about?",
+      "I'd be happy to help! Could you provide more context about what you're trying to accomplish? That will help me give you a more precise answer."
+    ],
+    "ctaBanner": {
+      "text": "Like this AI Advisor?",
+      "sub": "Build your own for your business — no coding required.",
+      "button": "Start for free"
+    }
+  },
   "footer": {
     "desc": "Empowering SMBs with AI-driven automation workflows. Build, deploy, and scale without writing code.",
     "cols": {
