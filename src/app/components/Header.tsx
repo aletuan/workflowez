@@ -24,12 +24,13 @@ export function Header() {
   };
 
   return (
-    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+    <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div className="flex justify-center px-4 pt-4">
       <motion.header 
         initial={reducedMotion ? false : { y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={reducedMotion ? { duration: 0 } : undefined}
-        className={`w-full max-w-5xl transition-all duration-300 ${
+        className={`pointer-events-auto w-full max-w-5xl transition-all duration-300 ${
           scrolled || isOpen 
             ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-[var(--brand)]/5 border border-white/50" 
             : "bg-transparent"
@@ -68,7 +69,7 @@ export function Header() {
               <Globe className="w-3 h-3" />
               {language === 'vi' ? 'EN' : 'VI'}
             </button>
-            <button className="px-5 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-full hover:bg-[var(--brand)] hover:shadow-lg hover:shadow-[var(--brand)]/25 transition-all flex items-center gap-2 group">
+            <button className="px-5 py-2.5 bg-[var(--brand)] text-white text-sm font-semibold rounded-full hover:bg-[var(--brand-dark)] hover:shadow-lg hover:shadow-[var(--brand)]/25 transition-all flex items-center gap-2 group">
               {t.header.getStarted} 
               <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </button>
@@ -120,6 +121,7 @@ export function Header() {
           </motion.div>
         )}
       </motion.header>
+      </div>
     </div>
   );
 }
