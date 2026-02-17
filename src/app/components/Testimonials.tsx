@@ -40,7 +40,7 @@ export function Testimonials() {
               </div>
               <p className="text-lg text-gray-700 mb-10 leading-relaxed font-medium">"{item.quote}"</p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-violet-500/30">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[var(--brand)] to-[var(--accent-gradient-via)] flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-[var(--brand)]/30">
                   {avatars[i]}
                 </div>
                 <div>

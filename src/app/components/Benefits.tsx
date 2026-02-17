@@ -19,7 +19,7 @@ export function Benefits() {
             className="lg:w-1/2 relative"
           >
             {/* Decorative background element */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-violet-100/50 rounded-full blur-[80px] -z-10"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[var(--brand-light)]/50 rounded-full blur-[var(--blur-sm)] -z-10"></div>
 
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100 group">
               <ImageWithFallback 
@@ -31,7 +31,7 @@ export function Benefits() {
                 <div className="text-white">
                   <p className="text-2xl font-bold mb-3 italic">"{t.benefits.quote}"</p>
                   <div className="flex items-center gap-3">
-                    <div className="h-1 w-8 bg-violet-500 rounded-full"></div>
+                    <div className="h-1 w-8 bg-[var(--brand)] rounded-full"></div>
                     <p className="opacity-90 font-medium">Sarah Jenks, CEO at TechStart</p>
                   </div>
                 </div>
@@ -40,9 +40,8 @@ export function Benefits() {
           </motion.div>
 
           <div className="lg:w-1/2">
-            <span className="text-violet-600 font-bold tracking-wider text-sm uppercase mb-2 block">Why Choose Us</span>
+            <span className="text-[var(--brand)] font-bold tracking-wider text-sm uppercase mb-2 block">{t.benefits.eyebrow}</span>
             <h2 className="text-4xl font-extrabold text-gray-900 mb-8">{t.benefits.title}</h2>
-            
             <div className="space-y-8">
               {t.benefits.items.map((item: any, index: number) => (
                 <motion.div 
@@ -53,11 +52,11 @@ export function Benefits() {
                   className="flex gap-5 group" 
                   key={item.id}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-violet-50 border border-violet-100 flex items-center justify-center text-violet-600 font-bold text-xl shadow-sm group-hover:bg-violet-600 group-hover:text-white transition-all duration-300">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[var(--brand-light)] border border-[var(--brand)]/20 flex items-center justify-center text-[var(--brand)] font-bold text-xl shadow-sm group-hover:bg-[var(--brand)] group-hover:text-white transition-all duration-300">
                     {index + 1}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-violet-700 transition-colors">{item.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[var(--brand-dark)] transition-colors">{item.title}</h3>
                     <p className="text-gray-600 leading-relaxed font-medium">{item.desc}</p>
                   </div>
                 </motion.div>

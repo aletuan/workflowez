@@ -1,0 +1,97 @@
+{
+  "header": {
+    "features": "Features",
+    "benefits": "Benefits",
+    "testimonials": "Testimonials",
+    "pricing": "Pricing",
+    "signin": "Sign in",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Now powered by GPT-4o",
+    "title_line1": "Customer-First AI Automation",
+    "title_line2": "Optimize Your Operations",
+    "description": "We put your business value first. Leverage the power of AI to streamline operations, reduce costs, and deliver better experiences to your customers.",
+    "startFree": "Start Free Trial",
+    "watchDemo": "Watch Demo",
+    "noCard": "No credit card required",
+    "trial": "14-day free trial",
+    "img_sales": "AI Sales Assistant",
+    "img_sales_desc": "Auto-reply to product inquiries instantly",
+    "img_receipts": "Receipts & Reports",
+    "img_cashflow": "Cash Flow Viz"
+  },
+  "features": {
+    "title": "Customer-Centric Innovation",
+    "subtitle": "We focus on delivering tangible value to your business through intelligent automation and operational optimization.",
+    "eyebrow": "Powerful Tools",
+    "items": [
+      { "id": "workflow-builder", "title": "Visual Workflow Builder", "desc": "Drag and drop to create complex automation flows. No coding required." },
+      { "id": "ai-integration", "title": "AI Integration", "desc": "Connect GPT-4, Claude, and other models directly into your business logic." },
+      { "id": "team-collaboration", "title": "Team Collaboration", "desc": "Share workflows, assign roles, and work together in real-time." },
+      { "id": "instant-triggers", "title": "Instant Triggers", "desc": "React to emails, form submissions, and API events instantly." },
+      { "id": "advanced-analytics", "title": "Advanced Analytics", "desc": "Track performance, ROI, and execution history with detailed dashboards." },
+      { "id": "enterprise-security", "title": "Enterprise Security", "desc": "SOC2 Type II certified. Your data is encrypted and secure." }
+    ]
+  },
+  "benefits": {
+    "quote": "Workflow EZ understands our business needs like no other tool.",
+    "title": "Built for teams that move fast",
+    "eyebrow": "Why Choose Us",
+    "items": [
+      { "id": "connect-apps", "title": "Connect your apps", "desc": "Integrate with 500+ tools including Slack, Salesforce, HubSpot, and Notion in just a few clicks." },
+      { "id": "build-workflow", "title": "Build your workflow", "desc": "Use our visual builder to map out logic. Add AI steps to process text, analyze data, or generate content." },
+      { "id": "launch-scale", "title": "Launch and scale", "desc": "Deploy with one click. Our serverless infrastructure handles the scale while you sleep." }
+    ]
+  },
+  "testimonials": {
+    "title": "Trusted by innovative teams",
+    "subtitle": "Join thousands of companies using Workflow EZ to streamline their operations.",
+    "items": [
+      { "id": "testimonial-1", "quote": "The AI integration is seamless. We automated our entire customer onboarding process in one afternoon.", "role": "COO at GrowthFlow" },
+      { "id": "testimonial-2", "quote": "I was skeptical about no-code tools, but Workflow EZ is different. It's powerful enough for engineers but simple enough for everyone.", "role": "Product Manager at DevCorp" },
+      { "id": "testimonial-3", "quote": "Customer support response times dropped by 80% after we implemented the AI auto-responder workflows.", "role": "Head of Support at HelpDesk" }
+    ]
+  },
+  "pricing": {
+    "title": "Simple, transparent pricing",
+    "subtitle": "Start for free, scale as you grow.",
+    "month": "/mo",
+    "starter": {
+      "title": "Starter",
+      "desc": "Perfect for individuals and hobbyists.",
+      "cta": "Get Started Free",
+      "features": ["5 active workflows", "100 runs per month", "Basic integrations"]
+    },
+    "pro": {
+      "title": "Pro",
+      "tag": "Popular",
+      "desc": "For small teams and growing businesses.",
+      "cta": "Start Free Trial",
+      "features": ["20 active workflows", "5,000 runs per month", "AI text generation", "Priority email support"]
+    },
+    "business": {
+      "title": "Business",
+      "desc": "Advanced features for scaling teams.",
+      "cta": "Contact Sales",
+      "features": ["Unlimited workflows", "50,000 runs per month", "Advanced analytics", "Dedicated account manager"]
+    }
+  },
+  "cta": {
+    "title": "Ready to automate your growth?",
+    "desc": "Join 10,000+ businesses saving time and money with Workflow EZ. Start your 14-day free trial today.",
+    "primary": "Get Started Now",
+    "secondary": "Book a Demo",
+    "note": "No credit card required • Cancel anytime",
+    "badge": "Start automating today"
+  },
+  "footer": {
+    "desc": "Empowering SMBs with AI-driven automation workflows. Build, deploy, and scale without writing code.",
+    "cols": {
+      "product": "Product",
+      "resources": "Resources",
+      "company": "Company"
+    },
+    "copyright": "© 2026 Workflow EZ Inc. All rights reserved."
+  }
+}

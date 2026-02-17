@@ -1,0 +1,97 @@
+{
+  "header": {
+    "features": "Tính năng",
+    "benefits": "Lợi ích",
+    "testimonials": "Khách hàng",
+    "pricing": "Bảng giá",
+    "signin": "Đăng nhập",
+    "getStarted": "Bắt đầu ngay"
+  },
+  "hero": {
+    "badge": "Được hỗ trợ bởi GPT-4o",
+    "title_line1": "Tự động hóa AI hướng tới khách hàng",
+    "title_line2": "Tối ưu hóa vận hành của bạn",
+    "description": "Chúng tôi đặt giá trị doanh nghiệp của bạn lên hàng đầu. Tận dụng sức mạnh của AI để tinh giản vận hành, giảm chi phí và mang lại trải nghiệm tốt hơn cho khách hàng.",
+    "startFree": "Dùng thử miễn phí",
+    "watchDemo": "Xem Demo",
+    "noCard": "Không cần thẻ tín dụng",
+    "trial": "Dùng thử miễn phí 14 ngày",
+    "img_sales": "Trợ lý kinh doanh AI",
+    "img_sales_desc": "Tự động trả lời yêu cầu về sản phẩm ngay lập tức",
+    "img_receipts": "Hóa đơn & Báo cáo",
+    "img_cashflow": "Trực quan hóa dòng tiền"
+  },
+  "features": {
+    "title": "Đổi mới hướng tới khách hàng",
+    "subtitle": "Chúng tôi tập trung vào việc mang lại giá trị hữu hình cho doanh nghiệp của bạn thông qua tự động hóa thông minh và tối ưu hóa vận hành.",
+    "eyebrow": "Powerful Tools",
+    "items": [
+      { "id": "workflow-builder", "title": "Xây dựng quy trình trực quan", "desc": "Kéo và thả để tạo các luồng tự động hóa phức tạp. Không cần lập trình." },
+      { "id": "ai-integration", "title": "Tích hợp AI", "desc": "Kết nối GPT-4, Claude và các mô hình khác trực tiếp vào logic kinh doanh của bạn." },
+      { "id": "team-collaboration", "title": "Hợp tác nhóm", "desc": "Chia sẻ quy trình, phân quyền và làm việc cùng nhau trong thời gian thực." },
+      { "id": "instant-triggers", "title": "Kích hoạt tức thì", "desc": "Phản hồi email, gửi biểu mẫu và sự kiện API ngay lập tức." },
+      { "id": "advanced-analytics", "title": "Phân tích nâng cao", "desc": "Theo dõi hiệu suất, ROI và lịch sử thực hiện với bảng điều khiển chi tiết." },
+      { "id": "enterprise-security", "title": "Bảo mật doanh nghiệp", "desc": "Chứng nhận SOC2 Type II. Dữ liệu của bạn được mã hóa và bảo mật." }
+    ]
+  },
+  "benefits": {
+    "quote": "Workflow EZ hiểu nhu cầu kinh doanh của chúng tôi hơn bất kỳ công cụ nào khác.",
+    "title": "Xây dựng cho các đội ngũ phát triển nhanh",
+    "eyebrow": "Why Choose Us",
+    "items": [
+      { "id": "connect-apps", "title": "Kết nối ứng dụng của bạn", "desc": "Tích hợp với hơn 500 công cụ bao gồm Slack, Salesforce, HubSpot và Notion chỉ trong vài cú nhấp chuột." },
+      { "id": "build-workflow", "title": "Xây dựng quy trình của bạn", "desc": "Sử dụng trình xây dựng trực quan để lập bản đồ logic. Thêm các bước AI để xử lý văn bản, phân tích dữ liệu hoặc tạo nội dung." },
+      { "id": "launch-scale", "title": "Ra mắt và mở rộng", "desc": "Triển khai chỉ với một cú nhấp chuột. Cơ sở hạ tầng không máy chủ của chúng tôi xử lý việc mở rộng trong khi bạn ngủ." }
+    ]
+  },
+  "testimonials": {
+    "title": "Được tin dùng bởi các đội ngũ sáng tạo",
+    "subtitle": "Tham gia cùng hàng ngàn công ty đang sử dụng Workflow EZ để tinh giản hoạt động của họ.",
+    "items": [
+      { "id": "testimonial-1", "quote": "Tích hợp AI rất mượt mà. Chúng tôi đã tự động hóa toàn bộ quy trình giới thiệu khách hàng chỉ trong một buổi chiều.", "role": "COO tại GrowthFlow" },
+      { "id": "testimonial-2", "quote": "Tôi từng hoài nghi về các công cụ no-code, nhưng Workflow EZ thì khác. Nó đủ mạnh cho kỹ sư nhưng đủ đơn giản cho mọi người.", "role": "Giám đốc sản phẩm tại DevCorp" },
+      { "id": "testimonial-3", "quote": "Thời gian phản hồi hỗ trợ khách hàng giảm 80% sau khi chúng tôi triển khai quy trình trả lời tự động bằng AI.", "role": "Trưởng bộ phận hỗ trợ tại HelpDesk" }
+    ]
+  },
+  "pricing": {
+    "title": "Bảng giá đơn giản, minh bạch",
+    "subtitle": "Bắt đầu miễn phí, mở rộng khi bạn phát triển.",
+    "month": "/tháng",
+    "starter": {
+      "title": "Khởi động",
+      "desc": "Hoàn hảo cho cá nhân và người làm việc tự do.",
+      "cta": "Bắt đầu miễn phí",
+      "features": ["5 quy trình hoạt động", "100 lần chạy mỗi tháng", "Tích hợp cơ bản"]
+    },
+    "pro": {
+      "title": "Chuyên nghiệp",
+      "tag": "Phổ biến",
+      "desc": "Dành cho nhóm nhỏ và doanh nghiệp đang phát triển.",
+      "cta": "Dùng thử miễn phí",
+      "features": ["20 quy trình hoạt động", "5,000 lần chạy mỗi tháng", "Tạo văn bản AI", "Hỗ trợ email ưu tiên"]
+    },
+    "business": {
+      "title": "Doanh nghiệp",
+      "desc": "Tính năng nâng cao cho đội ngũ mở rộng.",
+      "cta": "Liên hệ kinh doanh",
+      "features": ["Quy trình không giới hạn", "50,000 lần chạy mỗi tháng", "Phân tích nâng cao", "Quản lý tài khoản riêng"]
+    }
+  },
+  "cta": {
+    "title": "Sẵn sàng tự động hóa sự phát triển của bạn?",
+    "desc": "Tham gia cùng hơn 10.000 doanh nghiệp tiết kiệm thời gian và tiền bạc với Workflow EZ. Bắt đầu dùng thử miễn phí 14 ngày ngay hôm nay.",
+    "primary": "Bắt đầu ngay",
+    "secondary": "Đặt lịch Demo",
+    "note": "Không cần thẻ tín dụng • Hủy bất cứ lúc nào",
+    "badge": "Start automating today"
+  },
+  "footer": {
+    "desc": "Trao quyền cho các doanh nghiệp vừa và nhỏ với quy trình tự động hóa dựa trên AI. Xây dựng, triển khai và mở rộng mà không cần viết mã.",
+    "cols": {
+      "product": "Sản phẩm",
+      "resources": "Tài nguyên",
+      "company": "Công ty"
+    },
+    "copyright": "© 2026 Workflow EZ Inc. Bảo lưu mọi quyền."
+  }
+}
