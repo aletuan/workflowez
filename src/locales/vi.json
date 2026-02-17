@@ -130,10 +130,33 @@
     "subtitle": "Chọn sản phẩm để khám phá",
     "backToHome": "Về trang chủ",
     "backToCatalog": "Về danh mục",
+    "tryDemo": "Dùng thử",
+    "comingSoon": "Sắp ra mắt",
+    "available": "Đang có sẵn",
     "advisor": "Advisor Agent",
     "advisorDesc": "AI hội thoại cho đào tạo, chính sách, hỗ trợ sản phẩm. Hướng dẫn về onboarding, chính sách và nhiều hơn nữa.",
+    "advisorFeatures": ["Bot Q&A nội bộ", "Nhận thức chính sách", "Hỗ trợ onboarding", "Hỗ trợ sản phẩm 24/7"],
     "social": "Social Intelligent",
-    "socialDesc": "Lắng nghe, phân tích, xu hướng, xuất bản. Công cụ AI cho người bán, doanh nghiệp và KOL hiểu phản hồi từ người dùng và fans."
+    "socialDesc": "Lắng nghe, phân tích, xu hướng, xuất bản. Công cụ AI cho người bán, doanh nghiệp và KOL hiểu phản hồi từ người dùng và fans.",
+    "socialFeatures": ["Lắng nghe mạng xã hội", "Phân tích cảm xúc", "Phát hiện xu hướng", "Xuất bản & Lên lịch"]
+  },
+  "social": {
+    "subtitle": "Lắng nghe, phân tích và xuất bản — Công cụ AI cho người bán, doanh nghiệp và KOL.",
+    "whyTitle": "Tại sao dùng Social Intelligent?",
+    "dashboardAlt": "Dashboard Social Intelligent",
+    "dashboardBadge": "Xem trước Dashboard",
+    "comingSoon": "Sắp ra mắt",
+    "values": [
+      { "title": "Lắng nghe mạng xã hội", "desc": "Theo dõi đề cập, hashtag và cuộc trò chuyện trên tất cả nền tảng lớn theo thời gian thực.", "icon": "radio" },
+      { "title": "Phân tích cảm xúc", "desc": "Hiểu ngay khán giả của bạn cảm nhận thế nào về thương hiệu, sản phẩm và chiến dịch.", "icon": "smile" },
+      { "title": "Phát hiện xu hướng", "desc": "Phát hiện chủ đề nổi bật và nội dung viral trước khi chúng đạt đỉnh — hành động kịp thời.", "icon": "trending-up" },
+      { "title": "Xuất bản & Lên lịch", "desc": "Lên kế hoạch và xuất bản nội dung tối ưu trên các kênh từ một dashboard duy nhất.", "icon": "send" }
+    ],
+    "ctaBanner": {
+      "text": "Quan tâm đến Social Intelligent?",
+      "sub": "Đăng ký sớm — là người đầu tiên biết khi ra mắt.",
+      "button": "Đăng ký sớm"
+    }
   },
   "footer": {
     "desc": "Trao quyền cho các doanh nghiệp vừa và nhỏ với quy trình tự động hóa dựa trên AI. Xây dựng, triển khai và mở rộng mà không cần viết mã.",
