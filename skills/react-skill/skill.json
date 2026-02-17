@@ -1,0 +1,91 @@
+# React Skill Instructions
+
+## General Principles
+- Use functional components only
+- Prefer hooks over class components
+- Use TypeScript if project supports it
+- Keep components small and focused
+- Avoid unnecessary re-renders
+
+---
+
+## Component Conventions
+
+### Structure
+- One component per file
+- File name = ComponentName.tsx
+- Prefer default export for page/route components; named exports are fine for components imported by path
+- Props interface defined above component
+
+### Template
+
+```tsx
+import React from "react";
+
+interface Props {
+  title: string;
+}
+
+export default function ComponentName({ title }: Props) {
+  return (
+    <div>
+      <h1>{title}</h1>
+    </div>
+  );
+}
+
+### Hooks Conventions
+- Hook name must start with use
+- Keep hooks pure (no side effects unless intentional)
+- Extract logic from components into hooks when reusable
+
+### Template
+
+```ts
+import { useState, useEffect } from "react";
+
+export function useSomething() {
+  const [state, setState] = useState(null);
+
+  useEffect(() => {
+    // logic
+  }, []);
+
+  return { state };
+}
+
+### Styling Rules
+- Prefer Tailwind / CSS Modules / Styled Components (choose one)
+- Avoid inline styles unless dynamic
+- Keep styles close to component
+
+### State Management
+- Local → useState
+- Derived → useMemo
+- Complex → useReducer
+- Global → Context / Zustand / Redux (depending on project)
+
+### Performance
+- Use React.memo when needed
+- Avoid anonymous functions in JSX when expensive
+- Memoize callbacks with useCallback if passed down
+- Memoize context value with useMemo; use useCallback for handlers passed to children
+
+### Lists & Keys
+- Use stable keys for lists (e.g. item.id, item.slug)
+- Avoid key={index} when items can be reordered—causes bugs with React's reconciliation
+
+### Reusable Patterns
+- Extract repeated motion/layout (initial/animate/transition) into AnimatedSection or FadeInCard wrappers
+- Share common layout (Section, SectionCard, PrimaryButton) instead of duplicating
+
+### When Generating Code
+Cursor should:
+- Follow file naming conventions
+- Generate clean, readable JSX
+- Avoid over-engineering
+- Include minimal but sufficient typing
+- Prefer clarity over cleverness
+
+
+
