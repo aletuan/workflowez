@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ChevronRight, Globe, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 import { useLanguage } from "../context/LanguageContext";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import { NAV_ITEMS } from "../../config/navigation";
@@ -40,15 +41,15 @@ export function Header() {
       >
         {/* Inner container: logo left, nav+CTA pushed right */}
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center">
-          {/* Logo — left */}
-          <div className="flex items-center gap-2 shrink-0">
+          {/* Logo — left, navigates to home */}
+          <Link to="/" className="flex items-center gap-2 shrink-0 cursor-pointer">
             <div className="w-9 h-9 rounded-xl bg-[linear-gradient(to_bottom_right,var(--brand),var(--accent-gradient-via))] flex items-center justify-center shadow-md shadow-[var(--brand)]/20 rotate-3 hover:rotate-0 transition-transform duration-300">
               <Sparkles className="w-4 h-4 text-white" />
             </div>
             <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--brand-dark)] to-[var(--accent-gradient-via)]">
               Workflow EZ
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Nav + Actions — pushed to right */}
           <div className="hidden md:flex items-center gap-8 ml-auto">
