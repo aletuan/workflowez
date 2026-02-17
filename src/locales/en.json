@@ -108,7 +108,7 @@
     },
     "chatTitle": "Advisor Agent",
     "chatSubtitle": "Powered by Workflowez",
-    "chatWelcome": "Hi! I'm Alex, your Advisor Agent. Ask me anything about training, company policies, or product features!",
+    "chatWelcome": "Hi! I'm Alex, your Advisor Agent.",
     "quickPrompts": ["What should a new hire do first?", "What's the remote work policy?", "I have a product issue, need help?", "How long does onboarding take?"],
     "chatPlaceholder": "Ask about onboarding, policies, or product features...",
     "chatEmpty": "Start the conversation — ask about training, policies, or product features.",
