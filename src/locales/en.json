@@ -125,6 +125,16 @@
       "button": "Start for free"
     }
   },
+  "catalog": {
+    "title": "Product Catalog",
+    "subtitle": "Choose a product to explore",
+    "backToHome": "Back to Home",
+    "backToCatalog": "Back to catalog",
+    "advisor": "Advisor Agent",
+    "advisorDesc": "Conversational AI for training, policies, product support. Guideline about onboarding, policies, and much more.",
+    "social": "Social Intelligent",
+    "socialDesc": "Listen, analyze, trend, publish. AI-powered tools for sellers, businesses, and KOLs to understand feedback from users and fans."
+  },
   "footer": {
     "desc": "Empowering SMBs with AI-driven automation workflows. Build, deploy, and scale without writing code.",
     "cols": {

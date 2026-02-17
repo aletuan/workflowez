@@ -3,11 +3,35 @@
 **Branch:** `feature/social-agent`  
 **Date:** February 2026  
 **Scope:** AI-powered Social Intelligence — Listening, Analyzing, Trending, Publishing  
-**Status:** Planning
+**Status:** Phase 0 done; Phase 1 placeholder done
 
 ---
 
-## 0. Feature Summary
+## 0. Product Catalog (Prerequisite)
+
+Vì Workflowez có **nhiều sản phẩm** (Advisor Agent, Social Intelligent, ...), cần tạo **Product Catalog** trước khi thêm trang giới thiệu từng sản phẩm.
+
+### Navigation Flow
+
+```
+Trang chủ "Xem demo" → Product Catalog (/products) → Chọn sản phẩm → Trang sản phẩm cụ thể
+```
+
+| Route | Trang | Mô tả |
+|-------|-------|-------|
+| `/products` | Product Catalog | Danh sách sản phẩm; user click vào từng product card |
+| `/products/advisor` | Advisor Agent | Demo AI Advisor (chat) — đã có từ feature/ai-advisor |
+| `/products/social` | Social Intelligent | Giới thiệu + demo Social Agent |
+
+### Thứ tự triển khai
+
+1. **Product Catalog** (`/products`) — trang catalog liệt kê các sản phẩm
+2. **Cập nhật flow** — Hero "Xem demo" → `/products` (thay vì `/demo`)
+3. **Social Agent page** (`/products/social`) — trang giới thiệu Social Intelligent
+
+---
+
+## 1. Feature Summary (Social Agent)
 
 | Item | Detail |
 |------|--------|
@@ -18,7 +42,7 @@
 
 ---
 
-## 1. Core Capabilities
+## 2. Core Capabilities
 
 | Capability | Mô tả |
 |------------|--------|
@@ -29,7 +53,7 @@
 
 ---
 
-## 2. Use Cases
+## 3. Use Cases
 
 | User segment | Use case |
 |--------------|----------|
@@ -39,15 +63,24 @@
 
 ---
 
-## 3. Suggested Frontend Tasks
+## 4. Suggested Frontend Tasks
 
-### Phase 1: Introduce product
+### Phase 0: Product Catalog (làm trước)
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 1 | Landing section hoặc page mới | Pending | Giới thiệu Social Agent: value prop, 4 pillars (Listen, Analyze, Trend, Publish) |
-| 2 | i18n | Pending | Thêm bản dịch vi/en cho nội dung Social Agent |
-| 3 | Routing / nav | Pending | Link từ landing hoặc nav đến trang/section Social Agent |
+| 0.1 | Tạo Product Catalog page | Done | `/products` — grid product cards |
+| 0.2 | Product cards | Done | Advisor Agent, Social Intelligent; link đến `/products/advisor`, `/products/social` |
+| 0.3 | Cập nhật Hero "Xem demo" | Done | `to="/products"` |
+| 0.4 | Redirect `/demo` | Done | `<Navigate to="/products/advisor" replace />` |
+
+### Phase 1: Introduce Social Agent
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 1 | Social Agent page | Done | `/products/social` — placeholder với Listen/Analyze, Trend/Publish; "Coming soon" |
+| 2 | i18n | Done | catalog.* trong en/vi; Social Agent dùng catalog.social, catalog.socialDesc |
+| 3 | Product card trong catalog | Done | Card "Social Intelligent" link đến `/products/social` |
 
 ### Phase 2: Demo / Interaction
 
@@ -58,22 +91,27 @@
 
 ---
 
-## 4. Suggested File Structure
+## 5. Suggested File Structure
 
 ```
 src/
 ├── app/pages/
-│   └── SocialAgentPage.tsx    # /social-agent — landing + demo
+│   ├── ProductCatalogPage.tsx   # /products — catalog
+│   ├── AdvisorDemoPage.tsx       # /products/advisor (rename từ DemoPage)
+│   └── SocialAgentPage.tsx      # /products/social — Social Intelligent
 ├── components/
-│   └── social-agent/          # Các component cho Social Agent
+│   ├── catalog/                 # Product cards, catalog layout
+│   └── social-agent/            # Các component cho Social Agent
+├── config/
+│   └── products.ts              # Danh sách products: slug, title, desc, route
 ├── locales/
-│   ├── en.json               # + socialAgent.*
+│   ├── en.json                  # + catalog.*, socialAgent.*
 │   └── vi.json
 ```
 
 ---
 
-## 5. Key Messages (Draft)
+## 6. Key Messages (Draft)
 
 | Pillar | EN | VI |
 |--------|-----|-----|
@@ -84,13 +122,14 @@ src/
 
 ---
 
-## 6. Next Steps
+## 7. Next Steps
 
-1. Xác định vị trí giới thiệu: section trong landing, hay trang riêng `/social-agent`
-2. Thiết kế UI: 4 pillars, use cases theo user segment
-3. Thêm i18n và nội dung copy
-4. Implement Phase 1
+1. **Phase 0:** Tạo Product Catalog (`/products`), product cards (Advisor Agent, Social Intelligent)
+2. Cập nhật Hero "Xem demo" → `/products`
+3. **Phase 1:** Tạo trang Social Agent (`/products/social`)
+4. Thiết kế UI: 4 pillars, use cases theo user segment
+5. Thêm i18n và nội dung copy
 
 ---
 
-*Document version: 1.0*
+*Document version: 1.2*

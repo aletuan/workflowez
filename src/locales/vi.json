@@ -125,6 +125,16 @@
       "button": "Bắt đầu miễn phí"
     }
   },
+  "catalog": {
+    "title": "Danh mục sản phẩm",
+    "subtitle": "Chọn sản phẩm để khám phá",
+    "backToHome": "Về trang chủ",
+    "backToCatalog": "Về danh mục",
+    "advisor": "Advisor Agent",
+    "advisorDesc": "AI hội thoại cho đào tạo, chính sách, hỗ trợ sản phẩm. Hướng dẫn về onboarding, chính sách và nhiều hơn nữa.",
+    "social": "Social Intelligent",
+    "socialDesc": "Lắng nghe, phân tích, xu hướng, xuất bản. Công cụ AI cho người bán, doanh nghiệp và KOL hiểu phản hồi từ người dùng và fans."
+  },
   "footer": {
     "desc": "Trao quyền cho các doanh nghiệp vừa và nhỏ với quy trình tự động hóa dựa trên AI. Xây dựng, triển khai và mở rộng mà không cần viết mã.",
     "cols": {
