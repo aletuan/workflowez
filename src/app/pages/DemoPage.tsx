@@ -32,7 +32,7 @@ export function DemoPage() {
         {/* Subtle background */}
         <div className="pointer-events-none fixed inset-0 -z-10">
           <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-[var(--brand-light)]/50 to-transparent" />
-          <div className="absolute top-24 right-[-10%] w-[600px] h-[600px] rounded-full bg-[var(--brand)]/5 blur-3xl" />
+          <div className="absolute top-24 right-[-10%] w-[280px] h-[280px] md:w-[600px] md:h-[600px] rounded-full bg-[var(--brand)]/5 blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 md:px-6 py-12 lg:py-16">
