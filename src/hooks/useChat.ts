@@ -7,26 +7,20 @@ export interface ChatMessage {
   createdAt: Date;
 }
 
-const MOCK_RESPONSES: string[] = [
-  "Based on our company knowledge base, new members should complete the onboarding checklist within their first week. The checklist includes: 1) IT setup, 2) Team introductions, 3) Role-specific training modules.",
-  "Our remote work policy allows flexible hours with core collaboration windows from 10am-2pm. Employees need manager approval for full remote and must have a dedicated workspace.",
-  "The latest release adds AI-powered workflow suggestions. You can enable them in Settings → Workflows → Enable suggestions. The system analyzes your patterns and recommends optimizations.",
-  "For product feature questions, I recommend checking the release notes or scheduling a walkthrough with the product team. Is there a specific feature you'd like to learn more about?",
-  "I'd be happy to help! Could you provide more context about what you're trying to accomplish? That will help me give you a more precise answer.",
-];
-
-function getMockReply(): string {
-  return MOCK_RESPONSES[Math.floor(Math.random() * MOCK_RESPONSES.length)];
-}
-
 /** Simulates API delay (ms) */
 const MOCK_DELAY = 800;
 
-export function useChat() {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+export function useChat(initialMessage?: string, mockResponses?: string[]) {
+  const welcomeMessage: ChatMessage | undefined = initialMessage
+    ? { id: "welcome", role: "assistant", content: initialMessage, createdAt: new Date() }
+    : undefined;
+
+  const [messages, setMessages] = useState<ChatMessage[]>(
+    welcomeMessage ? [welcomeMessage] : []
+  );
   const [isLoading, setIsLoading] = useState(false);
 
-  const sendMessage = useCallback(async (content: string) => {
+  const sendMessage = useCallback(async (content: string, reset = false) => {
     if (!content.trim()) return;
 
     const userMessage: ChatMessage = {
@@ -36,16 +30,17 @@ export function useChat() {
       createdAt: new Date(),
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    // reset = true: clear to welcome message then add new user message
+    setMessages(reset && welcomeMessage ? [welcomeMessage, userMessage] : (prev) => [...prev, userMessage]);
     setIsLoading(true);
 
-    // Mock: simulate API delay then add assistant reply
     await new Promise((resolve) => setTimeout(resolve, MOCK_DELAY));
 
+    const pool = mockResponses?.length ? mockResponses : ["..."];
     const assistantMessage: ChatMessage = {
       id: `assistant-${Date.now()}`,
       role: "assistant",
-      content: getMockReply(),
+      content: pool[Math.floor(Math.random() * pool.length)],
       createdAt: new Date(),
     };
 

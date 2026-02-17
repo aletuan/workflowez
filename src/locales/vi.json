@@ -95,10 +95,10 @@
     "values": {
       "title": "Tại sao dùng AI Advisor?",
       "items": [
-        { "title": "Trả lời tức thì", "desc": "Nhận câu trả lời 24/7 từ tài liệu được lập chỉ mục—không cần chờ HR hay bộ phận hỗ trợ.", "icon": "zap" },
-        { "title": "Đào tạo & onboarding", "desc": "Thành viên mới học nhanh hơn. AI hướng dẫn họ qua checklist và FAQ.", "icon": "graduation" },
-        { "title": "Nhận thức chính sách", "desc": "Giới thiệu chính sách mới hoặc cập nhật sản phẩm qua hội thoại tự nhiên.", "icon": "file" },
-        { "title": "Hỗ trợ sản phẩm", "desc": "Trả lời câu hỏi sản phẩm, xử lý sự cố và hướng dẫn người dùng—24/7 không cần xếp hàng.", "icon": "headphones" }
+        { "title": "Trả lời tức thì", "desc": "Nhận câu trả lời 24/7 từ tài liệu được lập chỉ mục—không cần chờ HR hay bộ phận hỗ trợ.", "icon": "zap", "prompt": "Tôi có thể hỏi gì từ tài liệu công ty?" },
+        { "title": "Đào tạo & onboarding", "desc": "Thành viên mới học nhanh hơn. AI hướng dẫn họ qua checklist và FAQ.", "icon": "graduation", "prompt": "Quy trình onboarding cho nhân viên mới là gì?" },
+        { "title": "Nhận thức chính sách", "desc": "Giới thiệu chính sách mới hoặc cập nhật sản phẩm qua hội thoại tự nhiên.", "icon": "file", "prompt": "Chính sách làm việc từ xa của công ty là gì?" },
+        { "title": "Hỗ trợ sản phẩm", "desc": "Trả lời câu hỏi sản phẩm, xử lý sự cố và hướng dẫn người dùng—24/7 không cần xếp hàng.", "icon": "headphones", "prompt": "Tôi gặp lỗi khi sử dụng sản phẩm, cần hỗ trợ?" }
       ]
     },
     "advisor": {
@@ -107,9 +107,23 @@
       "domain": "Cố vấn"
     },
     "chatTitle": "AI Advisor",
-    "chatSubtitle": "Powered by Workflowez • Hướng dẫn về đào tạo, chính sách, tính năng sản phẩm và nhiều hơn nữa...",
+    "chatSubtitle": "Powered by Workflowez",
+    "chatWelcome": "Xin chào! Tôi là Alex, AI Advisor của bạn.",
+    "quickPrompts": ["Nhân viên mới cần làm gì đầu tiên?", "Chính sách làm việc từ xa?", "Gặp lỗi sản phẩm, cần hỗ trợ?", "Quy trình onboarding mất bao lâu?"],
     "chatPlaceholder": "Hỏi về onboarding, chính sách hoặc tính năng sản phẩm...",
-    "chatEmpty": "Bắt đầu cuộc trò chuyện — hỏi về đào tạo, chính sách hoặc tính năng sản phẩm."
+    "chatEmpty": "Bắt đầu cuộc trò chuyện — hỏi về đào tạo, chính sách hoặc tính năng sản phẩm.",
+    "mockResponses": [
+      "Theo tài liệu công ty, nhân viên mới cần hoàn thành checklist onboarding trong tuần đầu tiên, bao gồm: 1) Thiết lập thiết bị IT, 2) Giới thiệu với các thành viên trong nhóm, 3) Hoàn thành các module đào tạo theo vai trò.",
+      "Chính sách làm việc từ xa cho phép giờ làm việc linh hoạt với khung giờ cộng tác bắt buộc từ 10:00–14:00. Nhân viên cần có sự chấp thuận của quản lý để làm việc hoàn toàn từ xa và phải có không gian làm việc riêng.",
+      "Phiên bản mới nhất bổ sung tính năng gợi ý quy trình bằng AI. Bạn có thể bật tính năng này trong Cài đặt → Quy trình → Bật gợi ý. Hệ thống sẽ phân tích hành vi của bạn và đề xuất tối ưu hóa phù hợp.",
+      "Với các câu hỏi về tính năng sản phẩm, tôi khuyên bạn xem ghi chú phát hành hoặc đặt lịch hướng dẫn với nhóm sản phẩm. Bạn muốn tìm hiểu thêm về tính năng cụ thể nào không?",
+      "Tôi rất vui được hỗ trợ! Bạn có thể cung cấp thêm thông tin về vấn đề đang gặp phải không? Điều đó sẽ giúp tôi đưa ra câu trả lời chính xác hơn."
+    ],
+    "ctaBanner": {
+      "text": "Thích AI Advisor này?",
+      "sub": "Tạo AI Advisor riêng cho doanh nghiệp của bạn — không cần lập trình.",
+      "button": "Bắt đầu miễn phí"
+    }
   },
   "footer": {
     "desc": "Trao quyền cho các doanh nghiệp vừa và nhỏ với quy trình tự động hóa dựa trên AI. Xây dựng, triển khai và mở rộng mà không cần viết mã.",
