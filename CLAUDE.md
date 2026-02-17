@@ -31,21 +31,23 @@ This is a **single-page React + Vite + TypeScript landing page** for Workflowez 
 Header → Hero → Features → Benefits → Testimonials → Pricing → CTA → Footer
 ```
 
-Each section is a standalone component in `src/app/components/`. Navigation uses in-page hash links (`#features`, `#benefits`, etc.).
+Each section is a standalone component in `src/app/components/`. Shared primitives (`Section`, `PrimaryButton`, `SecondaryButton`) live in `src/app/components/shared/`. Nav items are defined in `src/config/navigation.ts`. Navigation uses in-page hash links (`#features`, `#pricing`, `#testimonials`, etc.).
 
 ### Internationalization
 
-All user-facing text lives in `src/app/context/LanguageContext.tsx`. The context provides a `t(key)` function and a language toggle (English / Vietnamese). When adding new content, add translation keys to both `en` and `vi` objects in that file.
+Translations live in `src/locales/vi.json` and `src/locales/en.json`. `LanguageContext` loads these and provides a typed `t` object. Add new keys to both locale files and extend `TranslationKeys` in `src/types/translations.ts` for type safety.
 
 ### Styling
 
-- `src/styles/theme.css` — CSS custom properties for semantic colors (uses `oklch` format)
+- `src/styles/theme.css` — Design tokens (`--brand`, `--brand-light`, `--brand-dark`, `--section-radius`, `--blur-*`, `--accent-gradient-*`) and semantic colors
 - `src/styles/fonts.css` — Font face definitions
 - `src/styles/tailwind.css` — Tailwind v4 directives
 - `src/styles/index.css` — Main CSS entry (imports the above)
 
-Design tokens in `theme.css` are used alongside Tailwind utilities. Prefer Tailwind classes; use CSS custom properties only when a value isn't expressible as a Tailwind class.
+Use design tokens (e.g. `var(--brand)`, `var(--brand-light)`) for brand colors. Prefer Tailwind utilities for layout and spacing; use custom properties when values are semantic or reusable across components.
 
 ### UI Components
 
-`src/app/components/ui/` contains shadcn/ui components (MIT-licensed, credited in `ATTRIBUTIONS.md`). These are local copies — edit them directly rather than re-generating. `src/app/components/figma/ImageWithFallback.tsx` handles image rendering with graceful fallbacks.
+- `src/app/components/ui/` — shadcn/ui primitives (MIT-licensed, see `ATTRIBUTIONS.md`)
+- `src/app/components/shared/` — `Section`, `PrimaryButton`, `SecondaryButton` (support variants and optional `href`)
+- `src/app/components/figma/ImageWithFallback.tsx` — image rendering with fallbacks

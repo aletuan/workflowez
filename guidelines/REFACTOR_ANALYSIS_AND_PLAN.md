@@ -3,7 +3,7 @@
 **Date:** February 2026  
 **Scope:** `website/` — Vite + React landing page  
 **Focus:** Reusability, Complexity, Scalability, Resilience, React Best Practices  
-**Last updated:** February 2026 (Phase 2 completed)
+**Last updated:** February 2026 (Phase 2 + cleanup complete)
 
 ---
 
@@ -26,13 +26,14 @@
 2. [x] **Extract translations** — `locales/vi.json`, `locales/en.json` with LanguageContext loading.
 3. [x] **Type-safe i18n** — `TranslationKeys` from `types/translations.ts`.
 4. [x] **Nav config** — `config/navigation.ts`.
-5. [x] **Design tokens** — `--brand`, `--brand-light`, `--section-radius`, `--blur-*`.
+5. [x] **Design tokens** — `--brand`, `--brand-light`, `--brand-dark`, `--section-radius`, `--blur-*`, `--accent-gradient-*`.
+6. [x] **Design token migration** — All components (CTA, Footer, Pricing, Testimonials, Hero, App, ErrorBoundary) use `var(--brand)`; no violet/fuchsia in src.
+7. [x] **Shared buttons everywhere** — CTA and Pricing use `PrimaryButton`/`SecondaryButton` with variants (`light`, `outline`, `brand`); buttons support optional `href` for navigation.
+8. [x] **CTAs wired** — CTA/Pricing buttons and Footer links point to `#pricing`, `#features`, `#testimonials`.
 
-### Phase 2 Remaining (Optional Cleanup)
+### Phase 2 Optional (Not Done)
 
-- Migrate CTA, Footer, Pricing, Testimonials from violet/fuchsia to `var(--brand)`
-- Use `PrimaryButton` / `SecondaryButton` in CTA and Pricing
-- Optionally use `Section` in Testimonials, Pricing where layout allows
+- Use `Section` in Testimonials, Pricing where layout allows
 
 ### Suggested Next Tasks (Phase 3)
 
@@ -100,9 +101,9 @@ website/
 |-------|----------|--------|
 | ~~ImageWithFallback never used~~ | ~~figma/ImageWithFallback.tsx~~ | **Resolved** — Now used by Hero and Benefits |
 | **shadcn/ui components unused** | `components/ui/*` | Button, Card, Badge exist but sections use raw `<button>`, inline styles |
-| ~~Duplicate section patterns~~ | ~~Features~~ | **Partial** — Section, PrimaryButton, SecondaryButton added; FeatureCard not yet |
+| ~~Duplicate section patterns~~ | ~~Features~~ | **Partial** — Section, PrimaryButton, SecondaryButton added; CTA, Pricing use shared buttons; FeatureCard not yet |
 | **Hardcoded content** | Testimonials, Footer | `avatars`, `authors`; Footer links not in i18n |
-| ~~Inconsistent styling~~ | ~~theme.css~~ | **Partial** — Design tokens added; some violet/fuchsia remain in CTA, Footer, Pricing |
+| ~~Inconsistent styling~~ | ~~theme.css~~ | **Resolved** — All components use design tokens; no violet/fuchsia in src |
 
 **Recommendations:**
 
@@ -121,7 +122,7 @@ website/
 | ~~Weak typing~~ | ~~t: any~~ | **Resolved** — TranslationKeys type |
 | **Repeated motion boilerplate** | Hero, Features, Benefits | AnimatedSection/FadeInCard not yet extracted |
 | ~~Duplicate nav config~~ | ~~Header.tsx~~ | **Resolved** — config/navigation.ts |
-| ~~Scattered magic values~~ | ~~Multiple~~ | **Partial** — Design tokens in theme.css; some components not migrated |
+| ~~Scattered magic values~~ | ~~Multiple~~ | **Resolved** — Design tokens in theme.css; all components migrated |
 
 **Recommendations:**
 
@@ -178,7 +179,7 @@ website/
 | Issue | Location | Impact |
 |-------|----------|--------|
 | ~~`key={index}` in lists~~ | ~~Features, Benefits, Pricing, Testimonials~~ | **Resolved** — stable keys (item.id) |
-| **Buttons without handlers** | Hero, CTA, Pricing | Non-interactive; need `onClick` or `href` |
+| ~~Buttons without handlers~~ | ~~Hero, CTA, Pricing~~ | **Resolved** — CTA/Pricing/Footer CTAs wired with `href`; Hero buttons ready for wiring |
 | ~~Hardcoded copy~~ | ~~Hero~~ | **Resolved** — uses t.hero.title_line2 |
 | ~~State in context without memo~~ | ~~LanguageContext~~ | **Resolved** — useMemo + useCallback |
 | **Missing `aria-*` on interactive** | Various | Buttons, links need `aria-label` where text is icon-only |
@@ -225,7 +226,7 @@ website/
 
 1. [x] **Shared components:**
    - `Section` (title, subtitle, container) — used by Features
-   - `PrimaryButton`, `SecondaryButton` — used by Hero
+   - `PrimaryButton`, `SecondaryButton` — variants: `default`/`light`/`brand` and `default`/`outline`; optional `href` for link-style CTAs. Used by Hero, CTA, Pricing.
 2. [x] **Extract translations** to `locales/vi.json`, `locales/en.json`.
 3. [x] **Type-safe i18n:** `TranslationKeys` type inferred from vi.json.
 4. [x] **Design tokens** — `--brand`, `--brand-light`, `--brand-dark`, `--section-radius`, `--blur-*` in theme.css.
@@ -252,7 +253,7 @@ website/
 
 ### Phase 4: Polish (2–3 days)
 
-1. **Wire CTAs** — href or handlers.
+1. [x] **Wire CTAs** — href or handlers (CTA, Pricing, Footer done; Hero ready for wiring).
 2. **i18n Footer** — move links to translations.
 3. **A11y audit** — `aria-label`, focus states, contrast.
 4. **Tests** — unit for hooks/context, E2E for main flows.
@@ -322,7 +323,7 @@ src/
 - [ ] Lazy loading for at least Hero, Features, Pricing
 - [x] `prefers-reduced-motion` respected
 - [x] Stable `key` props in all list renders
-- [ ] CTAs wired to navigation or handlers
+- [x] CTAs wired to navigation (CTA, Pricing, Footer)
 
 ---
 
@@ -337,42 +338,38 @@ src/
 | 5 | Design tokens in theme.css | 2 | Done |
 | 6 | Introduce react-router | 3 | Next |
 | 7 | Lazy-load Hero, Features, Pricing | 3 | Next |
-| 8 | Wire CTAs to href or onClick | 4 | Next |
+| 8 | ~~Wire CTAs to href or onClick~~ | 4 | Done |
 | 9 | A11y audit — aria-label, focus states | 4 | Pending |
-| 10 | Finish design token migration (CTA, Footer, Pricing) | 2 | Remaining |
+| 10 | ~~Finish design token migration (all components)~~ | 2 | Done |
 
 ---
 
 ## 10. Review Summary & Suggested Next Move
 
-### Completed (Phases 1 & 2)
+### Completed (Phases 1 & 2 + Cleanup)
 
 - **Resilience:** ErrorBoundary, ImageWithFallback, useReducedMotion
 - **Data & i18n:** Translations in JSON, type-safe `TranslationKeys`
 - **Structure:** Nav config, shared Section/buttons
 - **Performance:** Context memoization, stable keys, unused deps removed
+- **Design tokens:** All components migrated (CTA, Footer, Pricing, Testimonials, Hero, App, ErrorBoundary)
+- **Shared buttons:** PrimaryButton/SecondaryButton with variants (`default`, `light`, `brand` / `default`, `outline`) and optional `href`; used in Hero, CTA, Pricing
+- **CTAs wired:** CTA → `#pricing`, `#features`; Pricing → `#pricing`, `#features`; Footer links → section anchors
 
 ### Remaining Gaps
 
-1. **Design tokens** — CTA, Footer, Pricing, Testimonials still use `violet-*`, `fuchsia-*` in places.
-2. **Section usage** — Only Features uses `Section`; Benefits, Testimonials, Pricing could adopt it.
-3. **PrimaryButton / SecondaryButton** — Only Hero uses them; CTA and Pricing still use raw buttons.
+1. **Section usage** — Only Features uses `Section`; Benefits, Testimonials, Pricing could adopt it.
+2. **Hero CTAs** — PrimaryButton/SecondaryButton present but not yet wired (e.g. `href="#pricing"`).
 
 ### Recommended Next Move
 
-**Option A: Phase 3 — Scalability**
+**Phase 3 — Scalability**
 - Add react-router with routes `/`, `/demo`, `/pricing`
 - Lazy-load sections with `React.lazy` + `Suspense`
 - Improves TTI and prepares for multi-page app
 
-**Option B: Phase 2 Cleanup — Finish What We Started**
-- Migrate remaining violet/fuchsia to `var(--brand)` in CTA, Footer, Pricing, Testimonials
-- Use `Section` in Testimonials and Pricing where layout fits
-- Use `PrimaryButton` / `SecondaryButton` in CTA and Pricing
-- Wire CTAs to `href="#pricing"` or placeholder handlers
-
-**Recommendation:** Option B first (0.5–1 day). Clean up Phase 2 before scaling. Then proceed to Phase 3.
+Phase 2 cleanup is complete; proceed to Phase 3.
 
 ---
 
-*Document version: 1.3*
+*Document version: 1.4*
