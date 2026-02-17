@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useMemo, useCallback, ReactNode } from 'react';
 
 type Language = 'vi' | 'en';
 
@@ -36,30 +36,30 @@ const translations: Translations = {
       title: "Đổi mới hướng tới khách hàng",
       subtitle: "Chúng tôi tập trung vào việc mang lại giá trị hữu hình cho doanh nghiệp của bạn thông qua tự động hóa thông minh và tối ưu hóa vận hành.",
       items: [
-        { title: "Xây dựng quy trình trực quan", desc: "Kéo và thả để tạo các luồng tự động hóa phức tạp. Không cần lập trình." },
-        { title: "Tích hợp AI", desc: "Kết nối GPT-4, Claude và các mô hình khác trực tiếp vào logic kinh doanh của bạn." },
-        { title: "Hợp tác nhóm", desc: "Chia sẻ quy trình, phân quyền và làm việc cùng nhau trong thời gian thực." },
-        { title: "Kích hoạt tức thì", desc: "Phản hồi email, gửi biểu mẫu và sự kiện API ngay lập tức." },
-        { title: "Phân tích nâng cao", desc: "Theo dõi hiệu suất, ROI và lịch sử thực hiện với bảng điều khiển chi tiết." },
-        { title: "Bảo mật doanh nghiệp", desc: "Chứng nhận SOC2 Type II. Dữ liệu của bạn được mã hóa và bảo mật." }
+        { id: "workflow-builder", title: "Xây dựng quy trình trực quan", desc: "Kéo và thả để tạo các luồng tự động hóa phức tạp. Không cần lập trình." },
+        { id: "ai-integration", title: "Tích hợp AI", desc: "Kết nối GPT-4, Claude và các mô hình khác trực tiếp vào logic kinh doanh của bạn." },
+        { id: "team-collaboration", title: "Hợp tác nhóm", desc: "Chia sẻ quy trình, phân quyền và làm việc cùng nhau trong thời gian thực." },
+        { id: "instant-triggers", title: "Kích hoạt tức thì", desc: "Phản hồi email, gửi biểu mẫu và sự kiện API ngay lập tức." },
+        { id: "advanced-analytics", title: "Phân tích nâng cao", desc: "Theo dõi hiệu suất, ROI và lịch sử thực hiện với bảng điều khiển chi tiết." },
+        { id: "enterprise-security", title: "Bảo mật doanh nghiệp", desc: "Chứng nhận SOC2 Type II. Dữ liệu của bạn được mã hóa và bảo mật." }
       ]
     },
     benefits: {
       quote: "Workflow EZ hiểu nhu cầu kinh doanh của chúng tôi hơn bất kỳ công cụ nào khác.",
       title: "Xây dựng cho các đội ngũ phát triển nhanh",
       items: [
-        { title: "Kết nối ứng dụng của bạn", desc: "Tích hợp với hơn 500 công cụ bao gồm Slack, Salesforce, HubSpot và Notion chỉ trong vài cú nhấp chuột." },
-        { title: "Xây dựng quy trình của bạn", desc: "Sử dụng trình xây dựng trực quan để lập bản đồ logic. Thêm các bước AI để xử lý văn bản, phân tích dữ liệu hoặc tạo nội dung." },
-        { title: "Ra mắt và mở rộng", desc: "Triển khai chỉ với một cú nhấp chuột. Cơ sở hạ tầng không máy chủ của chúng tôi xử lý việc mở rộng trong khi bạn ngủ." }
+        { id: "connect-apps", title: "Kết nối ứng dụng của bạn", desc: "Tích hợp với hơn 500 công cụ bao gồm Slack, Salesforce, HubSpot và Notion chỉ trong vài cú nhấp chuột." },
+        { id: "build-workflow", title: "Xây dựng quy trình của bạn", desc: "Sử dụng trình xây dựng trực quan để lập bản đồ logic. Thêm các bước AI để xử lý văn bản, phân tích dữ liệu hoặc tạo nội dung." },
+        { id: "launch-scale", title: "Ra mắt và mở rộng", desc: "Triển khai chỉ với một cú nhấp chuột. Cơ sở hạ tầng không máy chủ của chúng tôi xử lý việc mở rộng trong khi bạn ngủ." }
       ]
     },
     testimonials: {
       title: "Được tin dùng bởi các đội ngũ sáng tạo",
       subtitle: "Tham gia cùng hàng ngàn công ty đang sử dụng Workflow EZ để tinh giản hoạt động của họ.",
       items: [
-        { quote: "Tích hợp AI rất mượt mà. Chúng tôi đã tự động hóa toàn bộ quy trình giới thiệu khách hàng chỉ trong một buổi chiều.", role: "COO tại GrowthFlow" },
-        { quote: "Tôi từng hoài nghi về các công cụ no-code, nhưng Workflow EZ thì khác. Nó đủ mạnh cho kỹ sư nhưng đủ đơn giản cho mọi người.", role: "Giám đốc sản phẩm tại DevCorp" },
-        { quote: "Thời gian phản hồi hỗ trợ khách hàng giảm 80% sau khi chúng tôi triển khai quy trình trả lời tự động bằng AI.", role: "Trưởng bộ phận hỗ trợ tại HelpDesk" }
+        { id: "testimonial-1", quote: "Tích hợp AI rất mượt mà. Chúng tôi đã tự động hóa toàn bộ quy trình giới thiệu khách hàng chỉ trong một buổi chiều.", role: "COO tại GrowthFlow" },
+        { id: "testimonial-2", quote: "Tôi từng hoài nghi về các công cụ no-code, nhưng Workflow EZ thì khác. Nó đủ mạnh cho kỹ sư nhưng đủ đơn giản cho mọi người.", role: "Giám đốc sản phẩm tại DevCorp" },
+        { id: "testimonial-3", quote: "Thời gian phản hồi hỗ trợ khách hàng giảm 80% sau khi chúng tôi triển khai quy trình trả lời tự động bằng AI.", role: "Trưởng bộ phận hỗ trợ tại HelpDesk" }
       ]
     },
     pricing: {
@@ -130,30 +130,30 @@ const translations: Translations = {
       title: "Customer-Centric Innovation",
       subtitle: "We focus on delivering tangible value to your business through intelligent automation and operational optimization.",
       items: [
-        { title: "Visual Workflow Builder", desc: "Drag and drop to create complex automation flows. No coding required." },
-        { title: "AI Integration", desc: "Connect GPT-4, Claude, and other models directly into your business logic." },
-        { title: "Team Collaboration", desc: "Share workflows, assign roles, and work together in real-time." },
-        { title: "Instant Triggers", desc: "React to emails, form submissions, and API events instantly." },
-        { title: "Advanced Analytics", desc: "Track performance, ROI, and execution history with detailed dashboards." },
-        { title: "Enterprise Security", desc: "SOC2 Type II certified. Your data is encrypted and secure." }
+        { id: "workflow-builder", title: "Visual Workflow Builder", desc: "Drag and drop to create complex automation flows. No coding required." },
+        { id: "ai-integration", title: "AI Integration", desc: "Connect GPT-4, Claude, and other models directly into your business logic." },
+        { id: "team-collaboration", title: "Team Collaboration", desc: "Share workflows, assign roles, and work together in real-time." },
+        { id: "instant-triggers", title: "Instant Triggers", desc: "React to emails, form submissions, and API events instantly." },
+        { id: "advanced-analytics", title: "Advanced Analytics", desc: "Track performance, ROI, and execution history with detailed dashboards." },
+        { id: "enterprise-security", title: "Enterprise Security", desc: "SOC2 Type II certified. Your data is encrypted and secure." }
       ]
     },
     benefits: {
       quote: "Workflow EZ understands our business needs like no other tool.",
       title: "Built for teams that move fast",
       items: [
-        { title: "Connect your apps", desc: "Integrate with 500+ tools including Slack, Salesforce, HubSpot, and Notion in just a few clicks." },
-        { title: "Build your workflow", desc: "Use our visual builder to map out logic. Add AI steps to process text, analyze data, or generate content." },
-        { title: "Launch and scale", desc: "Deploy with one click. Our serverless infrastructure handles the scale while you sleep." }
+        { id: "connect-apps", title: "Connect your apps", desc: "Integrate with 500+ tools including Slack, Salesforce, HubSpot, and Notion in just a few clicks." },
+        { id: "build-workflow", title: "Build your workflow", desc: "Use our visual builder to map out logic. Add AI steps to process text, analyze data, or generate content." },
+        { id: "launch-scale", title: "Launch and scale", desc: "Deploy with one click. Our serverless infrastructure handles the scale while you sleep." }
       ]
     },
     testimonials: {
       title: "Trusted by innovative teams",
       subtitle: "Join thousands of companies using Workflow EZ to streamline their operations.",
       items: [
-        { quote: "The AI integration is seamless. We automated our entire customer onboarding process in one afternoon.", role: "COO at GrowthFlow" },
-        { quote: "I was skeptical about no-code tools, but Workflow EZ is different. It's powerful enough for engineers but simple enough for everyone.", role: "Product Manager at DevCorp" },
-        { quote: "Customer support response times dropped by 80% after we implemented the AI auto-responder workflows.", role: "Head of Support at HelpDesk" }
+        { id: "testimonial-1", quote: "The AI integration is seamless. We automated our entire customer onboarding process in one afternoon.", role: "COO at GrowthFlow" },
+        { id: "testimonial-2", quote: "I was skeptical about no-code tools, but Workflow EZ is different. It's powerful enough for engineers but simple enough for everyone.", role: "Product Manager at DevCorp" },
+        { id: "testimonial-3", quote: "Customer support response times dropped by 80% after we implemented the AI auto-responder workflows.", role: "Head of Support at HelpDesk" }
       ]
     },
     pricing: {
@@ -210,11 +210,18 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('vi');
 
-  const value = {
-    language,
-    setLanguage,
-    t: translations[language]
-  };
+  const handleSetLanguage = useCallback((lang: Language) => {
+    setLanguage(lang);
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      language,
+      setLanguage: handleSetLanguage,
+      t: translations[language],
+    }),
+    [language, handleSetLanguage]
+  );
 
   return (
     <LanguageContext.Provider value={value}>

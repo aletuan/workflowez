@@ -28,8 +28,8 @@ export function Pricing() {
               {t.pricing.starter.cta}
             </button>
             <ul className="space-y-4">
-              {t.pricing.starter.features.map((feature: string, i: number) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-medium text-gray-600">
+              {t.pricing.starter.features.map((feature: string) => (
+                <li key={feature} className="flex items-center gap-3 text-sm font-medium text-gray-600">
                   <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
                     <Check className="w-3 h-3 text-gray-600" />
                   </div>
@@ -59,8 +59,8 @@ export function Pricing() {
               {t.pricing.pro.cta}
             </button>
             <ul className="space-y-4">
-              {t.pricing.pro.features.map((feature: string, i: number) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-medium text-gray-300">
+              {t.pricing.pro.features.map((feature: string) => (
+                <li key={feature} className="flex items-center gap-3 text-sm font-medium text-gray-300">
                   <div className="w-5 h-5 rounded-full bg-violet-500/20 flex items-center justify-center flex-shrink-0">
                     <Check className="w-3 h-3 text-violet-400" />
                   </div>
@@ -82,8 +82,8 @@ export function Pricing() {
               {t.pricing.business.cta}
             </button>
             <ul className="space-y-4">
-              {t.pricing.business.features.map((feature: string, i: number) => (
-                <li key={i} className="flex items-center gap-3 text-sm font-medium text-gray-600">
+              {t.pricing.business.features.map((feature: string) => (
+                <li key={feature} className="flex items-center gap-3 text-sm font-medium text-gray-600">
                   <div className="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
                     <Check className="w-3 h-3 text-gray-600" />
                   </div>

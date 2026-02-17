@@ -1,9 +1,13 @@
 import { motion } from "motion/react";
 import { ArrowRight, Play, CheckCircle2, Star, Sparkles } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 export function Hero() {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
+  const motionTransition = reducedMotion ? { duration: 0 } : { duration: 0.6, ease: "easeOut" as const };
 
   return (
     <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden">
@@ -14,9 +18,9 @@ export function Hero() {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
+            initial={reducedMotion ? false : { opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={motionTransition}
           >
             {/* New Badge Style */}
             <div className="inline-flex items-center gap-2 pl-2 pr-4 py-1.5 rounded-full bg-white border border-violet-100 shadow-sm text-violet-700 text-sm font-semibold mb-8 hover:scale-105 transition-transform cursor-default">
@@ -29,7 +33,7 @@ export function Hero() {
             <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mb-8 leading-[1.1]">
               {t.hero.title_line1} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 animate-gradient">
-                 Customer Value First
+                {t.hero.title_line2}
               </span>
             </h1>
             
@@ -60,9 +64,9 @@ export function Hero() {
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={reducedMotion ? false : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
             className="relative"
           >
             {/* Abstract Decorative Elements behind image */}
@@ -73,7 +77,7 @@ export function Hero() {
               <div className="grid grid-cols-2 gap-4 p-4">
                 {/* Main Card */}
                 <div className="col-span-2 relative aspect-video rounded-3xl overflow-hidden shadow-lg group cursor-pointer">
-                  <img 
+                  <ImageWithFallback 
                     src="https://images.unsplash.com/photo-1762328862557-e0a36587cd3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGF0Ym90JTIwY3VzdG9tZXIlMjBzZXJ2aWNlJTIwbW9iaWxlJTIwYXBwJTIwaW50ZXJmYWNlfGVufDF8fHx8MTc3MTI2NTk2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
                     alt="AI Sales Assistant" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -87,7 +91,7 @@ export function Hero() {
 
                 {/* Secondary Cards */}
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg group cursor-pointer">
-                  <img 
+                  <ImageWithFallback 
                     src="https://images.unsplash.com/photo-1604088308691-59fb736f0b2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwcmVjZWlwdCUyMGV4cGVuc2UlMjBtYW5hZ2VtZW50JTIwZGFzaGJvYXJkfGVufDF8fHx8MTc3MTI2NTk2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
                     alt="Receipt Management" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -98,7 +102,7 @@ export function Hero() {
                 </div>
 
                 <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg group cursor-pointer">
-                  <img 
+                  <ImageWithFallback 
                     src="https://images.unsplash.com/photo-1659479749984-d48333116052?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaW5hbmNpYWwlMjBjYXNoJTIwZmxvdyUyMGNoYXJ0JTIwdGFibGV0JTIwaW50ZXJmYWNlfGVufDF8fHx8MTc3MTI2NTk2N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
                     alt="Cash Flow Visualization" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -112,8 +116,8 @@ export function Hero() {
             
             {/* Floating Element */}
             <motion.div 
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              animate={reducedMotion ? { y: 0 } : { y: [-10, 10, -10] }}
+              transition={reducedMotion ? { duration: 0 } : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -bottom-8 -right-8 bg-white p-4 rounded-2xl shadow-xl shadow-violet-500/10 border border-violet-50 hidden md:block"
             >
               <div className="flex items-center gap-3">

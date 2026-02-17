@@ -2,11 +2,13 @@ import { motion } from "motion/react";
 import { Menu, X, ChevronRight, Globe, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +25,9 @@ export function Header() {
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
       <motion.header 
-        initial={{ y: -100, opacity: 0 }}
+        initial={reducedMotion ? false : { y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
+        transition={reducedMotion ? { duration: 0 } : undefined}
         className={`w-full max-w-5xl transition-all duration-300 ${
           scrolled || isOpen 
             ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-violet-500/5 border border-white/50" 
@@ -96,9 +99,10 @@ export function Header() {
         {/* Mobile Menu */}
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, height: 0 }}
+            initial={reducedMotion ? false : { opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+            exit={reducedMotion ? undefined : { opacity: 0, height: 0 }}
+            transition={reducedMotion ? { duration: 0 } : undefined}
             className="md:hidden mt-4 pt-4 border-t border-gray-100"
           >
             <div className="flex flex-col gap-2">

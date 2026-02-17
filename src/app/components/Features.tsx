@@ -1,9 +1,11 @@
 import { motion } from "motion/react";
 import { Zap, BarChart3, Users, Lock, Sparkles, Workflow, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 export function Features() {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
 
   const icons = [
     <Workflow className="w-6 h-6 text-white" />,
@@ -40,11 +42,11 @@ export function Features() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {t.features.items.map((feature: any, index: number) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={feature.id}
+              initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={reducedMotion ? { duration: 0 } : { delay: index * 0.1 }}
               className="relative bg-white/60 backdrop-blur-lg p-8 rounded-[2rem] border border-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-violet-200/50 hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
             >
               {/* Hover Gradient Background */}
