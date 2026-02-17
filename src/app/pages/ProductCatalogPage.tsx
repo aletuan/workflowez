@@ -13,7 +13,7 @@ export function ProductCatalogPage() {
     <>
       <Header />
       <main className="min-h-screen bg-white overflow-x-hidden md:pt-16">
-        <div className="relative container mx-auto px-4 md:px-6 py-16 lg:py-24">
+        <div className="relative container mx-auto px-4 md:px-6 py-12 lg:py-16">
           {/* Background decoration blobs */}
           <div className="absolute top-0 right-0 w-[280px] h-[280px] md:w-[500px] md:h-[500px] bg-purple-200/30 rounded-full blur-[100px] -translate-y-1/3 translate-x-1/3 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[240px] h-[240px] md:w-[400px] md:h-[400px] bg-cyan-200/30 rounded-full blur-[100px] translate-y-1/4 -translate-x-1/4 pointer-events-none" />
@@ -24,7 +24,7 @@ export function ProductCatalogPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative text-center mb-16 lg:mb-20"
+            className="relative text-center mb-12 lg:mb-16"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--brand-light)] text-[var(--brand-dark)] text-xs font-bold uppercase tracking-widest mb-6">
               <Sparkles className="w-3.5 h-3.5" />

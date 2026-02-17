@@ -118,7 +118,7 @@ export function SocialAgentPage() {
           </div>
 
           {/* Right — screenshot carousel */}
-          <div className="lg:col-span-7 relative">
+          <div className="lg:col-span-7 relative min-w-0">
             {/* Glow blobs */}
             <div className="absolute -top-8 -right-8 w-28 h-28 bg-cyan-300 rounded-3xl rotate-12 blur-2xl opacity-50 animate-pulse pointer-events-none" />
             <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-sky-200 rounded-full blur-2xl opacity-40 pointer-events-none" />
@@ -138,21 +138,23 @@ export function SocialAgentPage() {
                     }`}
                   >
                     <TabIcon className="w-3.5 h-3.5" />
-                    {screen.label}
+                    <span className="hidden sm:inline">{screen.label}</span>
                   </button>
                 );
               })}
 
-              {/* Progress dots */}
-              <div className="ml-auto flex items-center gap-1.5">
+              {/* Progress dots — 44px touch target, hidden on mobile */}
+              <div className="ml-auto hidden sm:flex items-center">
                 {SCREENS.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveTab(i)}
-                    className={`rounded-full transition-all duration-300 cursor-pointer ${
+                    className="py-[19px] px-2 flex items-center justify-center cursor-pointer"
+                  >
+                    <span className={`rounded-full transition-all duration-300 block ${
                       activeTab === i ? "w-4 h-1.5 bg-cyan-600" : "w-1.5 h-1.5 bg-gray-300 hover:bg-cyan-300"
-                    }`}
-                  />
+                    }`} />
+                  </button>
                 ))}
               </div>
             </div>
