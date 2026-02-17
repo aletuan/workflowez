@@ -20,10 +20,10 @@ export function Section({
   contentClassName = "text-center max-w-2xl mx-auto",
 }: SectionProps) {
   return (
-    <section id={id} className={`py-24 relative overflow-hidden ${className}`}>
+    <section id={id} className={`py-16 md:py-24 relative overflow-hidden ${className}`}>
       <div className="container mx-auto px-4 md:px-6">
         {(eyebrow || title || subtitle) && (
-          <div className={`mb-20 ${contentClassName}`}>
+          <div className={`mb-12 md:mb-20 ${contentClassName}`}>
             {eyebrow && (
               <span className="text-[var(--brand)] font-bold tracking-wider text-sm uppercase mb-2 block">
                 {eyebrow}
