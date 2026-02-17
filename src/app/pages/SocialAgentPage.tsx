@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { ArrowLeft, ArrowRight, Sparkles, Radio, Smile, TrendingUp, Send, LayoutDashboard, Headphones, BarChart3 } from "lucide-react";
+import { ArrowRight, Radio, Smile, TrendingUp, Send, LayoutDashboard, Headphones, BarChart3 } from "lucide-react";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
@@ -59,33 +61,16 @@ export function SocialAgentPage() {
   const current = SCREENS[activeTab];
 
   return (
-    <div className="min-h-screen bg-white relative overflow-x-hidden">
+    <>
+      <Header />
+      <main className="min-h-screen bg-white relative overflow-x-hidden md:pt-16">
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-cyan-50/60 to-transparent" />
         <div className="absolute top-24 right-[-10%] w-[600px] h-[600px] rounded-full bg-cyan-400/5 blur-3xl" />
       </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/90 backdrop-blur-md">
-        <div className="container mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
-          <Link
-            to="/products"
-            className="flex items-center gap-2 text-gray-600 hover:text-[var(--brand)] font-medium transition-colors cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            {t.catalog.backToCatalog}
-          </Link>
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-[linear-gradient(to_bottom_right,var(--brand),var(--accent-gradient-via))] flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
-            <span className="font-bold text-gray-900">Workflow EZ</span>
-          </div>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 md:px-6 py-12 lg:py-16">
+      <div className="container mx-auto px-4 md:px-6 py-12 lg:py-16">
         {/* Page title */}
         <div className="text-center mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-700 text-xs font-bold uppercase tracking-widest mb-5">
@@ -133,7 +118,7 @@ export function SocialAgentPage() {
           </div>
 
           {/* Right — screenshot carousel */}
-          <div className="lg:col-span-7 relative">
+          <div className="lg:col-span-7 relative min-w-0">
             {/* Glow blobs */}
             <div className="absolute -top-8 -right-8 w-28 h-28 bg-cyan-300 rounded-3xl rotate-12 blur-2xl opacity-50 animate-pulse pointer-events-none" />
             <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-sky-200 rounded-full blur-2xl opacity-40 pointer-events-none" />
@@ -153,21 +138,23 @@ export function SocialAgentPage() {
                     }`}
                   >
                     <TabIcon className="w-3.5 h-3.5" />
-                    {screen.label}
+                    <span className="hidden sm:inline">{screen.label}</span>
                   </button>
                 );
               })}
 
-              {/* Progress dots */}
-              <div className="ml-auto flex items-center gap-1.5">
+              {/* Progress dots — 44px touch target, hidden on mobile */}
+              <div className="ml-auto hidden sm:flex items-center">
                 {SCREENS.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setActiveTab(i)}
-                    className={`rounded-full transition-all duration-300 cursor-pointer ${
+                    className="py-[19px] px-2 flex items-center justify-center cursor-pointer"
+                  >
+                    <span className={`rounded-full transition-all duration-300 block ${
                       activeTab === i ? "w-4 h-1.5 bg-cyan-600" : "w-1.5 h-1.5 bg-gray-300 hover:bg-cyan-300"
-                    }`}
-                  />
+                    }`} />
+                  </button>
                 ))}
               </div>
             </div>
@@ -230,7 +217,9 @@ export function SocialAgentPage() {
             </Link>
           </div>
         </div>
+      </div>
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
