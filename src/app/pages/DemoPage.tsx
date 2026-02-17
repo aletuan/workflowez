@@ -1,11 +1,12 @@
 import { Link } from "react-router";
-import { ArrowLeft, ArrowRight, Sparkles, Zap, GraduationCap, FileText, Headphones } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles, Zap, GraduationCap, FileText, Headphones, Users } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { ChatBox } from "../components/chat/ChatBox";
 import { useChat } from "../../hooks/useChat";
 
 const VALUE_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
+  users: Users,
   graduation: GraduationCap,
   file: FileText,
   headphones: Headphones,
