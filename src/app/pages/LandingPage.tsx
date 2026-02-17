@@ -11,7 +11,7 @@ export function LandingPage() {
   return (
     <>
       <Header />
-      <main className="md:pt-24">
+      <main className="md:pt-24 overflow-x-hidden">
         <Hero />
         <Features />
         <Benefits />
