@@ -89,11 +89,11 @@
     "badge": "Bắt đầu tự động hóa ngay hôm nay"
   },
   "demo": {
-    "title": "Gặp AI Advisor",
+    "title": "Gặp Advisor Agent",
     "subtitle": "Trải nghiệm AI hội thoại dựa trên kiến thức doanh nghiệp của bạn. Hướng dẫn về đào tạo, chính sách, tính năng sản phẩm và nhiều hơn nữa...",
     "backToHome": "Về trang chủ",
     "values": {
-      "title": "Tại sao dùng AI Advisor?",
+      "title": "Tại sao dùng Advisor Agent?",
       "items": [
         { "title": "Hỏi đáp nội bộ", "desc": "Nhân viên tự tra cứu lương, nghỉ phép, quy trình—không cần chờ HR trả lời.", "icon": "users", "prompt": "Tôi muốn hỏi về chính sách nghỉ phép và lương thưởng?" },
         { "title": "Đào tạo & Hỗ trợ", "desc": "Giúp nhân viên mới làm quen với môi trường & công việc nhanh hơn. AI hướng dẫn qua hình thức checklist và FAQ.", "icon": "graduation", "prompt": "Quy trình onboarding cho nhân viên mới là gì?" },
@@ -106,9 +106,9 @@
       "role": "AI CONCIERGE",
       "domain": "Cố vấn"
     },
-    "chatTitle": "AI Advisor",
+    "chatTitle": "Advisor Agent",
     "chatSubtitle": "Powered by Workflowez",
-    "chatWelcome": "Xin chào! Tôi là Alex, AI Advisor của bạn.",
+    "chatWelcome": "Xin chào! Tôi là Alex, Advisor Agent của bạn.",
     "quickPrompts": ["Nhân viên mới cần làm gì đầu tiên?", "Chính sách làm việc từ xa?", "Gặp lỗi sản phẩm, cần hỗ trợ?", "Quy trình onboarding mất bao lâu?"],
     "chatPlaceholder": "Hỏi về onboarding, chính sách hoặc tính năng sản phẩm...",
     "chatEmpty": "Bắt đầu cuộc trò chuyện — hỏi về đào tạo, chính sách hoặc tính năng sản phẩm.",
@@ -120,8 +120,8 @@
       "Tôi rất vui được hỗ trợ! Bạn có thể cung cấp thêm thông tin về vấn đề đang gặp phải không? Điều đó sẽ giúp tôi đưa ra câu trả lời chính xác hơn."
     ],
     "ctaBanner": {
-      "text": "Thích AI Advisor này?",
-      "sub": "Tạo AI Advisor riêng cho doanh nghiệp của bạn — không cần lập trình.",
+      "text": "Thích Advisor Agent này?",
+      "sub": "Tạo Advisor Agent riêng cho doanh nghiệp của bạn — không cần lập trình.",
       "button": "Bắt đầu miễn phí"
     }
   },
