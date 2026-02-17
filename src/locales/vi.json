@@ -96,7 +96,7 @@
       "title": "Tại sao dùng AI Advisor?",
       "items": [
         { "title": "Hỏi đáp nội bộ", "desc": "Nhân viên tự tra cứu lương, nghỉ phép, quy trình—không cần chờ HR trả lời.", "icon": "users", "prompt": "Tôi muốn hỏi về chính sách nghỉ phép và lương thưởng?" },
-        { "title": "Đào tạo & Hỗ trợ nhân viên mới", "desc": "Thành viên mới học nhanh hơn. AI hướng dẫn họ qua checklist và FAQ.", "icon": "graduation", "prompt": "Quy trình onboarding cho nhân viên mới là gì?" },
+        { "title": "Đào tạo & Hỗ trợ", "desc": "Giúp nhân viên mới làm quen với môi trường & công việc nhanh hơn. AI hướng dẫn qua hình thức checklist và FAQ.", "icon": "graduation", "prompt": "Quy trình onboarding cho nhân viên mới là gì?" },
         { "title": "Nhận thức chính sách", "desc": "Giới thiệu chính sách mới hoặc cập nhật sản phẩm qua hội thoại tự nhiên.", "icon": "file", "prompt": "Chính sách làm việc từ xa của công ty là gì?" },
         { "title": "Hỗ trợ sản phẩm", "desc": "Trả lời câu hỏi sản phẩm, xử lý sự cố và hướng dẫn người dùng—24/7 không cần xếp hàng.", "icon": "headphones", "prompt": "Tôi gặp lỗi khi sử dụng sản phẩm, cần hỗ trợ?" }
       ]

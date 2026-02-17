@@ -96,7 +96,7 @@
       "title": "Why use AI Advisor?",
       "items": [
         { "title": "Internal Q&A", "desc": "Employees look up salary, leave, and processes themselves—no waiting for HR to reply.", "icon": "users", "prompt": "I have questions about leave policy and compensation." },
-        { "title": "Training & New Employee Support", "desc": "New members learn faster. The AI guides them through checklists and FAQs.", "icon": "graduation", "prompt": "What is the onboarding process for new hires?" },
+        { "title": "Training & Support", "desc": "Help new employees get familiar with the environment & their role faster. AI guides them through checklists and FAQs.", "icon": "graduation", "prompt": "What is the onboarding process for new hires?" },
         { "title": "Policy awareness", "desc": "Introduce new policies or product updates through natural conversation.", "icon": "file", "prompt": "What is the company's remote work policy?" },
         { "title": "Product support", "desc": "Answer product questions, troubleshoot issues, and guide users—24/7 without a queue.", "icon": "headphones", "prompt": "I'm having a product issue, can you help?" }
       ]
