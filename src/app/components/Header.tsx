@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { Menu, X, ChevronRight, Globe, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLanguage } from "../context/LanguageContext";
@@ -24,104 +24,116 @@ export function Header() {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+    // sticky: header nằm trong document flow → content bên dưới bị đẩy xuống khi menu mở
+    <div className="sticky top-0 z-50">
+      {/* Header pill */}
       <div className="flex justify-center px-4 pt-4">
-      <motion.header 
-        initial={reducedMotion ? false : { y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={reducedMotion ? { duration: 0 } : undefined}
-        className={`pointer-events-auto w-full max-w-5xl transition-all duration-300 ${
-          scrolled || isOpen 
-            ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-[var(--brand)]/5 border border-white/50" 
-            : "bg-transparent"
-        } rounded-full px-6 py-3`}
-      >
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-[linear-gradient(to_bottom_right,var(--brand),var(--accent-gradient-via))] flex items-center justify-center shadow-lg shadow-[var(--brand)]/20 rotate-3 hover:rotate-0 transition-transform duration-300">
-              <Sparkles className="w-5 h-5 text-white" />
+        <motion.header
+          initial={reducedMotion ? false : { y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={reducedMotion ? { duration: 0 } : undefined}
+          className={`w-full max-w-5xl transition-all duration-300 ${
+            scrolled
+              ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-[var(--brand)]/5 border border-white/50"
+              : "bg-transparent"
+          } rounded-full px-6 py-3`}
+        >
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-xl bg-[linear-gradient(to_bottom_right,var(--brand),var(--accent-gradient-via))] flex items-center justify-center shadow-lg shadow-[var(--brand)]/20 rotate-3 hover:rotate-0 transition-transform duration-300">
+                <Sparkles className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--brand-dark)] to-[var(--accent-gradient-via)]">
+                Workflow EZ
+              </span>
             </div>
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[var(--brand-dark)] to-[var(--accent-gradient-via)]">
-              Workflow EZ
-            </span>
-          </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={item.id}
-                className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[var(--brand)] hover:bg-[var(--brand-light)] rounded-full transition-all"
-              >
-                {t.header[item.labelKey]}
-              </a>
-            ))}
-          </nav>
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-1">
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.id}
+                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[var(--brand)] hover:bg-[var(--brand-light)] rounded-full transition-all"
+                >
+                  {t.header[item.labelKey]}
+                </a>
+              ))}
+            </nav>
 
-          {/* Actions */}
-          <div className="hidden md:flex items-center gap-3">
-            <button 
-              onClick={toggleLanguage}
-              className="flex items-center gap-1 px-3 py-2 text-xs font-bold text-gray-500 hover:text-[var(--brand)] bg-gray-100 hover:bg-[var(--brand-light)] rounded-full transition-colors"
-            >
-              <Globe className="w-3 h-3" />
-              {language === 'vi' ? 'EN' : 'VI'}
-            </button>
-            <button className="px-5 py-2.5 bg-[var(--brand)] text-white text-sm font-semibold rounded-full hover:bg-[var(--brand-dark)] hover:shadow-lg hover:shadow-[var(--brand)]/25 transition-all flex items-center gap-2 group">
-              {t.header.getStarted} 
-              <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </button>
-          </div>
-
-          {/* Mobile Toggle */}
-          <div className="flex items-center gap-3 md:hidden">
-            <button 
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center gap-3">
+              <button
                 onClick={toggleLanguage}
-                className="flex items-center gap-1 px-2 py-1 text-xs font-bold text-gray-500 bg-gray-100 rounded-full"
+                className="flex items-center gap-1 px-3 py-2 text-xs font-bold text-gray-500 hover:text-[var(--brand)] bg-gray-100 hover:bg-[var(--brand-light)] rounded-full transition-colors"
               >
-              <Globe className="w-3 h-3" />
-              {language === 'vi' ? 'EN' : 'VI'}
-            </button>
-            <button 
-              className="p-2 text-gray-600 hover:text-[var(--brand)] bg-gray-100/50 rounded-full"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
+                <Globe className="w-3 h-3" />
+                {language === 'vi' ? 'EN' : 'VI'}
+              </button>
+              <button className="px-5 py-2.5 bg-[var(--brand)] text-white text-sm font-semibold rounded-full hover:bg-[var(--brand-dark)] hover:shadow-lg hover:shadow-[var(--brand)]/25 transition-all flex items-center gap-2 group">
+                {t.header.getStarted}
+                <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </button>
+            </div>
 
-        {/* Mobile Menu */}
+            {/* Mobile Toggle */}
+            <div className="flex items-center gap-3 md:hidden">
+              <button
+                onClick={toggleLanguage}
+                style={{ WebkitTapHighlightColor: "transparent" }}
+                className="flex items-center gap-1 px-2 py-1 text-xs font-bold text-gray-500 bg-gray-100 rounded-full focus:outline-none"
+              >
+                <Globe className="w-3 h-3" />
+                {language === 'vi' ? 'EN' : 'VI'}
+              </button>
+              <button
+                className="p-2 text-gray-600 hover:text-[var(--brand)] bg-gray-100/50 rounded-full focus:outline-none"
+                style={{ WebkitTapHighlightColor: "transparent" }}
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+          </div>
+        </motion.header>
+      </div>
+
+      {/* Mobile Menu — full width, outside pill, in sticky flow → pushes content down */}
+      <AnimatePresence>
         {isOpen && (
-          <motion.div 
-            initial={reducedMotion ? false : { opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={reducedMotion ? undefined : { opacity: 0, height: 0 }}
-            transition={reducedMotion ? { duration: 0 } : undefined}
-            className="md:hidden mt-4 pt-4 border-t border-gray-100"
+          <motion.div
+            initial={reducedMotion ? {} : { opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reducedMotion ? {} : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden w-full bg-white/90 backdrop-blur-xl"
           >
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col p-4">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.id}
                   href={item.id}
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-3 text-base font-medium text-gray-600 hover:bg-[var(--brand-light)] hover:text-[var(--brand)] rounded-xl transition-colors"
+                  style={{ WebkitTapHighlightColor: "transparent" }}
+                  className="group relative flex items-center py-3 pl-5 pr-4 text-base font-medium text-gray-600 hover:text-[var(--brand)] focus:outline-none transition-colors duration-200"
                 >
+                  <span className="absolute left-0 top-2 bottom-2 w-[3px] rounded-full bg-[var(--brand)] scale-y-0 group-hover:scale-y-100 transition-transform duration-250 origin-center" />
                   {t.header[item.labelKey]}
+                  <ChevronRight className="w-4 h-4 ml-auto text-gray-300 group-hover:text-[var(--brand)] group-hover:translate-x-0.5 transition-all duration-200" />
                 </a>
               ))}
               <div className="h-px bg-gray-100 my-2" />
-              <button className="w-full px-4 py-3 bg-[var(--brand)] text-white text-base font-bold rounded-xl hover:bg-[var(--brand-dark)] transition-colors shadow-lg shadow-[var(--brand)]/20">
+              <button
+                style={{ WebkitTapHighlightColor: "transparent" }}
+                className="w-full px-4 py-3 bg-[var(--brand)] text-white text-base font-bold rounded-xl hover:bg-[var(--brand-dark)] transition-colors shadow-lg shadow-[var(--brand)]/20 focus:outline-none"
+              >
                 {t.header.getStarted}
               </button>
             </div>
           </motion.div>
         )}
-      </motion.header>
-      </div>
+      </AnimatePresence>
     </div>
   );
 }
