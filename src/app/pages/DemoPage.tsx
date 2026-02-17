@@ -12,6 +12,13 @@ const VALUE_ICONS: Record<string, typeof Zap> = {
   headphones: Headphones,
 };
 
+const ICON_GRADIENTS = [
+  "bg-gradient-to-br from-sky-400 to-blue-500 shadow-blue-200",
+  "bg-gradient-to-br from-emerald-400 to-teal-500 shadow-emerald-200",
+  "bg-gradient-to-br from-amber-400 to-orange-500 shadow-amber-200",
+  "bg-gradient-to-br from-violet-400 to-purple-600 shadow-violet-200",
+];
+
 export function DemoPage() {
   const { t } = useLanguage();
   const { messages, isLoading, sendMessage } = useChat(t.demo.chatWelcome, t.demo.mockResponses);
@@ -71,7 +78,7 @@ export function DemoPage() {
                     onClick={() => item.prompt && sendMessage(item.prompt, true)}
                     className="flex gap-4 p-4 rounded-2xl bg-[var(--brand-light)]/30 border border-[var(--brand-light)] hover:border-[var(--brand)]/40 hover:bg-[var(--brand-light)]/50 transition-colors cursor-pointer"
                   >
-                    <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[var(--brand)] shadow-sm">
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-xl ${ICON_GRADIENTS[i % ICON_GRADIENTS.length]} flex items-center justify-center text-white shadow-md`}>
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
