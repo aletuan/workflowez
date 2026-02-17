@@ -1,8 +1,10 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { LanguageProvider } from "./context/LanguageContext";
 import { LandingPage } from "./pages/LandingPage";
+import { ProductCatalogPage } from "./pages/ProductCatalogPage";
 import { DemoPage } from "./pages/DemoPage";
+import { SocialAgentPage } from "./pages/SocialAgentPage";
 
 export default function App() {
   return (
@@ -14,7 +16,10 @@ export default function App() {
           <div className="fixed top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-[var(--brand-light)]/50 to-transparent -z-10"></div>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/demo" element={<DemoPage />} />
+            <Route path="/products" element={<ProductCatalogPage />} />
+            <Route path="/products/advisor" element={<DemoPage />} />
+            <Route path="/products/social" element={<SocialAgentPage />} />
+            <Route path="/demo" element={<Navigate to="/products/advisor" replace />} />
           </Routes>
         </div>
       </LanguageProvider>

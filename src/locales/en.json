@@ -125,6 +125,39 @@
       "button": "Start for free"
     }
   },
+  "catalog": {
+    "title": "Product Catalog",
+    "subtitle": "Choose a product to explore",
+    "backToHome": "Back to Home",
+    "backToCatalog": "Back to catalog",
+    "tryDemo": "Try Demo",
+    "comingSoon": "Coming Soon",
+    "available": "Available Now",
+    "advisor": "Advisor Agent",
+    "advisorDesc": "Conversational AI for training, policies, product support. Guideline about onboarding, policies, and much more.",
+    "advisorFeatures": ["Internal Q&A Bot", "Policy Awareness", "Onboarding Support", "Product Help 24/7"],
+    "social": "Social Intelligent",
+    "socialDesc": "Listen, analyze, trend, publish. AI-powered tools for sellers, businesses, and KOLs to understand feedback from users and fans.",
+    "socialFeatures": ["Social Listening", "Sentiment Analysis", "Trend Detection", "Publish & Schedule"]
+  },
+  "social": {
+    "subtitle": "Listen, analyze, and publish — AI tools for sellers, businesses, and KOLs.",
+    "whyTitle": "Why Social Intelligent?",
+    "dashboardAlt": "Social Intelligent Dashboard",
+    "dashboardBadge": "Live Dashboard Preview",
+    "comingSoon": "Coming Soon",
+    "values": [
+      { "title": "Social Listening", "desc": "Monitor mentions, hashtags, and conversations across all major platforms in real time.", "icon": "radio" },
+      { "title": "Sentiment Analysis", "desc": "Understand how your audience feels about your brand, products, and campaigns instantly.", "icon": "smile" },
+      { "title": "Trend Detection", "desc": "Spot emerging topics and viral content before they peak — act while it matters.", "icon": "trending-up" },
+      { "title": "Publish & Schedule", "desc": "Plan and publish optimized content across all channels from one unified dashboard.", "icon": "send" }
+    ],
+    "ctaBanner": {
+      "text": "Interested in Social Intelligent?",
+      "sub": "Get early access — be the first to know when it launches.",
+      "button": "Join Waitlist"
+    }
+  },
   "footer": {
     "desc": "Empowering SMBs with AI-driven automation workflows. Build, deploy, and scale without writing code.",
     "cols": {

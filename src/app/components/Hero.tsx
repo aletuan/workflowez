@@ -47,7 +47,7 @@ export function Hero() {
               <PrimaryButton icon={<ArrowRight className="w-5 h-5" />}>
                 {t.hero.startFree}
               </PrimaryButton>
-              <SecondaryButton to="/demo" icon={<Play className="w-4 h-4 fill-current" />}>
+              <SecondaryButton to="/products" icon={<Play className="w-4 h-4 fill-current" />}>
                 {t.hero.watchDemo}
               </SecondaryButton>
             </div>
