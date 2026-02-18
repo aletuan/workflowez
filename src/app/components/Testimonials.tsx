@@ -11,7 +11,7 @@ export function Testimonials() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="testimonials" className="py-24 bg-white relative">
+    <section id="testimonials" className="py-10 md:py-16 bg-white relative">
        {/* Background Decoration */}
        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-yellow-100/40 rounded-full blur-[80px] translate-x-1/2 -translate-y-1/2"></div>
 

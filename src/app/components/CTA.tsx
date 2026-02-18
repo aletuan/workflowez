@@ -7,9 +7,9 @@ export function CTA() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 px-4">
+    <section className="py-10 md:py-16 px-4">
       <div className="container mx-auto">
-        <div className="relative bg-gray-900 rounded-[var(--section-radius)] overflow-hidden px-8 py-20 md:px-20 md:py-24 text-center group">
+        <div className="relative bg-gray-900 rounded-[var(--section-radius)] overflow-hidden px-8 py-12 md:px-20 md:py-16 text-center group">
           {/* Animated Background */}
           <div className="absolute top-0 left-0 w-full h-full opacity-40">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--brand)]/40 rounded-full blur-[var(--blur-lg)] -translate-y-1/2 translate-x-1/2 group-hover:bg-[var(--brand)]/50 transition-colors duration-700"></div>

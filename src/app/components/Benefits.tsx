@@ -8,7 +8,7 @@ export function Benefits() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="benefits" className="py-24 relative overflow-hidden bg-white/50 backdrop-blur-sm">
+    <section id="benefits" className="py-10 md:py-16 relative overflow-hidden bg-white/50 backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           <motion.div 
