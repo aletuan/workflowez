@@ -1,9 +1,9 @@
 # AI Advisor — Product Demo Plan
 
-**Branch:** `feature/ai-advisor`  
+**Branch:** `feature/advisor-agent-integration`  
 **Date:** February 2026  
 **Scope:** First product demo — conversational AI advisor powered by n8n + RAG  
-**Status:** Phase 1 in progress (Foundation with mock)
+**Status:** Phase 1–3 done; Phase 4 N8N Integration in progress
 
 ---
 
@@ -22,12 +22,12 @@
 
 The AI Advisor supports conversations around topics such as:
 
-| Topic | Example Questions |
-|-------|-------------------|
-| **Training new members** | "How do I onboard a new team member?", "What checklist should new hires complete?" |
-| **Working policy documents** | "What is our remote work policy?", "Summarize the new leave policy" |
-| **New product features** | "What's new in the latest release?", "How do I use the X feature?" |
-| **Company knowledge** | FAQ-style Q&A based on indexed documents |
+| Topic | Example Questions | Integration status |
+|-------|-------------------|--------------------|
+| **Internal Q&A** | "I have questions about leave policy and compensation." | **Target** — first use case for n8n integration |
+| **Training new members** | "What is the onboarding process for new hires?" | Pending — mock |
+| **Working policy documents** | "What is our remote work policy?" | Pending — mock |
+| **Product support** | "I'm having a product issue, can you help?" | Pending — mock |
 
 Topics are configurable via n8n workflow and Qdrant collections.
 
@@ -49,29 +49,40 @@ Topics are configurable via n8n workflow and Qdrant collections.
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 1 | Add routing (react-router) | Done | Routes `/` (LandingPage), `/demo` (DemoPage) |
-| 2 | Create `ChatBox` component | Done | MessageList, MessageBubble, ChatInput; i18n |
-| 3 | Define chat API client | Deferred | Use mock first; add real client when n8n ready |
-| 4 | Wire chat send/receive | Done | Mock via `useChat` hook; simulates ~800ms delay |
-| 5 | Demo page layout | Done | Business value section + ChatBox side-by-side |
-| 6 | Wire "Xem demo" / "Watch Demo" | Done | Hero SecondaryButton `to="/demo"` |
+| 1 | Add routing (react-router) | Done | `/`, `/products`, `/products/advisor`, `/products/social` |
+| 2 | Create ChatBox component | Done | MessageList, MessageBubble, ChatInput; i18n |
+| 3 | Define chat API client | Pending | `chatApi.ts` — create in Phase 4 |
+| 4 | Wire chat send/receive | Done | Mock via `useChat` hook |
+| 5 | Demo page layout | Done | Business values (4 items) + ChatBox; clickable prompts |
+| 6 | Wire "Xem demo" / "Watch Demo" | Done | Hero → `/products`; Catalog → `/products/advisor` |
 
 ### Phase 2: UX & Polish
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 5 | Loading & error states | Pending | Skeleton, retry, offline handling |
-| 6 | Topic selector (optional) | Pending | Dropdown or preset prompts for topic context |
-| 7 | Mobile-responsive chat | Pending | Full-screen or slide-up on small screens |
-| 8 | i18n for chat UI | Pending | Labels, placeholders, errors in vi/en |
+| 5 | Loading & error states | Done | Loading dots; error fallback in useChat (Phase 4) |
+| 6 | Topic selector (optional) | Deferred | Preset prompts in value cards |
+| 7 | Mobile-responsive chat | Done | Responsive layout |
+| 8 | i18n for chat UI | Done | demo.*, catalog.* in en/vi |
 
-### Phase 3: Integration
+### Phase 3: Integration (entry point)
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 9 | Demo entry point | Done | Hero "Watch Demo" / "Xem demo" → `/demo` |
-| 10 | Environment config | Pending | `VITE_N8N_CHAT_URL` or similar |
-| 11 | Session/conversation ID | Pending | If backend supports multi-turn with session |
+| 9 | Demo entry point | Done | Catalog → Advisor card → `/products/advisor` |
+| 10 | Environment config | Pending | `VITE_N8N_CHAT_URL` in Phase 4 |
+| 11 | Session/conversation ID | Pending | If n8n supports multi-turn |
+
+### Phase 4: N8N Integration (feature/advisor-agent-integration)
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 4.1 | Create `chatApi.ts` | Pending | POST to n8n chat endpoint; handle response |
+| 4.2 | Env config | Pending | `VITE_N8N_CHAT_URL`; fallback to mock if unset |
+| 4.3 | Update `useChat` | Pending | Call real API when URL configured; fallback to mock |
+| 4.4 | Internal Q&A use case | Pending | Validate with leave/compensation questions via n8n RAG |
+| 4.5 | Error handling | Pending | Network error, timeout, non-2xx → show message + retry |
+| 4.6 | Session ID (optional) | Pending | If n8n returns sessionId, persist for multi-turn |
 
 ---
 
@@ -80,22 +91,27 @@ Topics are configurable via n8n workflow and Qdrant collections.
 ```
 src/
 ├── app/
-│   ├── App.tsx                    # Routes: /, /demo
+│   ├── App.tsx                    # Routes: /, /products, /products/advisor, /products/social
 │   ├── pages/
-│   │   ├── LandingPage.tsx        # / - Main landing
-│   │   └── DemoPage.tsx           # /demo - Business value + ChatBox
+│   │   ├── LandingPage.tsx        # /
+│   │   ├── ProductCatalogPage.tsx # /products
+│   │   ├── DemoPage.tsx           # /products/advisor — Advisor Agent
+│   │   └── SocialAgentPage.tsx    # /products/social
 │   └── components/
-│       └── chat/
-│           ├── ChatBox.tsx        # Main chat container
-│           ├── MessageList.tsx    # Scrollable messages
-│           ├── MessageBubble.tsx  # Single message (user/assistant)
-│           └── ChatInput.tsx      # Input + send button
+│       ├── chat/
+│       │   ├── ChatBox.tsx
+│       │   ├── MessageList.tsx
+│       │   ├── MessageBubble.tsx
+│       │   ├── ChatInput.tsx
+│       │   └── AdvisorAvatar.tsx
+│       └── catalog/
+│           └── ProductCard.tsx
 ├── hooks/
-│   └── useChat.ts                 # Chat state, send, mock responses
+│   └── useChat.ts                 # Chat state; mock today → real API in Phase 4
 ├── services/
-│   └── chatApi.ts                 # (Phase 2) n8n chat API client
+│   └── chatApi.ts                 # (Phase 4) n8n chat API client
 └── config/
-    └── chat.ts                    # (Phase 2) API URL, topic presets
+    └── chat.ts                    # (Phase 4) API URL, topic presets
 ```
 
 ---
@@ -112,7 +128,7 @@ POST {N8N_CHAT_URL}/chat
 {
   "message": string,
   "sessionId"?: string,   // if multi-turn
-  "topic"?: string        // optional topic hint
+  "topic"?: string        // optional: "internal-qa" for Internal Q&A
 }
 
 // Response
@@ -126,13 +142,25 @@ Adapt to actual n8n workflow schema.
 
 ---
 
-## 6. Dependencies
+## 6. Integration Implementation Plan
 
-| Package | Purpose | Status |
-|---------|---------|--------|
-| `react-router` | Routing for `/demo` | Already in package.json |
-| (optional) `@tanstack/react-query` | Chat message fetching/caching | Add if needed |
-| (optional) WebSocket client | Real-time streaming replies | If n8n supports streaming |
+### Step 1: Create `chatApi.ts`
+- `sendMessage(message: string, sessionId?: string, topic?: string): Promise<{ reply: string; sessionId?: string }>`
+- Read `VITE_N8N_CHAT_URL` from `import.meta.env`
+- Handle fetch errors, timeout
+
+### Step 2: Create `config/chat.ts`
+- `N8N_CHAT_URL = import.meta.env.VITE_N8N_CHAT_URL`
+- `useRealApi = !!N8N_CHAT_URL`
+
+### Step 3: Update `useChat.ts`
+- If `useRealApi`: call `chatApi.sendMessage()` instead of mock
+- On error: set error state, show fallback message (or retry prompt)
+- Fallback to mock when URL not set (dev/demo without backend)
+
+### Step 4: Internal Q&A validation
+- Test with prompts: "I have questions about leave policy and compensation."
+- Verify n8n RAG returns relevant context from indexed documents
 
 ---
 
@@ -140,36 +168,30 @@ Adapt to actual n8n workflow schema.
 
 | Risk | Mitigation |
 |------|-------------|
-| n8n API not yet documented | Start with mock; swap in real endpoint once ready |
-| CORS | Ensure n8n or proxy allows origin; use env-specific URLs |
-| Rate limits | Add throttling or queue on frontend; show user-friendly message |
-| Long response time | Show loading indicator; consider streaming if available |
+| n8n API not yet documented | Confirm endpoint with backend; use mock until ready |
+| CORS | n8n or proxy must allow `www.workflowez.com`; fallback to mock |
+| Rate limits | Throttle rapid sends; show user-friendly message |
+| Long response time | Loading indicator already present; consider timeout |
 
 ---
 
 ## 8. Success Criteria
 
-- [ ] User can open chat demo from landing (CTA or route)
-- [ ] User can send a message and receive AI reply
-- [ ] Chat works on mobile and desktop
-- [ ] Loading and error states are clear
-- [ ] Demo is accessible (keyboard, focus, labels)
+- [x] User can open chat demo from landing (CTA or route)
+- [x] User can send a message and receive AI reply (mock)
+- [x] Chat works on mobile and desktop
+- [x] Loading and error states are clear
+- [ ] **Internal Q&A uses real n8n API** (Phase 4)
+- [ ] Fallback to mock when API unavailable
 
 ---
 
-## 9. Demo Page Design (Phase 1)
+## 9. Next Steps
 
-- **Layout:** Two-column on desktop (values left, chat right); stacked on mobile
-- **Business value section:** 3 value props (Instant answers, Onboarding & training, Policy awareness) — explains why AI Advisor matters
-- **Chat box:** Mock responses; placeholder for n8n API in Phase 2
-- **Entry:** Hero "Watch Demo" / "Xem demo" button navigates to `/demo`
-
-## 10. Next Steps
-
-1. **Phase 2 UX** — Loading/error states, topic selector, mobile polish
-2. **Confirm n8n chat API** — Endpoint URL, request/response format, auth (if any)
-3. **Integrate real API** — Replace mock in `useChat` with `chatApi.ts` client
+1. **Confirm n8n chat API** — Endpoint URL, request/response format, auth (if any)
+2. **Implement Phase 4** — chatApi.ts, useChat integration, env config
+3. **Validate Internal Q&A** — Test with leave/compensation questions
 
 ---
 
-*Document version: 1.1*
+*Document version: 1.2*
