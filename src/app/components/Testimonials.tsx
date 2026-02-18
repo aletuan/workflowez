@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 
-const avatars = ["PT", "LH", "NT"];
+const avatarImages = ["/images/avatar-pt.jpg", "/images/avatar-lh.jpg", "/images/avatar-nt.jpg"];
 const authors = ["Phạm Minh Tuấn", "Lê Ngọc Hà", "Nguyễn Đức Thắng"];
 
 export function Testimonials() {
@@ -40,11 +40,13 @@ export function Testimonials() {
               </div>
               <p className="text-lg text-gray-700 mb-10 leading-relaxed font-medium">"{item.quote}"</p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[var(--brand)] to-[var(--accent-gradient-via)] flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-[var(--brand)]/30">
-                  {avatars[i]}
-                </div>
+                <img
+                  src={avatarImages[i]}
+                  alt={authors[i]}
+                  className="w-14 h-14 rounded-full object-cover object-top shrink-0 ring-2 ring-[var(--brand-light)] shadow-md"
+                />
                 <div>
-                  <div className="font-bold text-gray-900 text-lg">{authors[i]}</div>
+                  <div className="font-bold text-gray-900 text-base">{authors[i]}</div>
                   <div className="text-sm text-gray-500 font-medium">{item.role}</div>
                 </div>
               </div>
