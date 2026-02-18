@@ -8,5 +8,5 @@ export const N8N_CHAT_URL: string =
 /** Resolved URL for API calls — falls back to default when env not set */
 export const CHAT_API_URL = N8N_CHAT_URL || DEFAULT_N8N_CHAT_URL;
 
-/** Whether to use real n8n API (vs mock). True when VITE_N8N_CHAT_URL is set. */
-export const useRealApi = !!N8N_CHAT_URL;
+/** Whether to use real n8n API (vs mock). True when a chat URL is available (env or default). */
+export const useRealApi = !!CHAT_API_URL;
