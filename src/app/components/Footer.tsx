@@ -32,33 +32,33 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-gray-900 mb-6 text-lg">{t.footer.cols.product}</h4>
             <ul className="space-y-4 text-gray-600 font-medium">
-              <li><a href="#features" className="hover:text-[var(--brand)] transition-colors">Features</a></li>
-              <li><a href="#features" className="hover:text-[var(--brand)] transition-colors">Integrations</a></li>
-              <li><a href="#features" className="hover:text-[var(--brand)] transition-colors">Templates</a></li>
-              <li><a href="#features" className="hover:text-[var(--brand)] transition-colors">Enterprise</a></li>
-              <li><a href="#pricing" className="hover:text-[var(--brand)] transition-colors">Pricing</a></li>
+              <li><a href="/#features" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.features}</a></li>
+              <li><a href="/#features" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.integrations}</a></li>
+              <li><a href="/#features" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.templates}</a></li>
+              <li><a href="/#features" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.enterprise}</a></li>
+              <li><a href="/#pricing" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.pricing}</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-gray-900 mb-6 text-lg">{t.footer.cols.resources}</h4>
             <ul className="space-y-4 text-gray-600 font-medium">
-              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">Community</a></li>
-              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">Documentation</a></li>
-              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">API Reference</a></li>
+              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.blog}</a></li>
+              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.community}</a></li>
+              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.documentation}</a></li>
+              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.helpCenter}</a></li>
+              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.apiReference}</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-gray-900 mb-6 text-lg">{t.footer.cols.company}</h4>
             <ul className="space-y-4 text-gray-600 font-medium">
-              <li><a href="#testimonials" className="hover:text-[var(--brand)] transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">Legal</a></li>
-              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">Privacy Policy</a></li>
-              <li><a href="#pricing" className="hover:text-[var(--brand)] transition-colors">Contact</a></li>
+              <li><a href="/#testimonials" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.aboutUs}</a></li>
+              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.careers}</a></li>
+              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.legal}</a></li>
+              <li><a href="#" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.privacyPolicy}</a></li>
+              <li><a href="/#pricing" className="hover:text-[var(--brand)] transition-colors">{t.footer.links.contact}</a></li>
             </ul>
           </div>
         </div>
@@ -66,9 +66,9 @@ export function Footer() {
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-sm text-gray-500 font-medium">{t.footer.copyright}</p>
           <div className="flex items-center gap-8">
-            <a href="#" className="text-sm text-gray-500 hover:text-[var(--brand)] font-medium transition-colors">Terms</a>
-            <a href="#" className="text-sm text-gray-500 hover:text-[var(--brand)] font-medium transition-colors">Privacy</a>
-            <a href="#" className="text-sm text-gray-500 hover:text-[var(--brand)] font-medium transition-colors">Cookies</a>
+            <a href="#" className="text-sm text-gray-500 hover:text-[var(--brand)] font-medium transition-colors">{t.footer.links.terms}</a>
+            <a href="#" className="text-sm text-gray-500 hover:text-[var(--brand)] font-medium transition-colors">{t.footer.links.privacy}</a>
+            <a href="#" className="text-sm text-gray-500 hover:text-[var(--brand)] font-medium transition-colors">{t.footer.links.cookies}</a>
           </div>
         </div>
       </div>
