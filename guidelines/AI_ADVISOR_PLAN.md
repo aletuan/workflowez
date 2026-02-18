@@ -93,7 +93,7 @@ Topics are configurable via n8n workflow and Qdrant collections.
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | 9 | [x] Demo entry point | Done | Catalog → Advisor card → `/products/advisor` |
-| 10 | [ ] Environment config | Pending | `VITE_N8N_CHAT_URL` in Phase 4 |
+| 10 | [x] Environment config | Done | `VITE_N8N_CHAT_URL` in Phase 4 |
 | 11 | [ ] Session/conversation ID | Pending | If n8n supports multi-turn |
 
 ### Phase 4: N8N Integration (feature/advisor-agent-integration)
@@ -101,7 +101,7 @@ Topics are configurable via n8n workflow and Qdrant collections.
 | # | Task | Status | Notes |
 |---|------|--------|-------|
 | 4.1 | [x] Create `chatApi.ts` | Done | POST to n8n chat endpoint; handle response |
-| 4.2 | [ ] Env config | Pending | `VITE_N8N_CHAT_URL`; fallback to mock if unset |
+| 4.2 | [x] Env config | Done | `VITE_N8N_CHAT_URL`; fallback to mock if unset |
 | 4.3 | [ ] Update `useChat` | Pending | Call real API when URL configured; fallback to mock |
 | 4.4 | [ ] Internal Q&A use case | Pending | Validate with leave/compensation questions via n8n RAG |
 | 4.5 | [ ] Error handling | Pending | Network error, timeout, non-2xx → show message + retry |
@@ -178,7 +178,7 @@ Ref: [n8n Chat Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-
 - Parse response `{ output }` from n8n Respond to Webhook
 - Handle fetch errors, timeout
 
-### Step 2: [ ] Create `config/chat.ts`
+### Step 2: [x] Create `config/chat.ts`
 - `N8N_CHAT_URL` = env or default (see above)
 - `useRealApi = !!N8N_CHAT_URL`
 

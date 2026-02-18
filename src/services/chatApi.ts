@@ -1,6 +1,4 @@
-/** Default n8n Chat webhook URL — used when VITE_N8N_CHAT_URL is not set */
-const DEFAULT_N8N_CHAT_URL =
-  "https://andyle1.app.n8n.cloud/webhook/ebf42615-c947-46a1-bf5b-a720e6af3a13/chat";
+import { CHAT_API_URL } from "../config/chat";
 
 const REQUEST_TIMEOUT_MS = 30_000;
 
@@ -23,7 +21,7 @@ export async function sendMessage(
   message: string,
   sessionId?: string
 ): Promise<ChatApiResponse> {
-  const url = import.meta.env.VITE_N8N_CHAT_URL ?? DEFAULT_N8N_CHAT_URL;
+  const url = CHAT_API_URL;
 
   const body: Record<string, unknown> = { message };
   if (sessionId) body.sessionId = sessionId;
