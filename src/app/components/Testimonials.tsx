@@ -3,8 +3,38 @@ import { Star } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 
-const avatars = ["PT", "LH", "NT"];
+const avatarImages = ["/images/avatar-pt.jpg", "/images/avatar-lh.jpg", "/images/avatar-nt.jpg"];
 const authors = ["Phạm Minh Tuấn", "Lê Ngọc Hà", "Nguyễn Đức Thắng"];
+const ratings = [4.5, 4, 5];
+
+function StarRating({ rating, id }: { rating: number; id: string }) {
+  return (
+    <div className="flex gap-1">
+      {[1, 2, 3, 4, 5].map((n) => {
+        const filled = rating >= n;
+        const half = !filled && rating >= n - 0.5;
+        const gradId = `${id}-${n}`;
+        return (
+          <svg key={n} className="w-5 h-5" viewBox="0 0 24 24">
+            {half && (
+              <defs>
+                <linearGradient id={gradId} x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="50%" stopColor="#facc15" />
+                  <stop offset="50%" stopColor="#d1d5db" />
+                </linearGradient>
+              </defs>
+            )}
+            <Star
+              className="w-5 h-5"
+              fill={filled ? "#facc15" : half ? `url(#${gradId})` : "#d1d5db"}
+              stroke={filled || half ? "#facc15" : "#d1d5db"}
+            />
+          </svg>
+        );
+      })}
+    </div>
+  );
+}
 
 export function Testimonials() {
   const { t } = useLanguage();
@@ -25,7 +55,7 @@ export function Testimonials() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {t.testimonials.items.map((item: any, i: number) => (
-            <motion.div 
+            <motion.div
               key={item.id}
               initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
@@ -33,18 +63,18 @@ export function Testimonials() {
               transition={reducedMotion ? { duration: 0 } : { delay: i * 0.1 }}
               className="bg-gray-50 p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 border border-transparent hover:border-gray-100 group"
             >
-              <div className="flex gap-1 mb-8">
-                {[...Array(5)].map((_, starIndex) => (
-                  <Star key={starIndex} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ))}
+              <div className="mb-8">
+                <StarRating rating={ratings[i]} id={item.id} />
               </div>
               <p className="text-lg text-gray-700 mb-10 leading-relaxed font-medium">"{item.quote}"</p>
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[var(--brand)] to-[var(--accent-gradient-via)] flex items-center justify-center font-bold text-white text-lg shadow-lg shadow-[var(--brand)]/30">
-                  {avatars[i]}
-                </div>
+                <img
+                  src={avatarImages[i]}
+                  alt={authors[i]}
+                  className="w-14 h-14 rounded-full object-cover object-top shrink-0 ring-2 ring-[var(--brand-light)] shadow-md"
+                />
                 <div>
-                  <div className="font-bold text-gray-900 text-lg">{authors[i]}</div>
+                  <div className="font-bold text-gray-900 text-base">{authors[i]}</div>
                   <div className="text-sm text-gray-500 font-medium">{item.role}</div>
                 </div>
               </div>
