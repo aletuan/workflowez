@@ -11,16 +11,18 @@ interface MessageListProps {
 }
 
 export function MessageList({ messages, isLoading, emptyText = "Start the conversation — ask about training, policies, or product features.", quickPrompts, onPromptClick }: MessageListProps) {
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (listRef.current) {
+      listRef.current.scrollTop = listRef.current.scrollHeight;
+    }
   }, [messages, isLoading]);
 
   const showPrompts = quickPrompts && onPromptClick && messages.length <= 1 && !isLoading;
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+    <div ref={listRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
       {messages.length === 0 && !isLoading && (
         <div className="flex items-center justify-center h-full text-gray-400 text-sm font-medium">
           {emptyText}
@@ -53,7 +55,6 @@ export function MessageList({ messages, isLoading, emptyText = "Start the conver
           </div>
         </div>
       )}
-      <div ref={bottomRef} />
     </div>
   );
 }
