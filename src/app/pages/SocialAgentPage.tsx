@@ -86,39 +86,12 @@ export function SocialAgentPage() {
         </div>
 
         {/* Two-column: value props + screenshot carousel */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
+        {/* DOM order: carousel first (→ top on mobile), value props second (→ bottom on mobile) */}
+        {/* Desktop: explicit grid placement restores left=values, right=carousel */}
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start max-w-6xl mx-auto">
 
-          {/* Left — value propositions */}
-          <div className="lg:col-span-5 space-y-5">
-            <h2 className="text-xl font-bold text-gray-900 text-center lg:text-left">
-              {t.social.whyTitle}
-            </h2>
-            <ul className="space-y-4">
-              {t.social.values.map((item: { title: string; desc: string; icon?: string }, i: number) => {
-                const Icon = (item.icon && VALUE_ICONS[item.icon]) || TrendingUp;
-                return (
-                  <motion.li
-                    key={i}
-                    initial={reducedMotion ? false : { opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: i * 0.1 }}
-                    className="flex gap-4 p-4 rounded-2xl bg-cyan-50/60 border border-cyan-100 hover:border-cyan-300/60 hover:bg-cyan-50 transition-colors"
-                  >
-                    <div className={`flex-shrink-0 w-10 h-10 rounded-xl ${ICON_GRADIENTS[i % ICON_GRADIENTS.length]} flex items-center justify-center text-white shadow-md`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-0.5">{item.title}</h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </motion.li>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/* Right — screenshot carousel */}
-          <div className="lg:col-span-7 relative min-w-0">
+          {/* Carousel — first in DOM (top on mobile), right column on desktop */}
+          <div className="lg:col-start-6 lg:col-span-7 lg:row-start-1 relative min-w-0">
             {/* Glow blobs */}
             <div className="absolute -top-8 -right-8 w-28 h-28 bg-cyan-300 rounded-3xl rotate-12 blur-2xl opacity-50 animate-pulse pointer-events-none" />
             <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-sky-200 rounded-full blur-2xl opacity-40 pointer-events-none" />
@@ -198,6 +171,35 @@ export function SocialAgentPage() {
                 </div>
               </motion.div>
             </motion.div>
+          </div>
+
+          {/* Value propositions — second in DOM (bottom on mobile), left column on desktop */}
+          <div className="lg:col-start-1 lg:col-span-5 lg:row-start-1 space-y-5">
+            <h2 className="text-xl font-bold text-gray-900 text-center lg:text-left">
+              {t.social.whyTitle}
+            </h2>
+            <ul className="space-y-4">
+              {t.social.values.map((item: { title: string; desc: string; icon?: string }, i: number) => {
+                const Icon = (item.icon && VALUE_ICONS[item.icon]) || TrendingUp;
+                return (
+                  <motion.li
+                    key={i}
+                    initial={reducedMotion ? false : { opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
+                    className="flex gap-4 p-4 rounded-2xl bg-cyan-50/60 border border-cyan-100 hover:border-cyan-300/60 hover:bg-cyan-50 transition-colors"
+                  >
+                    <div className={`flex-shrink-0 w-10 h-10 rounded-xl ${ICON_GRADIENTS[i % ICON_GRADIENTS.length]} flex items-center justify-center text-white shadow-md`}>
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-0.5">{item.title}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </motion.li>
+                );
+              })}
+            </ul>
           </div>
         </div>
 
