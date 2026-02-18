@@ -37,7 +37,7 @@ export function MessageList({ messages, isLoading, emptyText = "Start the conver
             <button
               key={prompt}
               onClick={() => onPromptClick(prompt)}
-              className="px-3 py-1.5 text-xs font-medium rounded-full border border-[var(--brand)]/30 bg-[var(--brand-light)]/40 text-[var(--brand)] hover:bg-[var(--brand-light)] hover:border-[var(--brand)]/60 transition-colors cursor-pointer"
+              className="px-3 py-1.5 text-xs font-medium rounded-full border border-[var(--brand)]/30 bg-[var(--brand-light)]/40 text-[var(--brand)] hover:bg-[var(--brand-light)] hover:border-[var(--brand)]/60 cursor-pointer"
             >
               {prompt}
             </button>
@@ -48,9 +48,9 @@ export function MessageList({ messages, isLoading, emptyText = "Start the conver
         <div className="flex justify-start">
           <div className="bg-gray-100 rounded-2xl px-4 py-3">
             <div className="flex gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.3s]" />
-              <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce [animation-delay:-0.15s]" />
-              <span className="w-2 h-2 rounded-full bg-gray-400 animate-bounce" />
+              <span className="w-2 h-2 rounded-full bg-gray-400" />
+              <span className="w-2 h-2 rounded-full bg-gray-400" />
+              <span className="w-2 h-2 rounded-full bg-gray-400" />
             </div>
           </div>
         </div>
