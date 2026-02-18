@@ -5,6 +5,8 @@
 **Focus:** Reusability, Complexity, Scalability, Resilience, React Best Practices  
 **Last updated:** February 2026 (Phase 2 + cleanup complete)
 
+**Legend:** `[x]` = hoàn thành · `[ ]` = chưa hoàn thành
+
 ---
 
 ## 0. Progress Summary
@@ -13,12 +15,12 @@
 
 | Task | Status |
 |------|--------|
-| Use ImageWithFallback for Hero and Benefits images | Done |
-| Add ErrorBoundary around App with fallback UI | Done |
-| Fix `key` props — stable keys (item.id, feature string) | Done |
-| Memoize LanguageContext value with useMemo + useCallback | Done |
-| Remove unused deps (MUI, emotion, react-dnd, react-slick, masonry, popper) | Done |
-| Add `prefers-reduced-motion` handling (useReducedMotion hook) | Done |
+| [x] Use ImageWithFallback for Hero and Benefits images | Done |
+| [x] Add ErrorBoundary around App with fallback UI | Done |
+| [x] Fix `key` props — stable keys (item.id, feature string) | Done |
+| [x] Memoize LanguageContext value with useMemo + useCallback | Done |
+| [x] Remove unused deps (MUI, emotion, react-dnd, react-slick, masonry, popper) | Done |
+| [x] Add `prefers-reduced-motion` handling (useReducedMotion hook) | Done |
 
 ### Phase 2 Completed
 
@@ -31,16 +33,16 @@
 7. [x] **Shared buttons everywhere** — CTA and Pricing use `PrimaryButton`/`SecondaryButton` with variants (`light`, `outline`, `brand`); buttons support optional `href` for navigation.
 8. [x] **CTAs wired** — CTA/Pricing buttons and Footer links point to `#pricing`, `#features`, `#testimonials`.
 
-### Phase 2 Optional (Not Done)
+### Phase 2 Optional
 
-- Use `Section` in Testimonials, Pricing where layout allows
+- [ ] Use `Section` in Testimonials, Pricing where layout allows
 
 ### Suggested Next Tasks (Phase 3)
 
-1. **Introduce routing** with react-router.
-2. **Lazy-load sections** (Hero, Features, Pricing) with Suspense.
-3. **Folder restructure** — `layout/`, `landing/`, move shared components.
-4. **Vite manual chunks** for vendor splitting.
+1. [ ] **Introduce routing** with react-router.
+2. [ ] **Lazy-load sections** (Hero, Features, Pricing) with Suspense.
+3. [ ] **Folder restructure** — `layout/`, `landing/`, move shared components.
+4. [ ] **Vite manual chunks** for vendor splitting.
 
 ---
 
@@ -234,9 +236,9 @@ website/
 
 ### Phase 3: Scalability (5–7 days)
 
-1. **Introduce routing** with `react-router` (or similar).
-2. **Lazy-load sections** and wrap in `Suspense`.
-3. **Folder restructure:**
+1. [ ] **Introduce routing** with `react-router` (or similar).
+2. [ ] **Lazy-load sections** and wrap in `Suspense`.
+3. [ ] **Folder restructure:**
    ```
    src/
    ├── app/App.tsx
@@ -249,14 +251,14 @@ website/
    ├── locales/
    └── hooks/
    ```
-4. **Vite config** — manual chunks for vendors.
+4. [ ] **Vite config** — manual chunks for vendors.
 
 ### Phase 4: Polish (2–3 days)
 
 1. [x] **Wire CTAs** — href or handlers (CTA, Pricing, Footer done; Hero ready for wiring).
-2. **i18n Footer** — move links to translations.
-3. **A11y audit** — `aria-label`, focus states, contrast.
-4. **Tests** — unit for hooks/context, E2E for main flows.
+2. [ ] **i18n Footer** — move links to translations.
+3. [ ] **A11y audit** — `aria-label`, focus states, contrast.
+4. [ ] **Tests** — unit for hooks/context, E2E for main flows.
 
 ---
 
@@ -331,16 +333,16 @@ src/
 
 | Priority | Task | Phase | Status |
 |----------|------|-------|--------|
-| 1 | Shared `Section`, `PrimaryButton`, `SecondaryButton` | 2 | Done |
-| 2 | Extract translations to `locales/*.json` | 2 | Done |
-| 3 | Type-safe i18n (`TranslationKeys`) | 2 | Done |
-| 4 | Nav config — single source | 2 | Done |
-| 5 | Design tokens in theme.css | 2 | Done |
-| 6 | Introduce react-router | 3 | Next |
-| 7 | Lazy-load Hero, Features, Pricing | 3 | Next |
-| 8 | ~~Wire CTAs to href or onClick~~ | 4 | Done |
-| 9 | A11y audit — aria-label, focus states | 4 | Pending |
-| 10 | ~~Finish design token migration (all components)~~ | 2 | Done |
+| 1 | [x] Shared `Section`, `PrimaryButton`, `SecondaryButton` | 2 | Done |
+| 2 | [x] Extract translations to `locales/*.json` | 2 | Done |
+| 3 | [x] Type-safe i18n (`TranslationKeys`) | 2 | Done |
+| 4 | [x] Nav config — single source | 2 | Done |
+| 5 | [x] Design tokens in theme.css | 2 | Done |
+| 6 | [ ] Introduce react-router | 3 | Next |
+| 7 | [ ] Lazy-load Hero, Features, Pricing | 3 | Next |
+| 8 | [x] Wire CTAs to href or onClick | 4 | Done |
+| 9 | [ ] A11y audit — aria-label, focus states | 4 | Pending |
+| 10 | [x] Finish design token migration (all components) | 2 | Done |
 
 ---
 
@@ -358,14 +360,14 @@ src/
 
 ### Remaining Gaps
 
-1. **Section usage** — Only Features uses `Section`; Benefits, Testimonials, Pricing could adopt it.
-2. **Hero CTAs** — PrimaryButton/SecondaryButton present but not yet wired (e.g. `href="#pricing"`).
+1. [ ] **Section usage** — Only Features uses `Section`; Benefits, Testimonials, Pricing could adopt it.
+2. [ ] **Hero CTAs** — PrimaryButton/SecondaryButton present but not yet wired (e.g. `href="#pricing"`).
 
 ### Recommended Next Move
 
 **Phase 3 — Scalability**
-- Add react-router with routes `/`, `/demo`, `/pricing`
-- Lazy-load sections with `React.lazy` + `Suspense`
+- [ ] Add react-router with routes `/`, `/demo`, `/pricing`
+- [ ] Lazy-load sections with `React.lazy` + `Suspense`
 - Improves TTI and prepares for multi-page app
 
 Phase 2 cleanup is complete; proceed to Phase 3.

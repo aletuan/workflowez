@@ -102,9 +102,9 @@ Topics are configurable via n8n workflow and Qdrant collections.
 |---|------|--------|-------|
 | 4.1 | [x] Create `chatApi.ts` | Done | POST to n8n chat endpoint; handle response |
 | 4.2 | [x] Env config | Done | `VITE_N8N_CHAT_URL`; fallback to mock if unset |
-| 4.3 | [ ] Update `useChat` | Pending | Call real API when URL configured; fallback to mock |
+| 4.3 | [x] Update `useChat` | Done | Call real API when URL configured; fallback to mock |
 | 4.4 | [ ] Internal Q&A use case | Pending | Validate with leave/compensation questions via n8n RAG |
-| 4.5 | [ ] Error handling | Pending | Network error, timeout, non-2xx → show message + retry |
+| 4.5 | [x] Error handling | Done | Network error, timeout, non-2xx → show message + retry |
 | 4.6 | [ ] Session ID (optional) | Pending | If n8n returns sessionId, persist for multi-turn |
 
 ---
@@ -182,7 +182,7 @@ Ref: [n8n Chat Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-
 - `N8N_CHAT_URL` = env or default (see above)
 - `useRealApi = !!N8N_CHAT_URL`
 
-### Step 3: [ ] Update `useChat.ts`
+### Step 3: [x] Update `useChat.ts`
 - If `useRealApi`: call `chatApi.sendMessage()` instead of mock
 - On error: set error state, show fallback message (or retry prompt)
 - Fallback to mock when URL not set (dev/demo without backend)

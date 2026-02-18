@@ -23,7 +23,11 @@ const ICON_GRADIENTS = [
 
 export function DemoPage() {
   const { t } = useLanguage();
-  const { messages, isLoading, sendMessage } = useChat(t.demo.chatWelcome, t.demo.mockResponses);
+  const { messages, isLoading, sendMessage } = useChat(
+    t.demo.chatWelcome,
+    t.demo.mockResponses,
+    t.demo.chatError
+  );
 
   return (
     <>
