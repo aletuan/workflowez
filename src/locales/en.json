@@ -166,6 +166,26 @@
       "resources": "Resources",
       "company": "Company"
     },
+    "links": {
+      "features": "Features",
+      "integrations": "Integrations",
+      "templates": "Templates",
+      "enterprise": "Enterprise",
+      "pricing": "Pricing",
+      "blog": "Blog",
+      "community": "Community",
+      "documentation": "Documentation",
+      "helpCenter": "Help Center",
+      "apiReference": "API Reference",
+      "aboutUs": "About Us",
+      "careers": "Careers",
+      "legal": "Legal",
+      "privacyPolicy": "Privacy Policy",
+      "contact": "Contact",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "cookies": "Cookies"
+    },
     "copyright": "© 2026 Workflow EZ Inc. All rights reserved."
   }
 }

@@ -5,8 +5,8 @@ export interface NavItem {
 
 /** Single source for nav items — used by Header (desktop + mobile) */
 export const NAV_ITEMS: NavItem[] = [
-  { id: "#features", labelKey: "features" },
-  { id: "#benefits", labelKey: "benefits" },
-  { id: "#testimonials", labelKey: "testimonials" },
-  { id: "#pricing", labelKey: "pricing" },
+  { id: "/#features", labelKey: "features" },
+  { id: "/#benefits", labelKey: "benefits" },
+  { id: "/#testimonials", labelKey: "testimonials" },
+  { id: "/#pricing", labelKey: "pricing" },
 ];

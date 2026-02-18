@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useRealApi } from "../config/chat";
 import { sendMessage as apiSendMessage, type ChatApiError } from "../services/chatApi";
 
@@ -50,6 +50,15 @@ export function useChat(
     welcomeMessage ? [welcomeMessage] : []
   );
   const [isLoading, setIsLoading] = useState(false);
+
+  // Update welcome message in-place when language changes
+  useEffect(() => {
+    if (!initialMessage) return;
+    setMessages((prev) => {
+      if (prev.length === 0 || prev[0].id !== "welcome") return prev;
+      return [{ ...prev[0], content: initialMessage }, ...prev.slice(1)];
+    });
+  }, [initialMessage]);
 
   const defaultErrorFallback = "Sorry, something went wrong. Please try again.";
 

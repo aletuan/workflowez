@@ -166,6 +166,26 @@
       "resources": "Tài nguyên",
       "company": "Công ty"
     },
+    "links": {
+      "features": "Tính năng",
+      "integrations": "Tích hợp",
+      "templates": "Mẫu quy trình",
+      "enterprise": "Doanh nghiệp",
+      "pricing": "Bảng giá",
+      "blog": "Blog",
+      "community": "Cộng đồng",
+      "documentation": "Tài liệu",
+      "helpCenter": "Trung tâm hỗ trợ",
+      "apiReference": "API Reference",
+      "aboutUs": "Về chúng tôi",
+      "careers": "Tuyển dụng",
+      "legal": "Pháp lý",
+      "privacyPolicy": "Chính sách bảo mật",
+      "contact": "Liên hệ",
+      "terms": "Điều khoản",
+      "privacy": "Bảo mật",
+      "cookies": "Cookie"
+    },
     "copyright": "© 2026 Workflow EZ Inc. Bảo lưu bản quyền."
   }
 }
