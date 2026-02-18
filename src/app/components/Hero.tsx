@@ -13,7 +13,7 @@ export function Hero() {
 
   return (
     // Fix #2: pt-20 → pt-12 on mobile
-    <section className="relative pt-12 pb-12 lg:pt-32 lg:pb-32 overflow-hidden">
+    <section className="relative pt-12 pb-12 lg:pt-16 lg:pb-24 overflow-hidden">
       {/* Dynamic Background Blobs */}
       <div className="absolute top-0 right-0 w-[280px] h-[280px] md:w-[600px] md:h-[600px] bg-purple-200/40 rounded-full blur-[80px] md:blur-[100px] -translate-y-1/2 translate-x-1/2 animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-[240px] h-[240px] md:w-[500px] md:h-[500px] bg-blue-200/40 rounded-full blur-[80px] md:blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
