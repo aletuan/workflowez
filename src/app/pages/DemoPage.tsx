@@ -47,9 +47,23 @@ export function DemoPage() {
           </div>
 
           {/* Two-column: business values + chat */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
-            {/* Business values - left */}
-            <div className="lg:col-span-5 space-y-6">
+          {/* DOM order: chat first (→ top on mobile), values second (→ bottom on mobile) */}
+          {/* Desktop: explicit grid placement restores left=values, right=chat */}
+          <div className="flex flex-col gap-8 lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start max-w-6xl mx-auto">
+
+            {/* Chat box — first in DOM (top on mobile), right column on desktop */}
+            <div className="lg:col-start-6 lg:col-span-7 lg:row-start-1 space-y-3 relative min-w-0">
+              <div className="absolute -top-8 -right-8 w-24 h-24 bg-cyan-300 rounded-3xl rotate-12 blur-xl opacity-60 animate-pulse pointer-events-none" />
+              <ChatBox
+                messages={messages}
+                isLoading={isLoading}
+                onSend={sendMessage}
+                quickPrompts={t.demo.quickPrompts}
+              />
+            </div>
+
+            {/* Business values — second in DOM (bottom on mobile), left column on desktop */}
+            <div className="lg:col-start-1 lg:col-span-5 lg:row-start-1 space-y-6">
               <h2 className="text-xl font-bold text-gray-900 text-center lg:text-left">
                 {t.demo.values.title}
               </h2>
@@ -73,17 +87,6 @@ export function DemoPage() {
                   );
                 })}
               </ul>
-            </div>
-
-            {/* Chat box - right */}
-            <div className="lg:col-span-7 space-y-3 relative">
-              <div className="absolute -top-8 -right-8 w-24 h-24 bg-cyan-300 rounded-3xl rotate-12 blur-xl opacity-60 animate-pulse pointer-events-none" />
-              <ChatBox
-                messages={messages}
-                isLoading={isLoading}
-                onSend={sendMessage}
-                quickPrompts={t.demo.quickPrompts}
-              />
             </div>
           </div>
 
