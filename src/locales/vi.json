@@ -137,9 +137,19 @@
     "advisor": "Advisor Agent",
     "advisorDesc": "AI hội thoại cho đào tạo, chính sách, hỗ trợ sản phẩm. Hướng dẫn về onboarding, chính sách và nhiều hơn nữa.",
     "advisorFeatures": ["Bot Q&A nội bộ", "Nhận thức chính sách", "Hỗ trợ onboarding", "Hỗ trợ sản phẩm 24/7"],
+    "advisorStory": {
+      "quote": "Chúng tôi rút ngắn onboarding từ 3 tuần xuống còn 3 ngày. Mọi câu hỏi thường gặp đều được AI xử lý — HR giờ tập trung vào những việc thực sự quan trọng.",
+      "author": "Nguyễn Đức Thắng",
+      "role": "Trưởng bộ phận hỗ trợ tại HelpDesk"
+    },
     "social": "Social Intelligent",
     "socialDesc": "Lắng nghe, phân tích, xu hướng, xuất bản. Công cụ AI cho người bán, doanh nghiệp và KOL hiểu phản hồi từ người dùng và fans.",
-    "socialFeatures": ["Lắng nghe mạng xã hội", "Phân tích cảm xúc", "Phát hiện xu hướng", "Xuất bản & Lên lịch"]
+    "socialFeatures": ["Lắng nghe mạng xã hội", "Phân tích cảm xúc", "Phát hiện xu hướng", "Xuất bản & Lên lịch"],
+    "socialStory": {
+      "quote": "Chúng tôi phát hiện xu hướng viral sớm hơn đối thủ 3 ngày. Social Intelligent cho chúng tôi lợi thế để hành động trước và tăng gấp 3 tỷ lệ tương tác.",
+      "author": "Lê Ngọc Hà",
+      "role": "Giám đốc sản phẩm tại DevCorp"
+    }
   },
   "social": {
     "subtitle": "Lắng nghe, phân tích và xuất bản — Công cụ AI cho người bán, doanh nghiệp và KOL.",
