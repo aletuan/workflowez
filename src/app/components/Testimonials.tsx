@@ -3,8 +3,8 @@ import { Star } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 
-const avatars = ["MC", "JS", "DM"];
-const authors = ["Michael Chen", "Jessica Stark", "David Miller"];
+const avatars = ["PT", "LH", "NT"];
+const authors = ["Phạm Minh Tuấn", "Lê Ngọc Hà", "Nguyễn Đức Thắng"];
 
 export function Testimonials() {
   const { t } = useLanguage();
