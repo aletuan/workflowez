@@ -13,29 +13,51 @@ No test or lint scripts are configured.
 
 ## Architecture
 
-This is a **single-page React + Vite + TypeScript landing page** for Workflowez (an AI workflow automation platform). It is a pure client-side SPA with no SSR.
+This is a **multi-page React + Vite + TypeScript website** for Workflowez (an AI workflow automation platform). It is a pure client-side SPA with client-side routing via React Router, deployed on GitHub Pages.
 
 ### Stack
 - **React 18 + TypeScript** — Component framework
 - **Vite 6** — Build tool; path alias `@` → `./src`
 - **Tailwind CSS v4** — Utility-first styling via `@tailwindcss/vite` (no PostCSS config needed)
 - **Radix UI + shadcn/ui** — Accessible, pre-built UI primitives in `src/app/components/ui/`
-- **motion/react (Framer Motion)** — Animations throughout
+- **motion/react (Framer Motion)** — Used selectively in `SocialAgentPage` (carousel transitions); removed from all other pages
 - **React Context** — Global state (language only, no Redux)
 
-### Page Structure
+### Routing
 
-`src/main.tsx` → `src/app/App.tsx` renders landing page sections in order:
+`src/main.tsx` → `src/app/App.tsx` defines client-side routes:
+
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/` | `LandingPage` | Main marketing landing page |
+| `/products` | `ProductCatalogPage` | Product catalog grid |
+| `/products/advisor` | `DemoPage` | AI Advisor live demo with chat |
+| `/products/social` | `SocialAgentPage` | Social Intelligent product detail |
+| `/demo` | → `/products/advisor` | Legacy redirect |
+
+**SPA on GitHub Pages**: `index.html` is copied to `404.html` at build time so direct URL access and refresh work correctly.
+
+### Landing Page Structure
+
+`LandingPage.tsx` renders sections in this order:
 
 ```
-Header → Hero → Features → Benefits → Testimonials → Pricing → CTA → Footer
+Header → Hero → Testimonials → Features → Benefits → Pricing → CTA → Footer
 ```
 
-Each section is a standalone component in `src/app/components/`. Shared primitives (`Section`, `PrimaryButton`, `SecondaryButton`) live in `src/app/components/shared/`. Nav items are defined in `src/config/navigation.ts`. Navigation uses in-page hash links (`#features`, `#pricing`, `#testimonials`, etc.).
+Each section is a standalone component in `src/app/components/`. Shared primitives (`Section`, `PrimaryButton`, `SecondaryButton`) live in `src/app/components/shared/`.
+
+### Navigation
+
+- Nav items defined in `src/config/navigation.ts`
+- Hash links use `/#features` prefix (not `#features`) so they work from any page, not just the home page
+- Example: `{ label: "Features", href: "/#features" }`
 
 ### Internationalization
 
 Translations live in `src/locales/vi.json` and `src/locales/en.json`. `LanguageContext` loads these and provides a typed `t` object. Add new keys to both locale files and extend `TranslationKeys` in `src/types/translations.ts` for type safety.
+
+**Important**: When adding a new translation key that is used as an initial value in `useState`, also add a `useEffect` to sync state when language changes. See `useChat.ts` welcome message handling as an example.
 
 ### Styling
 
@@ -46,16 +68,41 @@ Translations live in `src/locales/vi.json` and `src/locales/en.json`. `LanguageC
 
 Use design tokens (e.g. `var(--brand)`, `var(--brand-light)`) for brand colors. Prefer Tailwind utilities for layout and spacing; use custom properties when values are semantic or reusable across components.
 
+**Animation policy**: Animations and transitions are intentionally minimal. Do not add `animate-pulse`, `transition-all`, `whileInView`, or Framer Motion to landing page components. `SocialAgentPage` is the exception — it uses `AnimatePresence` for the image carousel.
+
+### Config Files
+
+- `src/config/products.ts` — `PRODUCTS` array; single source of truth for product catalog (slug, route, icon, color, available status)
+- `src/config/chat.ts` — Chat API config; `CHAT_API_URL` falls back to a hardcoded n8n webhook URL if `VITE_N8N_CHAT_URL` env var is not set; `useRealApi` is always `true`
+- `src/config/navigation.ts` — Nav items array used by Header
+
+### Hooks
+
+- `src/hooks/useChat.ts` — Chat state management; handles messages, loading, mock vs real API
+- `src/hooks/useReducedMotion.ts` — Returns `true` if user prefers reduced motion (`prefers-reduced-motion: reduce`)
+
 ### UI Components
 
 - `src/app/components/ui/` — shadcn/ui primitives (MIT-licensed, see `ATTRIBUTIONS.md`)
 - `src/app/components/shared/` — `Section`, `PrimaryButton`, `SecondaryButton` (support variants and optional `href`)
-- `src/app/components/figma/ImageWithFallback.tsx` — image rendering with fallbacks
+- `src/app/components/catalog/ProductCard.tsx` — Card used in ProductCatalogPage; color-themed via `COLOR_MAP`
+- `src/app/components/chat/MessageList.tsx` — Chat message list with quick prompts
+- `src/app/components/chat/ChatInput.tsx` — Chat input form
+- `src/app/components/chat/MessageBubble.tsx` — Individual message bubble
+- `src/app/components/figma/ImageWithFallback.tsx` — Image rendering with fallbacks
+
+### Public Assets
+
+- `public/images/team-office.jpg` — Benefits section photo
+- `public/images/avatar-pt.jpg`, `avatar-lh.jpg`, `avatar-nt.jpg` — Testimonial avatars
+- `public/images/social-dashboard.png`, `social-listening.png`, `social-analytics.png` — Social product carousel screenshots
 
 ### UI Patterns
 
 **Decorative glow blob** — used to add visual depth behind product demo cards or chat boxes:
 ```tsx
-<div className="absolute -top-8 -right-8 w-24 h-24 bg-cyan-300 rounded-3xl rotate-12 blur-xl opacity-60 animate-pulse pointer-events-none" />
+<div className="absolute -top-8 -right-8 w-24 h-24 bg-cyan-300 rounded-3xl rotate-12 blur-xl opacity-60 pointer-events-none" />
 ```
-Place inside a `relative` container. Swap color as needed (`bg-yellow-300` in Hero, `bg-cyan-300` on Demo chat box). Requires `overflow-hidden` on the parent if the glow should be clipped, or leave without it to let it bleed outside.
+Place inside a `relative` container. Swap color as needed. Do **not** add `animate-pulse` — per animation policy above.
+
+**Container alignment**: Use `container mx-auto px-4 md:px-6` for all page-level containers (not `max-w-7xl`) so Header, content, and Footer align consistently at all screen sizes.
