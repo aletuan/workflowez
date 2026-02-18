@@ -2,6 +2,7 @@ import { Sparkles } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { PRODUCTS } from "../../config/products";
 import { ProductCard } from "../components/catalog/ProductCard";
+import { CustomerStoryCard } from "../components/catalog/CustomerStoryCard";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
@@ -19,7 +20,7 @@ export function ProductCatalogPage() {
           <div className="absolute top-1/2 left-1/2 w-[300px] h-[200px] md:w-[600px] md:h-[300px] bg-[var(--brand-light)]/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
           {/* Hero text */}
-          <div className="relative text-center mb-12 lg:mb-16">
+          <div className="relative text-center mb-16 lg:mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--brand-light)] text-[var(--brand-dark)] text-xs font-bold uppercase tracking-widest mb-6">
               <Sparkles className="w-3.5 h-3.5" />
               Our Products
@@ -37,25 +38,54 @@ export function ProductCatalogPage() {
             </p>
           </div>
 
-          {/* Product grid */}
-          <div className="relative grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {PRODUCTS.map((product, index) => (
-              <ProductCard
-                key={product.slug}
-                slug={product.slug}
-                route={product.route}
-                title={t.catalog[product.titleKey as keyof typeof t.catalog] as string}
-                desc={t.catalog[product.descKey as keyof typeof t.catalog] as string}
-                features={t.catalog[product.featuresKey as keyof typeof t.catalog] as string[]}
-                icon={product.icon}
-                color={product.color}
-                available={product.available}
-                availableLabel={t.catalog.available}
-                comingSoonLabel={t.catalog.comingSoon}
-                tryDemoLabel={t.catalog.tryDemo}
-                index={index}
-              />
-            ))}
+          {/* Alternating product rows */}
+          <div className="relative flex flex-col gap-12 lg:gap-16 max-w-5xl mx-auto">
+            {PRODUCTS.map((product, index) => {
+              const story = t.catalog[product.storyKey as keyof typeof t.catalog] as {
+                quote: string;
+                author: string;
+                role: string;
+              };
+
+              const isEven = index % 2 === 0;
+
+              const productCard = (
+                <div key="product" className="flex flex-col">
+                  <ProductCard
+                    slug={product.slug}
+                    route={product.route}
+                    title={t.catalog[product.titleKey as keyof typeof t.catalog] as string}
+                    desc={t.catalog[product.descKey as keyof typeof t.catalog] as string}
+                    features={t.catalog[product.featuresKey as keyof typeof t.catalog] as string[]}
+                    icon={product.icon}
+                    color={product.color}
+                    available={product.available}
+                    availableLabel={t.catalog.available}
+                    comingSoonLabel={t.catalog.comingSoon}
+                    tryDemoLabel={t.catalog.tryDemo}
+                    index={index}
+                  />
+                </div>
+              );
+
+              const storyCard = (
+                <div key="story" className="flex flex-col">
+                  <CustomerStoryCard
+                    quote={story.quote}
+                    author={story.author}
+                    role={story.role}
+                    avatarSrc={product.storyAvatarSrc}
+                    color={product.color}
+                  />
+                </div>
+              );
+
+              return (
+                <div key={product.slug} className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+                  {isEven ? [productCard, storyCard] : [storyCard, productCard]}
+                </div>
+              );
+            })}
           </div>
         </div>
       </main>

@@ -137,9 +137,19 @@
     "advisor": "Advisor Agent",
     "advisorDesc": "Conversational AI for training, policies, product support. Guideline about onboarding, policies, and much more.",
     "advisorFeatures": ["Internal Q&A Bot", "Policy Awareness", "Onboarding Support", "Product Help 24/7"],
+    "advisorStory": {
+      "quote": "We cut employee onboarding from 3 weeks to just 3 days. Every FAQ is handled automatically — HR now focuses on what really matters.",
+      "author": "Nguyễn Đức Thắng",
+      "role": "Head of Support at HelpDesk"
+    },
     "social": "Social Intelligent",
     "socialDesc": "Listen, analyze, trend, publish. AI-powered tools for sellers, businesses, and KOLs to understand feedback from users and fans.",
-    "socialFeatures": ["Social Listening", "Sentiment Analysis", "Trend Detection", "Publish & Schedule"]
+    "socialFeatures": ["Social Listening", "Sentiment Analysis", "Trend Detection", "Publish & Schedule"],
+    "socialStory": {
+      "quote": "We spotted a viral trend 3 days before our competitors. Social Intelligent gave us the edge to act first and triple our engagement rate.",
+      "author": "Lê Ngọc Hà",
+      "role": "Product Director at DevCorp"
+    }
   },
   "social": {
     "subtitle": "Listen, analyze, and publish — AI tools for sellers, businesses, and KOLs.",
