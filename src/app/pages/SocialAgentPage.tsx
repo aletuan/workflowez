@@ -156,10 +156,8 @@ export function SocialAgentPage() {
 
               </div>
 
-              {/* Floating stat badge — persistent, gently bobs, text updates in-place */}
-              <motion.div
-                animate={reducedMotion ? { y: 0 } : { y: [-6, 6, -6] }}
-                transition={reducedMotion ? { duration: 0 } : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              {/* Floating stat badge — persistent, text updates in-place */}
+              <div
                 className="absolute -bottom-6 -left-6 bg-white p-3.5 rounded-2xl shadow-xl shadow-cyan-500/10 border border-cyan-100 hidden md:flex items-center gap-3"
               >
                 <div className="w-9 h-9 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600">
@@ -169,7 +167,7 @@ export function SocialAgentPage() {
                   <p className="text-sm font-bold text-gray-900">{current.badge.value}</p>
                   <p className="text-xs text-cyan-600 font-medium">{current.badge.delta}</p>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </div>
 

@@ -1,29 +1,34 @@
 # Workflowez
 
-**Customer-first AI automation for teams that move fast.**
+**AI workflow automation for teams that move fast.**
 
 Workflowez empowers small and mid-size businesses to streamline operations, reduce costs, and deliver better customer experiences—without writing code. Build, deploy, and scale automation workflows powered by AI.
+
+Live site: [workflowez.com](https://workflowez.com)
+
+---
+
+## Products
+
+| Product | Status | Route |
+|---------|--------|-------|
+| **AI Advisor** | Available | `/products/advisor` |
+| **Social Intelligent** | Coming Soon | `/products/social` |
+
+### AI Advisor
+Conversational AI assistant for customer support, sales, and internal knowledge base. Features a live chat demo powered by an n8n webhook backend.
+
+### Social Intelligent
+AI-powered social media monitoring and publishing. Includes dashboard, active listening, and analytics screens (carousel demo).
 
 ---
 
 ## Why Workflowez
 
-- **Put customer value first** — We focus on delivering tangible business outcomes through intelligent automation, not technology for its own sake.
-- **Built for SMBs** — Integrate with 500+ tools (Slack, Salesforce, HubSpot, Notion) and automate workflows in minutes, not months.
-- **No-code, high-impact** — Visual drag-and-drop builder. Connect GPT-4, Claude, and other AI models directly into your business logic.
-- **Enterprise-grade trust** — SOC2 Type II certified. Your data is encrypted and secure.
-
----
-
-## Product highlights
-
-| Capability | Value |
-|------------|-------|
-| **Visual workflow builder** | Drag and drop to create complex automation flows. No coding required. |
-| **AI integration** | Connect GPT-4, Claude, and other models into your workflows. |
-| **500+ integrations** | Connect Slack, Salesforce, HubSpot, Notion, and more in a few clicks. |
-| **Instant triggers** | React to emails, form submissions, and API events in real time. |
-| **Advanced analytics** | Track performance, ROI, and execution history with detailed dashboards. |
+- **Put customer value first** — Deliver tangible business outcomes through intelligent automation.
+- **Built for SMBs** — Integrate with 500+ tools (Slack, Salesforce, HubSpot, Notion) in minutes.
+- **No-code, high-impact** — Visual drag-and-drop builder with GPT-4, Claude, and other AI models.
+- **Enterprise-grade trust** — SOC2 Type II certified. Data encrypted and secure.
 
 ---
 
@@ -41,22 +46,30 @@ Workflowez empowers small and mid-size businesses to streamline operations, redu
 
 ```bash
 npm install
-npm run dev
+npm run dev       # http://localhost:5173
+npm run build     # Production build
 ```
-
-The development server runs at `http://localhost:5173`. Use `npm run build` for a production build.
 
 ---
 
 ## Tech stack
 
 - **React 18 + TypeScript** — Component framework
-- **Vite 6** — Build tool
-- **Tailwind CSS v4** — Styling
-- **Radix UI / shadcn** — Accessible UI primitives
-- **Motion** — Animations
+- **Vite 6** — Build tool; path alias `@` → `./src`
+- **Tailwind CSS v4** — Utility-first styling (no PostCSS config needed)
+- **Radix UI / shadcn/ui** — Accessible UI primitives
+- **motion/react (Framer Motion)** — Used selectively (Social product carousel only)
+- **React Router** — Client-side routing
 
-The landing page supports **English** and **Vietnamese** (vi/en).
+Supports **English** and **Vietnamese** (en/vi) via `LanguageContext`.
+
+---
+
+## Deployment
+
+Deployed to **GitHub Pages** from the `main` branch. `index.html` is copied to `404.html` at build time to support SPA routing (direct URL access and page refresh).
+
+Chat integration uses an **n8n webhook** (configurable via `VITE_N8N_CHAT_URL` env var, falls back to a default URL when not set).
 
 ---
 

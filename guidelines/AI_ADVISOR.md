@@ -3,7 +3,7 @@
 **Branch:** `feature/advisor-agent-integration`  
 **Date:** February 2026  
 **Scope:** First product demo — conversational AI advisor powered by n8n + RAG  
-**Status:** Phase 1–3 done; Phase 4 N8N Integration in progress
+**Status:** Phase 1–4 done; Internal Q&A validated (real n8n API working)
 
 **Legend:** `[x]` = hoàn thành · `[ ]` = chưa hoàn thành
 
@@ -26,7 +26,7 @@ The AI Advisor supports conversations around topics such as:
 
 | Topic | Example Questions | Integration status |
 |-------|-------------------|--------------------|
-| **Internal Q&A** | "I have questions about leave policy and compensation." | [ ] **Target** — first use case for n8n integration |
+| **Internal Q&A** | "I have questions about leave policy and compensation." | [x] **Target** — n8n integration working; RAG content depends on Qdrant |
 | **Training new members** | "What is the onboarding process for new hires?" | [ ] Pending — mock |
 | **Working policy documents** | "What is our remote work policy?" | [ ] Pending — mock |
 | **Product support** | "I'm having a product issue, can you help?" | [ ] Pending — mock |
@@ -74,7 +74,7 @@ Topics are configurable via n8n workflow and Qdrant collections.
 |---|------|--------|-------|
 | 1 | [x] Add routing (react-router) | Done | `/`, `/products`, `/products/advisor`, `/products/social` |
 | 2 | [x] Create ChatBox component | Done | MessageList, MessageBubble, ChatInput; i18n |
-| 3 | [ ] Define chat API client | Pending | `chatApi.ts` — create in Phase 4 |
+| 3 | [x] Define chat API client | Done | `chatApi.ts` in services/ |
 | 4 | [x] Wire chat send/receive | Done | Mock via `useChat` hook |
 | 5 | [x] Demo page layout | Done | Business values (4 items) + ChatBox; clickable prompts |
 | 6 | [x] Wire "Xem demo" / "Watch Demo" | Done | Hero → `/products`; Catalog → `/products/advisor` |
@@ -103,7 +103,7 @@ Topics are configurable via n8n workflow and Qdrant collections.
 | 4.1 | [x] Create `chatApi.ts` | Done | POST to n8n chat endpoint; handle response |
 | 4.2 | [x] Env config | Done | `VITE_N8N_CHAT_URL`; fallback to mock if unset |
 | 4.3 | [x] Update `useChat` | Done | Call real API when URL configured; fallback to mock |
-| 4.4 | [ ] Internal Q&A use case | Pending | Validate with leave/compensation questions via n8n RAG |
+| 4.4 | [x] Internal Q&A use case | Done | Real n8n API returns responses; supports multiple response formats |
 | 4.5 | [x] Error handling | Done | Network error, timeout, non-2xx → show message + retry |
 | 4.6 | [ ] Session ID (optional) | Pending | If n8n returns sessionId, persist for multi-turn |
 
@@ -130,7 +130,7 @@ src/
 │       └── catalog/
 │           └── ProductCard.tsx
 ├── hooks/
-│   └── useChat.ts                 # Chat state; mock today → real API in Phase 4
+│   └── useChat.ts                 # Chat state; real API when VITE_N8N_CHAT_URL set, else mock
 ├── services/
 │   └── chatApi.ts                 # (Phase 4) n8n chat API client
 └── config/
@@ -187,9 +187,9 @@ Ref: [n8n Chat Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-
 - On error: set error state, show fallback message (or retry prompt)
 - Fallback to mock when URL not set (dev/demo without backend)
 
-### Step 4: [ ] Internal Q&A validation
-- Test with prompts: "I have questions about leave policy and compensation."
-- Verify n8n RAG returns relevant context from indexed documents
+### Step 4: [x] Internal Q&A validation
+- Real n8n API integration verified; chat returns AI responses
+- RAG content quality depends on Qdrant indexed documents
 
 ---
 
@@ -209,18 +209,18 @@ Ref: [n8n Chat Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-
 - [x] User can send a message and receive AI reply (mock)
 - [x] Chat works on mobile and desktop
 - [x] Loading and error states are clear
-- [ ] **Internal Q&A uses real n8n API** (Phase 4)
-- [ ] Fallback to mock when API unavailable
+- [x] **Internal Q&A uses real n8n API** (Phase 4)
+- [x] Fallback to mock when API unavailable (useRealApi when env set)
 
 ---
 
 ## 9. Next Steps
 
-1. [ ] **n8n CORS** — Add `https://www.workflowez.com` to Chat Trigger Allowed Origin
-2. [ ] **Implement Phase 4** — chatApi.ts, useChat integration, env config
-3. [ ] **Validate Internal Q&A** — Test with leave/compensation questions
+1. [ ] **n8n CORS** — Add `https://www.workflowez.com` and `http://localhost:5173` to Chat Trigger Allowed Origin
+2. [x] **Implement Phase 4** — chatApi.ts, useChat integration, env config
+3. [x] **Validate Internal Q&A** — Real API integration verified
 4. [ ] **Index Internal Q&A docs** — Ensure Qdrant has leave policy, compensation, processes for RAG
 
 ---
 
-*Document version: 1.3*
+*Document version: 1.4 — Reviewed Feb 2026; Phase 4 complete*

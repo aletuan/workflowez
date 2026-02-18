@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Sparkles } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { PRODUCTS } from "../../config/products";
@@ -20,12 +19,7 @@ export function ProductCatalogPage() {
           <div className="absolute top-1/2 left-1/2 w-[300px] h-[200px] md:w-[600px] md:h-[300px] bg-[var(--brand-light)]/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
           {/* Hero text */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative text-center mb-12 lg:mb-16"
-          >
+          <div className="relative text-center mb-12 lg:mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--brand-light)] text-[var(--brand-dark)] text-xs font-bold uppercase tracking-widest mb-6">
               <Sparkles className="w-3.5 h-3.5" />
               Our Products
@@ -41,7 +35,7 @@ export function ProductCatalogPage() {
             <p className="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
               {t.catalog.subtitle}
             </p>
-          </motion.div>
+          </div>
 
           {/* Product grid */}
           <div className="relative grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
