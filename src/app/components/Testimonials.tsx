@@ -1,7 +1,5 @@
-import { motion } from "motion/react";
 import { Star } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 const avatarImages = ["/images/avatar-pt.jpg", "/images/avatar-lh.jpg", "/images/avatar-nt.jpg"];
 const authors = ["Phạm Minh Tuấn", "Lê Ngọc Hà", "Nguyễn Đức Thắng"];
@@ -38,14 +36,10 @@ function StarRating({ rating, id }: { rating: number; id: string }) {
 
 export function Testimonials() {
   const { t } = useLanguage();
-  const reducedMotion = useReducedMotion();
 
   return (
     <section id="testimonials" className="py-10 md:py-16 bg-white relative">
-       {/* Background Decoration */}
-       <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-yellow-100/40 rounded-full blur-[80px] translate-x-1/2 -translate-y-1/2"></div>
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-20">
           <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">{t.testimonials.title}</h2>
           <p className="text-xl text-gray-500 max-w-2xl mx-auto">
@@ -55,13 +49,9 @@ export function Testimonials() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {t.testimonials.items.map((item: any, i: number) => (
-            <motion.div
+            <div
               key={item.id}
-              initial={reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={reducedMotion ? { duration: 0 } : { delay: i * 0.1 }}
-              className="bg-gray-50 p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:shadow-gray-200/50 transition-[background-color,box-shadow,border-color] duration-300 border border-transparent hover:border-gray-100 group"
+              className="bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100"
             >
               <div className="mb-8">
                 <StarRating rating={ratings[i]} id={item.id} />
@@ -78,7 +68,7 @@ export function Testimonials() {
                   <div className="text-sm text-gray-500 font-medium">{item.role}</div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

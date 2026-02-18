@@ -18,7 +18,7 @@ export function Pricing() {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
           {/* Starter Plan */}
-          <div className="bg-white/70 backdrop-blur-md p-8 rounded-[var(--section-radius)] border border-gray-100 hover:border-[var(--brand)]/30 transition-colors">
+          <div className="bg-white/70 backdrop-blur-md p-8 rounded-[var(--section-radius)] border border-gray-100 hover:border-[var(--brand)]/30">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">{t.pricing.starter.title}</h3>
             <div className="flex items-baseline gap-1 mb-6 flex-wrap min-w-0">
               <span className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">{t.pricing.starter.price}</span>
@@ -43,7 +43,7 @@ export function Pricing() {
           {/* Pro Plan */}
           <div className="relative bg-gray-900 p-10 rounded-[var(--section-radius)] shadow-2xl shadow-[var(--brand)]/20 scale-105 z-10 text-white overflow-hidden group">
             {/* Gradient Shine */}
-            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--brand)]/30 rounded-full blur-[var(--blur-sm)] -translate-y-1/2 translate-x-1/2 group-hover:bg-[var(--brand)]/50 transition-colors duration-500"></div>
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--brand)]/30 rounded-full blur-[var(--blur-sm)] -translate-y-1/2 translate-x-1/2 group-hover:bg-[var(--brand)]/50"></div>
 
             <div className="absolute top-8 right-8">
               <span className="bg-[var(--brand)] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-lg shadow-[var(--brand)]/40">
@@ -72,7 +72,7 @@ export function Pricing() {
           </div>
 
           {/* Business Plan */}
-          <div className="bg-white/70 backdrop-blur-md p-8 rounded-[var(--section-radius)] border border-gray-100 hover:border-[var(--brand)]/30 transition-colors">
+          <div className="bg-white/70 backdrop-blur-md p-8 rounded-[var(--section-radius)] border border-gray-100 hover:border-[var(--brand)]/30">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">{t.pricing.business.title}</h3>
             <div className="flex items-baseline gap-1 mb-6 flex-wrap min-w-0">
               <span className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">{t.pricing.business.price}</span>
