@@ -13,9 +13,9 @@ export function LandingPage() {
       <Header />
       <main className="md:pt-16 overflow-x-hidden">
         <Hero />
+        <Testimonials />
         <Features />
         <Benefits />
-        <Testimonials />
         <Pricing />
         <CTA />
       </main>
