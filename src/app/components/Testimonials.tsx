@@ -61,7 +61,7 @@ export function Testimonials() {
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={reducedMotion ? { duration: 0 } : { delay: i * 0.1 }}
-              className="bg-gray-50 p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 border border-transparent hover:border-gray-100 group"
+              className="bg-gray-50 p-10 rounded-[2.5rem] hover:bg-white hover:shadow-2xl hover:shadow-gray-200/50 transition-[background-color,box-shadow,border-color] duration-300 border border-transparent hover:border-gray-100 group"
             >
               <div className="mb-8">
                 <StarRating rating={ratings[i]} id={item.id} />
