@@ -16,14 +16,14 @@ export function Benefits() {
             whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={reducedMotion ? { duration: 0 } : undefined}
-            className="lg:w-1/2 relative"
+            className="lg:w-2/5 relative"
           >
             {/* Decorative background element */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[var(--brand-light)]/50 rounded-full blur-[var(--blur-sm)] -z-10"></div>
 
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100 group">
               <ImageWithFallback 
-                src="https://images.unsplash.com/photo-1559136560-16ad036d85d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBzdGFydHVwJTIwdGVhbSUyMG9mZmljZXxlbnwxfHx8fDE3NzEyNjUxODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" 
+                src="/images/team-office.jpg" 
                 alt="Team working together" 
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -32,14 +32,14 @@ export function Benefits() {
                   <p className="text-2xl font-bold mb-3 italic">"{t.benefits.quote}"</p>
                   <div className="flex items-center gap-3">
                     <div className="h-1 w-8 bg-[var(--brand)] rounded-full"></div>
-                    <p className="opacity-90 font-medium">Sarah Jenks, CEO at TechStart</p>
+                    <p className="opacity-90 font-medium">Nguyễn Minh Khoa, CEO tại VinaTech</p>
                   </div>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          <div className="lg:w-1/2">
+          <div className="lg:w-3/5">
             <span className="text-[var(--brand)] font-bold tracking-wider text-sm uppercase mb-2 block">{t.benefits.eyebrow}</span>
             <h2 className="text-4xl font-extrabold text-gray-900 mb-8">{t.benefits.title}</h2>
             <div className="space-y-8">
