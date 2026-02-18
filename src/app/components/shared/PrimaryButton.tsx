@@ -20,7 +20,7 @@ const variants = {
 };
 
 const baseClasses = (variant: "default" | "light" | "brand") =>
-  `px-8 py-4 font-bold rounded-2xl hover:scale-105 transition-all shadow-xl flex items-center justify-center gap-2 group inline-flex ${variants[variant]}`;
+  `px-8 py-4 font-bold rounded-2xl shadow-xl flex items-center justify-center gap-2 group inline-flex ${variants[variant]}`;
 
 export function PrimaryButton({
   children,
@@ -36,7 +36,7 @@ export function PrimaryButton({
     return (
       <a href={href} className={classes}>
         {children}
-        {icon && <span className="group-hover:translate-x-1 transition-transform">{icon}</span>}
+        {icon && <span>{icon}</span>}
       </a>
     );
   }
@@ -44,7 +44,7 @@ export function PrimaryButton({
   return (
     <button className={classes} {...props}>
       {children}
-      {icon && <span className="group-hover:translate-x-1 transition-transform">{icon}</span>}
+      {icon && <span>{icon}</span>}
     </button>
   );
 }

@@ -21,7 +21,7 @@ const variants = {
 };
 
 const baseClasses = (variant: "default" | "outline") =>
-  `px-8 py-4 font-bold rounded-2xl transition-all flex items-center justify-center gap-2 inline-flex ${variants[variant]}`;
+  `px-8 py-4 font-bold rounded-2xl flex items-center justify-center gap-2 inline-flex ${variants[variant]}`;
 
 export function SecondaryButton({
   children,
