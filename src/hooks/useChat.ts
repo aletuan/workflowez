@@ -1,4 +1,6 @@
 import { useState, useCallback } from "react";
+import { useRealApi } from "../config/chat";
+import { sendMessage as apiSendMessage, type ChatApiError } from "../services/chatApi";
 
 export interface ChatMessage {
   id: string;
@@ -7,10 +9,39 @@ export interface ChatMessage {
   createdAt: Date;
 }
 
-/** Simulates API delay (ms) */
+/** Simulates API delay (ms) when using mock */
 const MOCK_DELAY = 800;
 
-export function useChat(initialMessage?: string, mockResponses?: string[]) {
+export interface UseChatOptions {
+  initialMessage?: string;
+  mockResponses?: string[];
+  errorFallback?: string;
+}
+
+export function useChat(
+  initialMessage?: string,
+  mockResponses?: string[],
+  errorFallback?: string
+): { messages: ChatMessage[]; isLoading: boolean; sendMessage: (content: string, reset?: boolean) => Promise<void> };
+export function useChat(options: UseChatOptions): { messages: ChatMessage[]; isLoading: boolean; sendMessage: (content: string, reset?: boolean) => Promise<void> };
+export function useChat(
+  initialMessageOrOptions?: string | UseChatOptions,
+  mockResponses?: string[],
+  errorFallback?: string
+) {
+  const { initialMessage, mockResponses: mockPool, errorFallback: fallback } =
+    typeof initialMessageOrOptions === "object"
+      ? {
+          initialMessage: initialMessageOrOptions.initialMessage,
+          mockResponses: initialMessageOrOptions.mockResponses,
+          errorFallback: initialMessageOrOptions.errorFallback,
+        }
+      : {
+          initialMessage: initialMessageOrOptions,
+          mockResponses: mockResponses,
+          errorFallback: errorFallback,
+        };
+
   const welcomeMessage: ChatMessage | undefined = initialMessage
     ? { id: "welcome", role: "assistant", content: initialMessage, createdAt: new Date() }
     : undefined;
@@ -20,33 +51,70 @@ export function useChat(initialMessage?: string, mockResponses?: string[]) {
   );
   const [isLoading, setIsLoading] = useState(false);
 
-  const sendMessage = useCallback(async (content: string, reset = false) => {
-    if (!content.trim()) return;
+  const defaultErrorFallback = "Sorry, something went wrong. Please try again.";
 
-    const userMessage: ChatMessage = {
-      id: `user-${Date.now()}`,
-      role: "user",
-      content: content.trim(),
-      createdAt: new Date(),
-    };
+  const sendMessage = useCallback(
+    async (content: string, reset = false) => {
+      if (!content.trim()) return;
 
-    // reset = true: clear to welcome message then add new user message
-    setMessages(reset && welcomeMessage ? [welcomeMessage, userMessage] : (prev) => [...prev, userMessage]);
-    setIsLoading(true);
+      const userMessage: ChatMessage = {
+        id: `user-${Date.now()}`,
+        role: "user",
+        content: content.trim(),
+        createdAt: new Date(),
+      };
 
-    await new Promise((resolve) => setTimeout(resolve, MOCK_DELAY));
+      const welcome = initialMessage
+        ? { id: "welcome", role: "assistant" as const, content: initialMessage, createdAt: new Date() }
+        : undefined;
 
-    const pool = mockResponses?.length ? mockResponses : ["..."];
-    const assistantMessage: ChatMessage = {
-      id: `assistant-${Date.now()}`,
-      role: "assistant",
-      content: pool[Math.floor(Math.random() * pool.length)],
-      createdAt: new Date(),
-    };
+      setMessages(
+        reset && welcome
+          ? [welcome, userMessage]
+          : (prev) => [...prev, userMessage]
+      );
+      setIsLoading(true);
 
-    setMessages((prev) => [...prev, assistantMessage]);
-    setIsLoading(false);
-  }, []);
+      if (useRealApi) {
+        try {
+          const { output } = await apiSendMessage(content.trim());
+          const assistantMessage: ChatMessage = {
+            id: `assistant-${Date.now()}`,
+            role: "assistant",
+            content: output,
+            createdAt: new Date(),
+          };
+          setMessages((prev) => [...prev, assistantMessage]);
+        } catch (err) {
+          const msg =
+            (err as ChatApiError).message ||
+            fallback ||
+            defaultErrorFallback;
+          const errorMessage: ChatMessage = {
+            id: `assistant-${Date.now()}`,
+            role: "assistant",
+            content: msg,
+            createdAt: new Date(),
+          };
+          setMessages((prev) => [...prev, errorMessage]);
+        } finally {
+          setIsLoading(false);
+        }
+      } else {
+        await new Promise((resolve) => setTimeout(resolve, MOCK_DELAY));
+        const pool = mockPool?.length ? mockPool : ["..."];
+        const assistantMessage: ChatMessage = {
+          id: `assistant-${Date.now()}`,
+          role: "assistant",
+          content: pool[Math.floor(Math.random() * pool.length)],
+          createdAt: new Date(),
+        };
+        setMessages((prev) => [...prev, assistantMessage]);
+        setIsLoading(false);
+      }
+    },
+    [initialMessage, mockPool, fallback]
+  );
 
   return { messages, isLoading, sendMessage };
 }
