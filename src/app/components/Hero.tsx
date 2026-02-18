@@ -15,7 +15,7 @@ export function Hero() {
     // Fix #2: pt-20 → pt-12 on mobile
     <section className="relative pt-12 pb-12 lg:pt-16 lg:pb-24 overflow-hidden">
       {/* Dynamic Background Blobs */}
-      <div className="absolute top-0 right-0 w-[280px] h-[280px] md:w-[600px] md:h-[600px] bg-purple-200/40 rounded-full blur-[80px] md:blur-[100px] -translate-y-1/2 translate-x-1/2 animate-pulse"></div>
+      <div className="absolute top-0 right-0 w-[280px] h-[280px] md:w-[600px] md:h-[600px] bg-purple-200/40 rounded-full blur-[80px] md:blur-[100px] -translate-y-1/2 translate-x-1/2 md:animate-pulse"></div>
       <div className="absolute bottom-0 left-0 w-[240px] h-[240px] md:w-[500px] md:h-[500px] bg-blue-200/40 rounded-full blur-[80px] md:blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -60,7 +60,7 @@ export function Hero() {
             className="relative lg:col-start-2 lg:row-start-1 lg:row-span-2"
           >
             {/* Abstract Decorative Elements behind image */}
-            <div className="absolute -top-10 -right-10 w-24 h-24 bg-yellow-300 rounded-3xl rotate-12 blur-xl opacity-60 animate-pulse"></div>
+            <div className="absolute -top-10 -right-10 w-24 h-24 bg-yellow-300 rounded-3xl rotate-12 blur-xl opacity-60 hidden md:block md:animate-pulse"></div>
             <div className="absolute -bottom-5 -left-5 w-32 h-32 bg-cyan-300 rounded-full blur-xl opacity-60"></div>
 
             <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl ring-8 ring-white/50 backdrop-blur-xl bg-white/40">

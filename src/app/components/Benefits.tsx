@@ -8,7 +8,7 @@ export function Benefits() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <section id="benefits" className="py-10 md:py-16 relative overflow-hidden bg-white/50 backdrop-blur-sm">
+    <section id="benefits" className="py-10 md:py-16 relative overflow-hidden bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           <motion.div 
@@ -52,7 +52,7 @@ export function Benefits() {
                   className="flex gap-5 group" 
                   key={item.id}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[var(--brand-light)] border border-[var(--brand)]/20 flex items-center justify-center text-[var(--brand)] font-bold text-xl shadow-sm group-hover:bg-[var(--brand)] group-hover:text-white transition-all duration-300">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[var(--brand-light)] border border-[var(--brand)]/20 flex items-center justify-center text-[var(--brand)] font-bold text-xl shadow-sm group-hover:bg-[var(--brand)] group-hover:text-white transition-colors duration-300">
                     {index + 1}
                   </div>
                   <div>

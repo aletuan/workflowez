@@ -35,7 +35,7 @@ export function Features() {
       className="relative overflow-hidden"
     >
       {/* Background Mesh */}
-      <div className="absolute top-1/2 left-0 w-[800px] h-[800px] bg-[var(--brand-light)]/30 rounded-full blur-[var(--blur-lg)] -translate-y-1/2 -translate-x-1/2 -z-10"></div>
+      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-[var(--brand-light)]/30 rounded-full blur-[var(--blur-lg)] -translate-y-1/2 -translate-x-1/2 -z-10 hidden md:block"></div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {t.features.items.map((feature: any, index: number) => (
@@ -45,7 +45,7 @@ export function Features() {
               whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={reducedMotion ? { duration: 0 } : { delay: index * 0.1 }}
-              className="relative bg-white/80 backdrop-blur-lg p-5 md:p-8 rounded-[var(--card-radius)] border border-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-[var(--brand)]/20 hover:-translate-y-1 transition-all duration-300 group overflow-hidden cursor-pointer"
+              className="relative bg-white p-5 md:p-8 rounded-[var(--card-radius)] border border-gray-100 shadow-lg shadow-gray-200/50 hover:shadow-xl hover:shadow-[var(--brand)]/10 hover:-translate-y-1 transition-[transform,box-shadow] duration-300 group overflow-hidden cursor-pointer"
             >
               {/* Hover Gradient Background */}
               <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[var(--brand-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
