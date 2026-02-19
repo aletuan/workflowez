@@ -26,6 +26,8 @@ jobs:
           cache: "npm"
 
       - name: Install & Build
+        env:
+          VITE_N8N_CHAT_URL: ${{ secrets.VITE_N8N_CHAT_URL }}
         run: |
           npm ci
           npm run build
