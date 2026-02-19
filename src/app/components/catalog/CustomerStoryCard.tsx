@@ -23,7 +23,7 @@ export function CustomerStoryCard({
   return (
     <div className="flex flex-col justify-center h-full px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
       {/* Opening quote mark */}
-      <span className={`block text-6xl leading-none font-black ${c.openQuote} mb-4 select-none`} style={{ fontFamily: "Georgia, serif" }}>
+      <span className={`block text-5xl sm:text-6xl leading-none font-black ${c.openQuote} mb-4 select-none`} style={{ fontFamily: "Georgia, serif" }}>
         &ldquo;
       </span>
 
