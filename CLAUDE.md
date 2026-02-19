@@ -115,6 +115,9 @@ Place inside a `relative` container. Swap color as needed. Do **not** add `anima
 
 ### Avoid / Known Issues
 
+- **Package manager**: Use **npm only** — do not use pnpm, yarn, or other package managers. pnpm's strict symlinking caused Vite to pre-bundle `react-dom@19` instead of `react-dom@18`, producing a blank screen with `Cannot read properties of undefined (reading 'S')`. The `overrides` field in `package.json` enforces React 18 across the entire dependency tree.
+- **React version mismatch**: This project uses **React 18**. Some dependencies (Radix, react-router v7, react-markdown) support both React 18 and 19. If you see a blank screen with errors in `react-dom_client.js`, check for React version conflicts: `node -e "console.log(require('./node_modules/react-dom/package.json').version)"`. Both `react` and `react-dom` must be `18.3.1`.
+- **Stale Vite dev servers**: Before starting `npm run dev`, kill any existing Vite processes: `lsof -ti:5173 | xargs kill 2>/dev/null`. Stale servers serve cached pre-bundled deps (`node_modules/.vite/deps/`) even after `npm install` fixes the underlying issue. If the Vite cache is suspect, delete `node_modules/.vite` and restart.
 - **Typography**: Do not add custom display/body fonts (e.g. Syne, DM Sans) to `theme.css` or `fonts.css`. Custom fonts caused broken rendering on desktop (especially `/products`). Use system fonts only (ui-sans-serif, system-ui via Tailwind default).
 - **Footer links**: Do not add `min-h-[44px]` or touch-target padding to footer links. Keep footer links as plain `hover:text-[var(--brand)]` — touch-target changes were reverted due to spacing concerns.
 - **Section spacing**: Page-level sections (ProductCatalogPage, DemoPage, SocialAgentPage) use `py-10 md:py-16` and `mb-10 md:mb-12`. Keep this convention when adding or modifying similar pages.

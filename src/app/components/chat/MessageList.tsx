@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import type { ChatMessage } from "../../../hooks/useChat";
 import { MessageBubble } from "./MessageBubble";
 import { useReducedMotion } from "../../../hooks/useReducedMotion";

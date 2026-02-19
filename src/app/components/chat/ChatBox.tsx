@@ -1,3 +1,4 @@
+import React from "react";
 import { MessageList } from "./MessageList";
 import { ChatInput } from "./ChatInput";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
