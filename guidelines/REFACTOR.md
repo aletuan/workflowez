@@ -22,9 +22,9 @@
 - [x] **4.2.3** Updates when media query `change` fires
 
 #### 4.3 LanguageContext
-- [ ] **4.3.1** `useLanguage` returns `t`, `language`, `setLanguage` when inside provider
-- [ ] **4.3.2** `setLanguage("en")` updates `t` to English translations
-- [ ] **4.3.3** `useLanguage` throws when used outside `LanguageProvider`
+- [x] **4.3.1** `useLanguage` returns `t`, `language`, `setLanguage` when inside provider
+- [x] **4.3.2** `setLanguage("en")` updates `t` to English translations
+- [x] **4.3.3** `useLanguage` throws when used outside `LanguageProvider`
 
 #### 4.4 useChat (mock mode — `useRealApi` false)
 - [ ] **4.4.1** Initial state: welcome message when `initialMessage` provided
