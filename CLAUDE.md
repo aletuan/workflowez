@@ -7,9 +7,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 npm run dev      # Start development server
 npm run build    # Production build
+npm run test     # Run tests (watch mode)
+npm run test:run # Run tests once
 ```
-
-No test or lint scripts are configured.
 
 ## Architecture
 

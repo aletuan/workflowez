@@ -11,8 +11,47 @@
 
 ### Phase 4 — Tests
 
-- [ ] **Unit tests** — hooks (useChat, useReducedMotion), context (LanguageContext)
-- [ ] **E2E tests** — main flows (landing, products, demo chat)
+#### 4.1 Test setup
+- [x] **4.1.1** Add Vitest + React Testing Library — `npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom`
+- [x] **4.1.2** Configure Vitest — `vitest.config.ts`, `setupTests.ts` with `@testing-library/jest-dom`
+- [x] **4.1.3** Add test script — `package.json`: `"test": "vitest"`, `"test:run": "vitest run"`
+
+#### 4.2 useReducedMotion
+- [x] **4.2.1** Returns `false` when `prefers-reduced-motion` is not set
+- [x] **4.2.2** Returns `true` when `prefers-reduced-motion: reduce` (mock `matchMedia`)
+- [x] **4.2.3** Updates when media query `change` fires
+
+#### 4.3 LanguageContext
+- [ ] **4.3.1** `useLanguage` returns `t`, `language`, `setLanguage` when inside provider
+- [ ] **4.3.2** `setLanguage("en")` updates `t` to English translations
+- [ ] **4.3.3** `useLanguage` throws when used outside `LanguageProvider`
+
+#### 4.4 useChat (mock mode — `useRealApi` false)
+- [ ] **4.4.1** Initial state: welcome message when `initialMessage` provided
+- [ ] **4.4.2** Initial state: empty messages when no `initialMessage`
+- [ ] **4.4.3** `sendMessage` adds user message to list
+- [ ] **4.4.4** `sendMessage` with `reset: true` resets to welcome + user message
+- [ ] **4.4.5** `sendMessage` sets `isLoading` true during mock delay
+- [ ] **4.4.6** Mock mode: adds assistant message from `mockResponses` pool after delay
+- [ ] **4.4.7** `sendMessage` with empty/whitespace content does nothing
+- [ ] **4.4.8** Welcome message updates when `initialMessage` changes (language switch)
+
+#### 4.5 useChat (real API mode — mock `chatApi.sendMessage`)
+- [ ] **4.5.1** Success: adds assistant message with API output
+- [ ] **4.5.2** Error: adds error fallback message
+- [ ] **4.5.3** Error: uses custom `errorFallback` when provided
+
+#### 4.6 chatApi (optional — extractOutput)
+- [ ] **4.6.1** Extracts `output` from n8n response shape
+- [ ] **4.6.2** Extracts from nested `data.output`, `json.output`
+- [ ] **4.6.3** Parses NDJSON streaming format
+
+#### 4.7 E2E tests (Playwright)
+- [ ] **4.7.1** Landing page loads, hero visible
+- [ ] **4.7.2** Products catalog loads, cards clickable
+- [ ] **4.7.3** Demo chat: send message, receive response (mock or real)
+
+**Order:** 4.1 → 4.2–4.6 (parallel) → 4.7
 
 ### Phase 5 — Mobile & Design (optional)
 
