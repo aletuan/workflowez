@@ -29,7 +29,7 @@ const sizeClasses = {
   sm: "px-5 py-2 text-sm",
 };
 
-const base = "font-bold rounded-2xl shadow-xl flex items-center justify-center gap-2 group inline-flex";
+const base = "font-bold rounded-2xl shadow-xl flex items-center justify-center gap-2 group inline-flex focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/40 focus-visible:ring-offset-2";
 
 export function PrimaryButton({
   children,

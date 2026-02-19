@@ -1,5 +1,8 @@
 {
   "header": {
+    "ariaMenuOpen": "Mở menu",
+    "ariaMenuClose": "Đóng menu",
+    "ariaLangSwitch": "Đổi ngôn ngữ",
     "features": "Tính năng",
     "benefits": "Lợi ích",
     "testimonials": "Khách hàng",
@@ -154,6 +157,12 @@
   "social": {
     "subtitle": "Lắng nghe, phân tích và xuất bản — Công cụ AI cho người bán, doanh nghiệp và KOL.",
     "whyTitle": "Tại sao dùng Social Intelligent?",
+    "tabs": {
+      "dashboard": "Dashboard",
+      "listening": "Lắng nghe",
+      "analytics": "Phân tích"
+    },
+    "ariaCarouselDot": "Xem slide",
     "dashboardAlt": "Dashboard Social Intelligent",
     "dashboardBadge": "Xem trước Dashboard",
     "comingSoon": "Sắp ra mắt",
@@ -170,7 +179,14 @@
     }
   },
   "footer": {
+    "brand": "Workflow EZ",
     "desc": "Trao quyền cho các doanh nghiệp vừa và nhỏ với quy trình tự động hóa dựa trên AI. Xây dựng, triển khai và mở rộng mà không cần viết mã.",
+    "social": {
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "facebook": "Facebook"
+    },
     "cols": {
       "product": "Sản phẩm",
       "resources": "Tài nguyên",

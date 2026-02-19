@@ -1,5 +1,8 @@
 {
   "header": {
+    "ariaMenuOpen": "Open menu",
+    "ariaMenuClose": "Close menu",
+    "ariaLangSwitch": "Switch language",
     "features": "Features",
     "benefits": "Benefits",
     "testimonials": "Testimonials",
@@ -154,6 +157,12 @@
   "social": {
     "subtitle": "Listen, analyze, and publish — AI tools for sellers, businesses, and KOLs.",
     "whyTitle": "Why Social Intelligent?",
+    "tabs": {
+      "dashboard": "Dashboard",
+      "listening": "Active Listening",
+      "analytics": "Analytics"
+    },
+    "ariaCarouselDot": "View slide",
     "dashboardAlt": "Social Intelligent Dashboard",
     "dashboardBadge": "Live Dashboard Preview",
     "comingSoon": "Coming Soon",
@@ -170,7 +179,14 @@
     }
   },
   "footer": {
+    "brand": "Workflow EZ",
     "desc": "Empowering SMBs with AI-driven automation workflows. Build, deploy, and scale without writing code.",
+    "social": {
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "facebook": "Facebook"
+    },
     "cols": {
       "product": "Product",
       "resources": "Resources",

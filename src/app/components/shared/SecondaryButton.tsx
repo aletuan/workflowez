@@ -21,7 +21,7 @@ const variants = {
 };
 
 const baseClasses = (variant: "default" | "outline") =>
-  `px-8 py-4 font-bold rounded-2xl flex items-center justify-center gap-2 inline-flex ${variants[variant]}`;
+  `px-8 py-4 font-bold rounded-2xl flex items-center justify-center gap-2 inline-flex focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/40 focus-visible:ring-offset-2 ${variants[variant]}`;
 
 export function SecondaryButton({
   children,

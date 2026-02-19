@@ -25,19 +25,19 @@ const SCREENS = [
   {
     src: "/images/social-dashboard.png",
     tabIcon: LayoutDashboard,
-    label: "Dashboard",
+    tabKey: "dashboard" as const,
     badge: { value: "2.4M Reach", delta: "+12.5% this week" },
   },
   {
     src: "/images/social-listening.png",
     tabIcon: Headphones,
-    label: "Active Listening",
+    tabKey: "listening" as const,
     badge: { value: "1,248 Mentions", delta: "+12% vs last week" },
   },
   {
     src: "/images/social-analytics.png",
     tabIcon: BarChart3,
-    label: "Analytics",
+    tabKey: "analytics" as const,
     badge: { value: "45.2K Impressions", delta: "Top LinkedIn post" },
   },
 ];
@@ -100,18 +100,20 @@ export function SocialAgentPage() {
             <div className="flex items-center gap-2 mb-4 relative z-10">
               {SCREENS.map((screen, i) => {
                 const TabIcon = screen.tabIcon;
+                const tabLabel = t.social.tabs[screen.tabKey];
                 return (
                   <button
                     key={i}
                     onClick={() => setActiveTab(i)}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                    aria-label={tabLabel}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600/50 focus-visible:ring-offset-2 ${
                       activeTab === i
                         ? "bg-cyan-600 text-white shadow-sm"
                         : "bg-gray-100 text-gray-500 hover:bg-cyan-50 hover:text-cyan-700"
                     }`}
                   >
-                    <TabIcon className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">{screen.label}</span>
+                    <TabIcon className="w-3.5 h-3.5" aria-hidden />
+                    <span className="hidden sm:inline">{tabLabel}</span>
                   </button>
                 );
               })}
@@ -122,11 +124,12 @@ export function SocialAgentPage() {
                   <button
                     key={i}
                     onClick={() => setActiveTab(i)}
-                    className="py-[19px] px-2 flex items-center justify-center cursor-pointer"
+                    aria-label={`${t.social.ariaCarouselDot} ${i + 1}`}
+                    className="py-[19px] px-2 flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-600/50 focus-visible:ring-offset-1 rounded"
                   >
                     <span className={`rounded-full transition-all duration-300 block ${
                       activeTab === i ? "w-4 h-1.5 bg-cyan-600" : "w-1.5 h-1.5 bg-gray-300 hover:bg-cyan-300"
-                    }`} />
+                    }`} aria-hidden />
                   </button>
                 ))}
               </div>
@@ -145,7 +148,7 @@ export function SocialAgentPage() {
                   <motion.img
                     key={activeTab}
                     src={current.src}
-                    alt={`${t.social.dashboardAlt} — ${current.label}`}
+                    alt={`${t.social.dashboardAlt} — ${t.social.tabs[SCREENS[activeTab].tabKey]}`}
                     initial={{ opacity: 0, x: 24 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -24 }}

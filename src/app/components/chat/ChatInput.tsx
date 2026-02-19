@@ -38,7 +38,7 @@ export function ChatInput({
       <button
         type="submit"
         disabled={disabled || !value.trim()}
-        className="px-5 py-3 bg-[var(--brand)] text-white font-semibold rounded-xl hover:bg-[var(--brand-dark)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+        className="px-5 py-3 bg-[var(--brand)] text-white font-semibold rounded-xl hover:bg-[var(--brand-dark)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/50 focus-visible:ring-offset-2"
         aria-label="Send message"
       >
         <Send className="w-4 h-4" />

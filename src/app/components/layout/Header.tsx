@@ -62,7 +62,7 @@ export function Header() {
                 <a
                   key={item.id}
                   href={item.id}
-                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[var(--brand)] hover:bg-[var(--brand-light)] rounded-lg"
+                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-[var(--brand)] hover:bg-[var(--brand-light)] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30 focus-visible:ring-offset-2"
                 >
                   {t.header[item.labelKey]}
                 </a>
@@ -71,8 +71,10 @@ export function Header() {
 
             <div className="flex items-center gap-3">
               <button
+                type="button"
                 onClick={toggleLanguage}
-                className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-gray-500 hover:text-[var(--brand)] bg-gray-100 hover:bg-[var(--brand-light)] rounded-lg"
+                aria-label={t.header.ariaLangSwitch}
+                className="flex items-center gap-1 px-3 py-1.5 text-xs font-bold text-gray-500 hover:text-[var(--brand)] bg-gray-100 hover:bg-[var(--brand-light)] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/50 focus-visible:ring-offset-2"
               >
                 <Globe className="w-3 h-3" />
                 {language === 'vi' ? 'EN' : 'VI'}
@@ -86,17 +88,21 @@ export function Header() {
           {/* Mobile Toggle */}
           <div className="flex items-center gap-3 md:hidden ml-auto">
             <button
+              type="button"
               onClick={toggleLanguage}
+              aria-label={t.header.ariaLangSwitch}
               style={{ WebkitTapHighlightColor: "transparent" }}
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center gap-1 px-3 text-xs font-bold text-gray-500 bg-gray-100 rounded-lg focus:outline-none"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center gap-1 px-3 text-xs font-bold text-gray-500 bg-gray-100 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/50 focus-visible:ring-offset-2"
             >
               <Globe className="w-3 h-3" />
               {language === 'vi' ? 'EN' : 'VI'}
             </button>
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? t.header.ariaMenuClose : t.header.ariaMenuOpen}
               style={{ WebkitTapHighlightColor: "transparent" }}
-              className="min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-600 focus:outline-none"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/50 focus-visible:ring-offset-2"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -114,7 +120,7 @@ export function Header() {
                 href={item.id}
                 onClick={() => setIsOpen(false)}
                 style={{ WebkitTapHighlightColor: "transparent" }}
-                className="flex items-center py-3 pl-5 pr-4 text-base font-medium text-gray-600 hover:text-[var(--brand)] focus:outline-none"
+                className="flex items-center py-3 pl-5 pr-4 text-base font-medium text-gray-600 hover:text-[var(--brand)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30 focus-visible:ring-inset"
               >
                 {t.header[item.labelKey]}
                 <ChevronRight className="w-4 h-4 ml-auto text-gray-300" />
