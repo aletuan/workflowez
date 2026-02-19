@@ -217,7 +217,9 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Bài viết, hướng dẫn và cập nhật từ đội ngũ Workflowez.",
+    "headline": "Hoạt động & Cập nhật",
+    "subtitle": "Thách thức lớn nhất của chúng tôi là luôn thiết kế và xây dựng sản phẩm giúp bạn vận hành doanh nghiệp hiệu quả hơn.",
+    "viewAll": "Tất cả",
     "readMore": "Đọc tiếp",
     "backToBlog": "Quay lại Blog",
     "publishedOn": "Đăng ngày"
