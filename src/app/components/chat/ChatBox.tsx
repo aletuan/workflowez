@@ -1,6 +1,7 @@
 import { MessageList } from "./MessageList";
 import { ChatInput } from "./ChatInput";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { useReducedMotion } from "../../../hooks/useReducedMotion";
 import type { ChatMessage } from "../../../hooks/useChat";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -16,13 +17,18 @@ interface ChatBoxProps {
 
 export function ChatBox({ messages, isLoading, onSend, quickPrompts }: ChatBoxProps) {
   const { t } = useLanguage();
+  const reducedMotion = useReducedMotion();
 
   return (
     <div className="flex flex-col h-[480px] bg-white rounded-[var(--section-radius)] border border-gray-100 shadow-xl overflow-hidden">
       {/* S8: simplified header — avatar + name only, no redundant card wrapper */}
       <div className="px-4 py-3 border-b border-gray-100 bg-[var(--brand-light)]/30 flex items-center gap-3">
         <div className="relative flex-shrink-0">
-          <div className="w-9 h-9 rounded-full overflow-hidden bg-[var(--brand-light)] ring-2 ring-white shadow-sm">
+          <div
+            className={`w-9 h-9 rounded-full overflow-hidden bg-[var(--brand-light)] ring-2 ring-white shadow-sm ${
+              isLoading && !reducedMotion ? "animate-pulse" : ""
+            }`}
+          >
             <ImageWithFallback src={AVATAR_URL} alt="Alex" className="w-full h-full object-cover" />
           </div>
           <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-green-500 border-2 border-white" />
