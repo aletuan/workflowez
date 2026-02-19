@@ -41,7 +41,7 @@ export function Pricing() {
           </div>
 
           {/* Pro Plan */}
-          <div className="relative bg-gray-900 p-10 rounded-[var(--section-radius)] shadow-2xl shadow-[var(--brand)]/20 scale-105 z-10 text-white overflow-hidden group">
+          <div className="relative bg-gray-900 p-10 rounded-[var(--section-radius)] shadow-2xl shadow-[var(--brand)]/20 md:scale-105 z-10 text-white overflow-hidden group">
             {/* Gradient Shine */}
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[var(--brand)]/30 rounded-full blur-[var(--blur-sm)] -translate-y-1/2 translate-x-1/2 group-hover:bg-[var(--brand)]/50"></div>
 

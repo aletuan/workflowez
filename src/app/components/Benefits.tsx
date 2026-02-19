@@ -29,7 +29,7 @@ export function Benefits() {
 
           <div className="lg:w-3/5">
             <span className="text-[var(--brand)] font-bold tracking-wider text-sm uppercase mb-2 block">{t.benefits.eyebrow}</span>
-            <h2 className="text-4xl font-extrabold text-gray-900 mb-8">{t.benefits.title}</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-8">{t.benefits.title}</h2>
             <div className="space-y-8">
               {t.benefits.items.map((item: any, index: number) => (
                 <div className="flex gap-5" key={item.id}>

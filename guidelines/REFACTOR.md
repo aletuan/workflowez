@@ -109,11 +109,97 @@ src/
 
 | # | Task | File(s) | Notes |
 |---|------|---------|-------|
-| 1 | Pricing Pro card: `scale-105` → `md:scale-105` | `src/app/components/Pricing.tsx` | Tránh horizontal overflow trên mobile |
-| 2 | Typography: thêm cặp font display + body | `src/styles/fonts.css`, `theme.css` | Tránh system font generic (Inter/Roboto) |
-| 3 | Hero/Product h1: responsive text | `Hero.tsx`, `ProductCatalogPage.tsx` | Thêm `text-3xl sm:text-4xl` cho mobile |
-| 4 | Section h2: responsive | `Section.tsx`, `Benefits.tsx` | `text-3xl sm:text-4xl md:text-5xl` |
+| 1 | Pricing Pro card: `scale-105` → `md:scale-105` | `src/app/components/Pricing.tsx` | ✓ [Chi tiết](#1-pricing-scale-105--mdscale-105--chi-tiết) |
+| 2 | Typography: font display + body | `src/styles/fonts.css`, `theme.css` | ✓ [Chi tiết](#2-typography-font-display--body--chi-tiết) |
+| 3 | Hero/Product h1 responsive | `Hero.tsx`, `ProductCatalogPage.tsx` | ✓ [Chi tiết](#3-heroproduct-h1-responsive--chi-tiết) |
+| 4 | Section h2: responsive | `Section.tsx`, `Benefits.tsx` | ✓ [Chi tiết](#4-section-h2-responsive--chi-tiết--done) |
 | 5 | Chuẩn hóa buttons | `Header.tsx`, `ProductCard.tsx`, `DemoPage`, `SocialAgentPage` | ✓ [xem chi tiết](#5-chuẩn-hóa-buttons) |
+
+### 1. Pricing scale-105 → md:scale-105 — Chi tiết
+
+**Vấn đề:** Pro Plan card có `scale-105` (phóng to 105%) áp dụng **mọi viewport**. Trên mobile, grid là single column (`grid-cols-1`), mỗi card full-width. Khi card bị scale 105%, nó vượt ra ngoài container → **horizontal overflow**, có thể gây scroll ngang hoặc cắt nội dung.
+
+**Ví dụ:** Viewport 375px, container ~343px. Card scale 105% → 343 × 1.05 ≈ 360px → vượt ~17px.
+
+**Giải pháp:** Thêm prefix `md:` — chỉ scale trên desktop (≥768px), khi grid là 3 cột và mỗi card có đủ không gian.
+
+```tsx
+// Trước (Pricing.tsx line 44)
+className="... scale-105 z-10 ..."
+
+// Sau
+className="... md:scale-105 z-10 ..."
+```
+
+---
+
+### 2. Typography: font display + body — Chi tiết
+
+**Vấn đề:** `fonts.css` rỗng → site dùng **system font stack** (Arial, Helvetica, sans-serif trên nhiều OS). Theo frontend-design skill: tránh generic fonts (Inter, Roboto, Arial) để giao diện không giống "AI slop".
+
+**Mục tiêu:** Thêm cặp font có tính phân biệt:
+- **Display font** (heading): nét đặc trưng, dùng cho h1, h2
+- **Body font** (paragraph): dễ đọc, dùng cho body, button, label
+
+**Cách làm:** Trong `fonts.css` thêm `@font-face` (Google Fonts hoặc self-host), rồi khai báo trong `theme.css` hoặc `tailwind.css`:
+
+```css
+/* fonts.css */
+@font-face {
+  font-family: 'DisplayFont';
+  src: url(...) or local(...);
+}
+@font-face {
+  font-family: 'BodyFont';
+  src: url(...) or local(...);
+}
+```
+
+Và áp dụng qua `--font-display`, `--font-body` trong theme, hoặc `font-display` / `font-sans` trong Tailwind config.
+
+**Gợi ý cặp font:** Clash Display + General Sans; Syne + Satoshi; Instrument Serif + DM Sans (chọn 1 cặp phù hợp brand).
+
+---
+
+### 3. Hero/Product h1 responsive — Chi tiết
+
+**Vấn đề:** 
+- **Hero:** `text-4xl sm:text-5xl lg:text-7xl` — trên mobile nhỏ (≤375px), `text-4xl` (36px) có thể vẫn lớn, chiếm nhiều dòng.
+- **ProductCatalogPage:** `text-4xl md:text-5xl lg:text-6xl` — không có breakpoint nhỏ hơn, mobile luôn 36px.
+
+**Mục tiêu:** Giảm kích thước h1 trên màn rất nhỏ để:
+- Tiết kiệm chiều dọc
+- Tránh line-break kỳ lạ
+- Cân đối với padding
+
+**Giải pháp:**
+
+| File | Hiện tại | Đề xuất |
+|------|----------|---------|
+| `Hero.tsx` | `text-4xl sm:text-5xl lg:text-7xl` | `text-3xl sm:text-4xl md:text-5xl lg:text-7xl` — thêm step nhỏ cho mobile |
+| `ProductCatalogPage.tsx` | `text-4xl md:text-5xl lg:text-6xl` | `text-3xl sm:text-4xl md:text-5xl lg:text-6xl` |
+
+→ Mobile nhỏ: 30px (text-3xl); sm: 36px; md: 48px; lg: 60–72px.
+
+---
+
+### 4. Section h2 responsive — Chi tiết ✓ Done
+
+**Vấn đề:** 
+- **Section.tsx** (dùng bởi Features): `text-4xl md:text-5xl` — mobile luôn 36px, không có breakpoint nhỏ hơn.
+- **Benefits.tsx**: `text-4xl` cố định — không responsive, luôn 36px mọi viewport.
+
+**Mục tiêu:** H2 section (Features, Benefits, v.v.) cần scale nhỏ hơn trên mobile để cân đối với h1 và tiết kiệm chiều dọc.
+
+**Giải pháp đã áp dụng:** `text-3xl sm:text-4xl md:text-5xl`
+
+| Breakpoint | Size | px |
+|------------|------|-----|
+| Mobile | text-3xl | 30px |
+| sm (≥640px) | text-4xl | 36px |
+| md (≥768px) | text-5xl | 48px |
+
+---
 
 ### Medium Priority
 
@@ -162,10 +248,10 @@ src/
 ### Checklist Format (copy để track)
 
 ```
-[ ] 1. Pricing scale-105 → md:scale-105
-[ ] 2. Typography: font display + body
-[ ] 3. Hero/Product h1 responsive
-[ ] 4. Section h2 responsive
+[x] 1. Pricing scale-105 → md:scale-105
+[x] 2. Typography: font display + body
+[x] 3. Hero/Product h1 responsive
+[x] 4. Section h2 responsive
 [x] 5. Chuẩn hóa buttons
 [x] 6. ProductCard padding mobile
 [x] 7. CustomerStoryCard padding mobile
