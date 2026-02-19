@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, Radio, Smile, TrendingUp, Send, LayoutDashboard, Headphones, BarChart3 } from "lucide-react";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
 import { PrimaryButton } from "../components/shared/PrimaryButton";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";

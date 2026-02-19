@@ -1,9 +1,9 @@
 import { Menu, X, ChevronRight, Globe, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { useLanguage } from "../context/LanguageContext";
-import { NAV_ITEMS } from "../../config/navigation";
-import { PrimaryButton } from "./shared/PrimaryButton";
+import { useLanguage } from "../../context/LanguageContext";
+import { NAV_ITEMS } from "../../../config/navigation";
+import { PrimaryButton } from "../shared/PrimaryButton";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);

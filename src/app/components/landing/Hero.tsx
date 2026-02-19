@@ -1,8 +1,8 @@
 import { ArrowRight, Play, CheckCircle2, Star, Sparkles } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { PrimaryButton } from "./shared/PrimaryButton";
-import { SecondaryButton } from "./shared/SecondaryButton";
+import { useLanguage } from "../../context/LanguageContext";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { PrimaryButton } from "../shared/PrimaryButton";
+import { SecondaryButton } from "../shared/SecondaryButton";
 
 export function Hero() {
   const { t } = useLanguage();

@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 const avatarImages = ["/images/avatar-pt.jpg", "/images/avatar-lh.jpg", "/images/avatar-nt.jpg"];
 const authors = ["Phạm Minh Tuấn", "Lê Ngọc Hà", "Nguyễn Đức Thắng"];
@@ -34,7 +34,7 @@ function StarRating({ rating, id }: { rating: number; id: string }) {
   );
 }
 
-import { Section } from "./shared/Section";
+import { Section } from "../shared/Section";
 
 export function Testimonials() {
   const { t } = useLanguage();

@@ -3,8 +3,8 @@ import { useLanguage } from "../context/LanguageContext";
 import { PRODUCTS } from "../../config/products";
 import { ProductCard } from "../components/catalog/ProductCard";
 import { CustomerStoryCard } from "../components/catalog/CustomerStoryCard";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
 
 export function ProductCatalogPage() {
   const { t } = useLanguage();

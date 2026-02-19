@@ -1,8 +1,8 @@
 import { Check } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
-import { PrimaryButton } from "./shared/PrimaryButton";
-import { SecondaryButton } from "./shared/SecondaryButton";
-import { Section } from "./shared/Section";
+import { useLanguage } from "../../context/LanguageContext";
+import { PrimaryButton } from "../shared/PrimaryButton";
+import { SecondaryButton } from "../shared/SecondaryButton";
+import { Section } from "../shared/Section";
 
 export function Pricing() {
   const { t } = useLanguage();

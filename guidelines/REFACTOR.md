@@ -16,10 +16,9 @@
 
 ### Phase 3
 
-1. [ ] **Routing** — react-router (routes: `/`, `/demo`, `/pricing`)
-2. [ ] **Lazy-load** — Hero, Features, Pricing with `React.lazy` + Suspense
-3. [ ] **Folder restructure** — `layout/`, `landing/`, shared components
-4. [ ] **Vite manual chunks** — vendor splitting
+- [x] **Lazy-load** — Page-level `React.lazy` + Suspense (Landing, ProductCatalog, Demo, SocialAgent)
+- [x] **Folder restructure** — `layout/` (Header, Footer), `landing/` (Hero, Features, Benefits, Testimonials, Pricing, CTA)
+- [x] **Vite manual chunks** — vendor-react, vendor-router, vendor-radix
 
 ### Phase 4 — Polish
 
@@ -53,7 +52,7 @@ Footer links: keep `hover:text-[var(--brand)]` only. Adding `min-h-[44px]` was r
 | Dimension | Issue | Action |
 |-----------|-------|--------|
 | **Reusability** | shadcn/ui mostly unused; Testimonials/Footer hardcoded | Extract to i18n; consider Section for more sections |
-| **Scalability** | No routing, no code splitting, flat structure | Phase 3 |
+| **Scalability** | — | ✓ Lazy-load + vendor chunks done |
 | **Resilience** | No loading states for future APIs | Add Suspense fallback when lazy-loading |
 | **A11y** | Missing aria-label on icon-only buttons | Phase 4 audit |
 
@@ -61,7 +60,7 @@ Footer links: keep `hover:text-[var(--brand)]` only. Adding `min-h-[44px]` was r
 
 ## 4. Reference
 
-### Target File Structure
+### Target File Structure (current)
 
 ```
 src/
@@ -70,6 +69,9 @@ src/
 │   ├── layout/       # Header, Footer
 │   ├── landing/      # Hero, Features, Benefits, Testimonials, Pricing, CTA
 │   ├── shared/       # Section, PrimaryButton, SecondaryButton, ImageWithFallback
+│   ├── catalog/      # ProductCard, CustomerStoryCard
+│   ├── chat/         # ChatBox, MessageList, ChatInput, etc.
+│   ├── figma/        # ImageWithFallback
 │   └── ui/           # shadcn (pruned)
 ├── context/LanguageContext.tsx
 ├── locales/vi.json, en.json
