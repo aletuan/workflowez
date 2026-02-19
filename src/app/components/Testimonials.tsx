@@ -51,12 +51,12 @@ export function Testimonials() {
           {t.testimonials.items.map((item: any, i: number) => (
             <div
               key={item.id}
-              className="bg-gray-50 p-10 rounded-[2.5rem] border border-gray-100"
+              className="bg-gray-50 p-6 sm:p-8 lg:p-10 rounded-[2.5rem] border border-gray-100"
             >
-              <div className="mb-8">
+              <div className="mb-6 sm:mb-8">
                 <StarRating rating={ratings[i]} id={item.id} />
               </div>
-              <p className="text-lg text-gray-700 mb-10 leading-relaxed font-medium">"{item.quote}"</p>
+              <p className="text-lg text-gray-700 mb-8 sm:mb-10 leading-relaxed font-medium">"{item.quote}"</p>
               <div className="flex items-center gap-4">
                 <img
                   src={avatarImages[i]}
