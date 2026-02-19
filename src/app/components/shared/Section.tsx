@@ -29,7 +29,7 @@ export function Section({
                 {eyebrow}
               </span>
             )}
-            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
               {title}
             </h2>
             {subtitle && (

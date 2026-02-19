@@ -26,7 +26,7 @@ export function ProductCatalogPage() {
               Our Products
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 mb-5 leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 mb-5 leading-[1.1]">
               {t.catalog.title.split(" ").slice(0, -2).join(" ")}{t.catalog.title.split(" ").length > 2 ? " " : ""}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--brand)] via-[var(--accent-gradient-via)] to-[var(--accent-gradient-to)]">
                 {t.catalog.title.split(" ").slice(-2).join(" ")}
