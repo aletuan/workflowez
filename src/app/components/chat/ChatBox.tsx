@@ -36,6 +36,7 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts }: ChatBoxPr
         messages={messages}
         isLoading={isLoading}
         emptyText={t.demo.chatEmpty}
+        typingIndicatorLabel={t.demo.chatTypingIndicator}
         quickPrompts={quickPrompts}
         onPromptClick={onSend}
       />

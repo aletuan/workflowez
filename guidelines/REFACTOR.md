@@ -3,86 +3,57 @@
 **Scope:** `website/` — Vite + React landing page  
 **Last updated:** February 2026
 
-`[ ]` = pending
+`[ ]` = pending · `[x]` = done
 
 ---
 
-## 1. Pending Items
+## 1. Pending
 
-### Phase 2 Optional
+### Phase 4 — Tests
 
-- [x] Use `Section` in Testimonials, Pricing (Features already uses it)
-- [x] Hero PrimaryButton — add `href="/#pricing"` for consistency
+- [ ] **Unit tests** — hooks (useChat, useReducedMotion), context (LanguageContext)
+- [ ] **E2E tests** — main flows (landing, products, demo chat)
 
-### Phase 3
-
-- [x] **Lazy-load** — Page-level `React.lazy` + Suspense (Landing, ProductCatalog, Demo, SocialAgent)
-- [x] **Folder restructure** — `layout/` (Header, Footer), `landing/` (Hero, Features, Benefits, Testimonials, Pricing, CTA)
-- [x] **Vite manual chunks** — vendor-react, vendor-router, vendor-radix
-
-### Phase 4 — Polish
-
-- [x] i18n Footer links — brand, social aria-labels
-- [x] A11y audit — aria-label (Header menu/lang, Footer social, SocialAgent tabs), focus-visible states
-- [ ] Tests — unit (hooks/context), E2E (main flows)
-
-### Phase 5 — Mobile & Design (remaining)
+### Phase 5 — Mobile & Design (optional)
 
 | # | Task | File(s) | Notes |
 |---|------|---------|-------|
-| 10 | Footer link touch targets | `Footer.tsx` | **Skip** — per CLAUDE.md Avoid section |
 | 11 | ChatBox height responsive | `chat/ChatBox.tsx` | `min-h-[320px] h-[50vh] max-h-[480px]` |
-| 12 | Social tab labels trên mobile | `SocialAgentPage.tsx` | Tooltip/aria-label hoặc label dưới icon |
 | 13 | Staggered reveal / scroll animation | Hero, Features, Testimonials | Motion nhẹ (fade-in, slide) khi scroll |
-| 15 | Color palette: cân nhắc đổi accent | `src/styles/theme.css` | Optional |
-| 16 | Background: grain texture | `theme.css` hoặc global | `opacity: 0.03` — optional |
+| 15 | Color palette: cân nhắc đổi accent | `theme.css` | Optional |
+| 16 | Background: grain texture | `theme.css` | `opacity: 0.03` — optional |
 | 17 | Hover states: tăng cường | CTA, ProductCard | Optional |
 
----
-
-## 2. Footer Touch Targets (item 10) — Deprecated
-
-**Status:** Reverted. Do **not** implement — see `CLAUDE.md` → Avoid / Known Issues.  
-Footer links: keep `hover:text-[var(--brand)]` only. Adding `min-h-[44px]` was reverted due to spacing concerns.
+**Skipped (see CLAUDE.md):** Item 10 Footer touch targets. Item 12 Social tab labels — done via aria-label in Phase 4.
 
 ---
 
-## 3. Remaining Issues (by dimension)
+## 2. Completed (reference)
 
-| Dimension | Issue | Action |
-|-----------|-------|--------|
-| **Reusability** | shadcn/ui mostly unused; Testimonials/Footer hardcoded | Extract to i18n; consider Section for more sections |
-| **Scalability** | — | ✓ Lazy-load + vendor chunks done |
-| **Resilience** | No loading states for future APIs | Add Suspense fallback when lazy-loading |
-| **A11y** | — | ✓ aria-label + focus-visible done |
+- Phase 2 Optional: Section in Testimonials/Pricing, Hero CTA href
+- Phase 3: Lazy-load, layout/landing restructure, vendor chunks
+- Phase 4: i18n Footer (brand, social), A11y (aria-label, focus-visible)
+- Phase 5: Items 1–9 (Pricing, typography revert, h1/h2 responsive, buttons, padding, section spacing)
 
 ---
 
-## 4. Reference
+## 3. Reference
 
-### Target File Structure (current)
+### File Structure
 
 ```
-src/
-├── app/App.tsx
-├── components/
-│   ├── layout/       # Header, Footer
-│   ├── landing/      # Hero, Features, Benefits, Testimonials, Pricing, CTA
-│   ├── shared/       # Section, PrimaryButton, SecondaryButton, ImageWithFallback
-│   ├── catalog/      # ProductCard, CustomerStoryCard
-│   ├── chat/         # ChatBox, MessageList, ChatInput, etc.
-│   ├── figma/        # ImageWithFallback
-│   └── ui/           # shadcn (pruned)
-├── context/LanguageContext.tsx
-├── locales/vi.json, en.json
-├── hooks/useReducedMotion.ts
-├── config/navigation.ts
-└── styles/
+src/app/components/
+├── layout/    # Header, Footer
+├── landing/   # Hero, Features, Benefits, Testimonials, Pricing, CTA
+├── shared/    # Section, PrimaryButton, SecondaryButton
+├── catalog/   # ProductCard, CustomerStoryCard
+├── chat/      # ChatBox, MessageList, ChatInput
+├── figma/     # ImageWithFallback
+└── ui/        # shadcn
 ```
 
 ### Risk Mitigation
 
-- **Breaking changes:** Phase refactors; manual/E2E after each phase
+- **Breaking changes:** Manual/E2E after refactors
 - **i18n regression:** Migrate key-by-key
-- **Performance:** Measure bundle size and LCP before/after lazy loading
 - **Deps:** Use `npx depcheck` before removal
