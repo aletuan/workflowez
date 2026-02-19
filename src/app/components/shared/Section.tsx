@@ -8,6 +8,8 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   contentClassName?: string;
+  /** Renders inside section, before container (e.g. absolute background) */
+  background?: ReactNode;
 }
 
 export function Section({
@@ -18,9 +20,11 @@ export function Section({
   children,
   className = "",
   contentClassName = "text-center max-w-2xl mx-auto",
+  background,
 }: SectionProps) {
   return (
     <section id={id} className={`py-10 md:py-16 relative overflow-hidden ${className}`}>
+      {background}
       <div className="container mx-auto px-4 md:px-6">
         {(eyebrow || title || subtitle) && (
           <div className={`mb-8 md:mb-12 ${contentClassName}`}>

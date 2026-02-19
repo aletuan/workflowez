@@ -11,8 +11,8 @@
 
 ### Phase 2 Optional
 
-- [ ] Use `Section` in Testimonials, Pricing (Features already uses it)
-- [ ] Hero PrimaryButton — add `href="#pricing"` for consistency
+- [x] Use `Section` in Testimonials, Pricing (Features already uses it)
+- [x] Hero PrimaryButton — add `href="/#pricing"` for consistency
 
 ### Phase 3
 
