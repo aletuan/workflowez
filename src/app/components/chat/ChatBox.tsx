@@ -20,7 +20,7 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts }: ChatBoxPr
   const reducedMotion = useReducedMotion();
 
   return (
-    <div className="flex flex-col h-[480px] bg-white rounded-[var(--section-radius)] border border-gray-100 shadow-xl overflow-hidden">
+    <div className="flex flex-col h-[min(480px,75dvh)] min-h-[280px] md:h-[480px] bg-white rounded-[var(--section-radius)] border border-gray-100 shadow-xl overflow-hidden">
       {/* S8: simplified header — avatar + name only, no redundant card wrapper */}
       <div className="px-4 py-3 border-b border-gray-100 bg-[var(--brand-light)]/30 flex items-center gap-3">
         <div className="relative flex-shrink-0">
