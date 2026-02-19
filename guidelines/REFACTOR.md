@@ -45,10 +45,9 @@
 src/app/components/
 ├── layout/    # Header, Footer
 ├── landing/   # Hero, Features, Benefits, Testimonials, Pricing, CTA
-├── shared/    # Section, PrimaryButton, SecondaryButton
+├── shared/    # Section, PrimaryButton, SecondaryButton, ImageWithFallback
 ├── catalog/   # ProductCard, CustomerStoryCard
 ├── chat/      # ChatBox, MessageList, ChatInput
-├── figma/     # ImageWithFallback
 └── ui/        # shadcn
 ```
 

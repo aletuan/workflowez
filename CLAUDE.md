@@ -95,7 +95,7 @@ Use design tokens (e.g. `var(--brand)`, `var(--brand-light)`) for brand colors. 
 - `src/app/components/chat/MessageList.tsx` — Chat message list with quick prompts
 - `src/app/components/chat/ChatInput.tsx` — Chat input form
 - `src/app/components/chat/MessageBubble.tsx` — Individual message bubble
-- `src/app/components/figma/ImageWithFallback.tsx` — Image rendering with fallbacks
+- `src/app/components/shared/ImageWithFallback.tsx` — Image rendering with fallbacks
 
 ### Public Assets
 

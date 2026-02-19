@@ -1,5 +1,5 @@
 import { useLanguage } from "../../context/LanguageContext";
-import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { ImageWithFallback } from "../shared/ImageWithFallback";
 
 /** Avatar URL - friendly cartoon style for human touch */
 const AVATAR_URL =
