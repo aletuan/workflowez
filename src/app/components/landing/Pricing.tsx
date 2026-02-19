@@ -1,22 +1,23 @@
 import { Check } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
-import { PrimaryButton } from "./shared/PrimaryButton";
-import { SecondaryButton } from "./shared/SecondaryButton";
+import { useLanguage } from "../../context/LanguageContext";
+import { PrimaryButton } from "../shared/PrimaryButton";
+import { SecondaryButton } from "../shared/SecondaryButton";
+import { Section } from "../shared/Section";
 
 export function Pricing() {
   const { t } = useLanguage();
 
   return (
-    <section id="pricing" className="py-10 md:py-16 relative">
-       <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-50"></div>
-
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">{t.pricing.title}</h2>
-          <p className="text-xl text-gray-500">{t.pricing.subtitle}</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+    <Section
+      id="pricing"
+      title={t.pricing.title}
+      subtitle={t.pricing.subtitle}
+      className="relative"
+      background={
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-50" />
+      }
+    >
+      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
           {/* Starter Plan */}
           <div className="bg-white/70 backdrop-blur-md p-8 rounded-[var(--section-radius)] border border-gray-100 hover:border-[var(--brand)]/30">
             <h3 className="text-2xl font-bold text-gray-900 mb-2">{t.pricing.starter.title}</h3>
@@ -94,7 +95,6 @@ export function Pricing() {
             </ul>
           </div>
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }

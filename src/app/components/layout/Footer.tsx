@@ -1,5 +1,5 @@
 import { Twitter, Linkedin, Github, Facebook, Sparkles } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 export function Footer() {
   const { t } = useLanguage();

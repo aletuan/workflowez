@@ -1,5 +1,5 @@
-import { useLanguage } from "../context/LanguageContext";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { useLanguage } from "../../context/LanguageContext";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 
 export function Benefits() {
   const { t } = useLanguage();

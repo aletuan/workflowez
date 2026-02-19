@@ -1,6 +1,6 @@
 import { Zap, BarChart3, Users, Lock, Sparkles, Workflow, ArrowUpRight } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
-import { Section } from "./shared/Section";
+import { useLanguage } from "../../context/LanguageContext";
+import { Section } from "../shared/Section";
 
 export function Features() {
   const { t } = useLanguage();

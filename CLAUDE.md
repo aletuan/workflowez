@@ -15,6 +15,12 @@ No test or lint scripts are configured.
 
 This is a **multi-page React + Vite + TypeScript website** for Workflowez (an AI workflow automation platform). It is a pure client-side SPA with client-side routing via React Router, deployed on GitHub Pages.
 
+### Structure
+- `src/app/components/layout/` — Header, Footer
+- `src/app/components/landing/` — Hero, Features, Benefits, Testimonials, Pricing, CTA
+- `src/app/components/shared/` — Section, PrimaryButton, SecondaryButton
+- Pages are lazy-loaded via `React.lazy`; vendor chunks (react, router, radix) split in build
+
 ### Stack
 - **React 18 + TypeScript** — Component framework
 - **Vite 6** — Build tool; path alias `@` → `./src`

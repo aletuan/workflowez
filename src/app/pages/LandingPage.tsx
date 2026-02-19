@@ -1,11 +1,11 @@
-import { Header } from "../components/Header";
-import { Hero } from "../components/Hero";
-import { Features } from "../components/Features";
-import { Benefits } from "../components/Benefits";
-import { Testimonials } from "../components/Testimonials";
-import { Pricing } from "../components/Pricing";
-import { CTA } from "../components/CTA";
-import { Footer } from "../components/Footer";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
+import { Hero } from "../components/landing/Hero";
+import { Features } from "../components/landing/Features";
+import { Benefits } from "../components/landing/Benefits";
+import { Testimonials } from "../components/landing/Testimonials";
+import { Pricing } from "../components/landing/Pricing";
+import { CTA } from "../components/landing/CTA";
 
 export function LandingPage() {
   return (

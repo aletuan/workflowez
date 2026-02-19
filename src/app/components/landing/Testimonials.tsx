@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from "../../context/LanguageContext";
 
 const avatarImages = ["/images/avatar-pt.jpg", "/images/avatar-lh.jpg", "/images/avatar-nt.jpg"];
 const authors = ["Phạm Minh Tuấn", "Lê Ngọc Hà", "Nguyễn Đức Thắng"];
@@ -34,20 +34,19 @@ function StarRating({ rating, id }: { rating: number; id: string }) {
   );
 }
 
+import { Section } from "../shared/Section";
+
 export function Testimonials() {
   const { t } = useLanguage();
 
   return (
-    <section id="testimonials" className="py-10 md:py-16 bg-white relative">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">{t.testimonials.title}</h2>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-            {t.testimonials.subtitle}
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
+    <Section
+      id="testimonials"
+      title={t.testimonials.title}
+      subtitle={t.testimonials.subtitle}
+      className="bg-white"
+    >
+      <div className="grid md:grid-cols-3 gap-8">
           {t.testimonials.items.map((item: any, i: number) => (
             <div
               key={item.id}
@@ -71,7 +70,6 @@ export function Testimonials() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+    </Section>
   );
 }

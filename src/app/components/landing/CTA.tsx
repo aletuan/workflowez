@@ -1,7 +1,7 @@
 import { ArrowRight, Sparkles } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
-import { PrimaryButton } from "./shared/PrimaryButton";
-import { SecondaryButton } from "./shared/SecondaryButton";
+import { useLanguage } from "../../context/LanguageContext";
+import { PrimaryButton } from "../shared/PrimaryButton";
+import { SecondaryButton } from "../shared/SecondaryButton";
 
 export function CTA() {
   const { t } = useLanguage();

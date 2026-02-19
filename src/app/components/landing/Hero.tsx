@@ -1,8 +1,8 @@
 import { ArrowRight, Play, CheckCircle2, Star, Sparkles } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { PrimaryButton } from "./shared/PrimaryButton";
-import { SecondaryButton } from "./shared/SecondaryButton";
+import { useLanguage } from "../../context/LanguageContext";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { PrimaryButton } from "../shared/PrimaryButton";
+import { SecondaryButton } from "../shared/SecondaryButton";
 
 export function Hero() {
   const { t } = useLanguage();
@@ -100,7 +100,7 @@ export function Hero() {
           {/* 3. Actions */}
           <div className="lg:col-start-1 lg:row-start-2">
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <PrimaryButton icon={<ArrowRight className="w-5 h-5" />}>
+              <PrimaryButton href="/#pricing" icon={<ArrowRight className="w-5 h-5" />}>
                 {t.hero.startFree}
               </PrimaryButton>
               <SecondaryButton to="/products" icon={<Play className="w-4 h-4 fill-current" />}>

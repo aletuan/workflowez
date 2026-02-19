@@ -3,8 +3,8 @@ import { PrimaryButton } from "../components/shared/PrimaryButton";
 import { useLanguage } from "../context/LanguageContext";
 import { ChatBox } from "../components/chat/ChatBox";
 import { useChat } from "../../hooks/useChat";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
 
 const VALUE_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
