@@ -50,7 +50,7 @@ export function ProductCatalogPage() {
               const isEven = index % 2 === 0;
 
               const productCard = (
-                <div key="product" className="flex flex-col">
+                <div key={`${product.slug}-product`} className="flex flex-col">
                   <ProductCard
                     slug={product.slug}
                     route={product.route}
@@ -69,7 +69,7 @@ export function ProductCatalogPage() {
               );
 
               const storyCard = (
-                <div key="story" className="flex flex-col">
+                <div key={`${product.slug}-story`} className="flex flex-col">
                   <CustomerStoryCard
                     quote={story.quote}
                     author={story.author}

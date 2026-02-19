@@ -10,11 +10,24 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    let rafId: number;
+    let lastValue: boolean | null = null;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      rafId = requestAnimationFrame(() => {
+        const value = window.scrollY > 20;
+        if (value !== lastValue) {
+          lastValue = value;
+          setScrolled(value);
+        }
+      });
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const toggleLanguage = () => {
