@@ -39,9 +39,9 @@ export function DemoPage() {
           <div className="absolute top-24 right-[-10%] w-[280px] h-[280px] md:w-[600px] md:h-[600px] rounded-full bg-[var(--brand)]/5 blur-3xl" />
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 py-12 lg:py-16">
+        <div className="container mx-auto px-4 md:px-6 py-10 md:py-16">
           {/* Title */}
-          <div className="text-center mb-12 lg:mb-16">
+          <div className="text-center mb-10 md:mb-12">
             <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
               {t.demo.title}
             </h1>
