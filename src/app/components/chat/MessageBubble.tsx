@@ -7,9 +7,9 @@ const TYPING_INTERVAL_MS = 28;
 /** Styled markdown components for assistant messages */
 const markdownComponents = {
   p: ({ children }) => <p className="text-sm leading-relaxed mb-2 last:mb-0">{children}</p>,
-  ul: ({ children }) => <ul className="list-disc list-inside mb-2 space-y-1 text-sm">{children}</ul>,
-  ol: ({ children }) => <ol className="list-decimal list-inside mb-2 space-y-1 text-sm">{children}</ol>,
-  li: ({ children }) => <li className="leading-relaxed">{children}</li>,
+  ul: ({ children }) => <ul className="list-disc list-outside pl-5 mb-2 space-y-1 text-sm">{children}</ul>,
+  ol: ({ children }) => <ol className="list-decimal list-outside pl-5 mb-2 space-y-1 text-sm">{children}</ol>,
+  li: ({ children }) => <li className="leading-relaxed pl-1 [&>p]:mb-1 [&>p:last-child]:mb-0">{children}</li>,
   strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
   em: ({ children }) => <em className="italic">{children}</em>,
   a: ({ href, children }) => (
