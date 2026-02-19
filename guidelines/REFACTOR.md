@@ -22,8 +22,8 @@
 
 ### Phase 4 — Polish
 
-- [ ] i18n Footer links
-- [ ] A11y audit — aria-label, focus states
+- [x] i18n Footer links — brand, social aria-labels
+- [x] A11y audit — aria-label (Header menu/lang, Footer social, SocialAgent tabs), focus-visible states
 - [ ] Tests — unit (hooks/context), E2E (main flows)
 
 ### Phase 5 — Mobile & Design (remaining)
@@ -54,7 +54,7 @@ Footer links: keep `hover:text-[var(--brand)]` only. Adding `min-h-[44px]` was r
 | **Reusability** | shadcn/ui mostly unused; Testimonials/Footer hardcoded | Extract to i18n; consider Section for more sections |
 | **Scalability** | — | ✓ Lazy-load + vendor chunks done |
 | **Resilience** | No loading states for future APIs | Add Suspense fallback when lazy-loading |
-| **A11y** | Missing aria-label on icon-only buttons | Phase 4 audit |
+| **A11y** | — | ✓ aria-label + focus-visible done |
 
 ---
 
