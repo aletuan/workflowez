@@ -214,5 +214,12 @@
       "cookies": "Cookies"
     },
     "copyright": "© 2026 Workflow EZ Inc. All rights reserved."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Insights, guides, and updates from the Workflowez team.",
+    "readMore": "Read more",
+    "backToBlog": "Back to Blog",
+    "publishedOn": "Published on"
   }
 }

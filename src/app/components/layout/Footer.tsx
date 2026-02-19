@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Twitter, Linkedin, Github, Facebook, Sparkles } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -53,7 +54,7 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-gray-900 mb-6 text-lg">{t.footer.cols.resources}</h4>
             <ul className="space-y-4 text-gray-600 font-medium">
-              <li><a href="#" className="hover:text-[var(--brand)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30 focus-visible:ring-offset-1 rounded">{t.footer.links.blog}</a></li>
+              <li><Link to="/blog" className="hover:text-[var(--brand)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30 focus-visible:ring-offset-1 rounded">{t.footer.links.blog}</Link></li>
               <li><a href="#" className="hover:text-[var(--brand)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30 focus-visible:ring-offset-1 rounded">{t.footer.links.community}</a></li>
               <li><a href="#" className="hover:text-[var(--brand)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30 focus-visible:ring-offset-1 rounded">{t.footer.links.documentation}</a></li>
               <li><a href="#" className="hover:text-[var(--brand)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)]/30 focus-visible:ring-offset-1 rounded">{t.footer.links.helpCenter}</a></li>

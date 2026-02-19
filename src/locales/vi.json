@@ -214,5 +214,12 @@
       "cookies": "Cookie"
     },
     "copyright": "© 2026 Workflow EZ Inc. Bảo lưu bản quyền."
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Bài viết, hướng dẫn và cập nhật từ đội ngũ Workflowez.",
+    "readMore": "Đọc tiếp",
+    "backToBlog": "Quay lại Blog",
+    "publishedOn": "Đăng ngày"
   }
 }

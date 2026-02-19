@@ -7,6 +7,8 @@ const LandingPage = lazy(() => import("./pages/LandingPage").then((m) => ({ defa
 const ProductCatalogPage = lazy(() => import("./pages/ProductCatalogPage").then((m) => ({ default: m.ProductCatalogPage })));
 const DemoPage = lazy(() => import("./pages/DemoPage").then((m) => ({ default: m.DemoPage })));
 const SocialAgentPage = lazy(() => import("./pages/SocialAgentPage").then((m) => ({ default: m.SocialAgentPage })));
+const BlogPage = lazy(() => import("./pages/BlogPage").then((m) => ({ default: m.BlogPage })));
+const BlogPostPage = lazy(() => import("./pages/BlogPostPage").then((m) => ({ default: m.BlogPostPage })));
 
 function PageFallback() {
   return (
@@ -30,6 +32,8 @@ export default function App() {
               <Route path="/products" element={<ProductCatalogPage />} />
               <Route path="/products/advisor" element={<DemoPage />} />
               <Route path="/products/social" element={<SocialAgentPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/demo" element={<Navigate to="/products/advisor" replace />} />
             </Routes>
           </Suspense>
