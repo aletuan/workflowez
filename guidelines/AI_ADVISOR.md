@@ -41,7 +41,7 @@ Topics are configurable via n8n workflow and Qdrant collections.
 
 | Item | Value |
 |------|--------|
-| **Chat URL** | `https://andyle1.app.n8n.cloud/webhook/ebf42615-c947-46a1-bf5b-a720e6af3a13/chat` |
+| **Chat URL** | `https://andyle1.app.n8n.cloud/webhook/workflowez-rag-chat/chat` |
 | **Instance** | andyle1.app.n8n.cloud |
 | **Mode** | Hosted Chat (can use Embedded for custom frontend) |
 | **Auth** | None |
@@ -143,7 +143,7 @@ src/
 
 ### Request (POST to Chat URL)
 
-POST `https://andyle1.app.n8n.cloud/webhook/ebf42615-c947-46a1-bf5b-a720e6af3a13/chat`
+POST `https://andyle1.app.n8n.cloud/webhook/workflowez-rag-chat/chat`
 
 n8n Chat Trigger expects the chat widget/client to POST to this URL. Request format follows n8n Chat convention (verify with n8n docs or network inspection):
 
@@ -174,7 +174,7 @@ Ref: [n8n Chat Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-
 
 ### Step 1: [x] Create `chatApi.ts`
 - `sendMessage(message: string, sessionId?: string): Promise<{ output: string }>`
-- Base URL: `VITE_N8N_CHAT_URL` or default `https://andyle1.app.n8n.cloud/webhook/ebf42615-c947-46a1-bf5b-a720e6af3a13/chat`
+- Base URL: `VITE_N8N_CHAT_URL` or default `https://andyle1.app.n8n.cloud/webhook/workflowez-rag-chat/chat`
 - Parse response `{ output }` from n8n Respond to Webhook
 - Handle fetch errors, timeout
 
