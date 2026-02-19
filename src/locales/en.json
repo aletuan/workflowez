@@ -217,7 +217,9 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Insights, guides, and updates from the Workflowez team.",
+    "headline": "Activity & Updates",
+    "subtitle": "Our biggest challenge is making sure we're always designing and building products that will help you run your business better.",
+    "viewAll": "View all",
     "readMore": "Read more",
     "backToBlog": "Back to Blog",
     "publishedOn": "Published on"

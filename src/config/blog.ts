@@ -4,6 +4,7 @@ export interface BlogPost {
   date: string;
   excerpt: string;
   content: string;
+  image?: string;
 }
 
 const modules = import.meta.glob<string>("../../content/blog/*.md", {
@@ -33,6 +34,7 @@ function parsePost(path: string, raw: string): BlogPost {
     date: data.date ?? "",
     excerpt: data.excerpt ?? "",
     content,
+    image: data.image,
   };
 }
 
