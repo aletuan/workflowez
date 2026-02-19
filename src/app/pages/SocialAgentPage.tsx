@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router";
 import { ArrowRight, Radio, Smile, TrendingUp, Send, LayoutDashboard, Headphones, BarChart3 } from "lucide-react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { PrimaryButton } from "../components/shared/PrimaryButton";
 import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
@@ -208,13 +208,15 @@ export function SocialAgentPage() {
               <p className="font-bold text-gray-900 text-lg">{t.social.ctaBanner.text}</p>
               <p className="text-sm text-gray-500 mt-0.5">{t.social.ctaBanner.sub}</p>
             </div>
-            <Link
+            <PrimaryButton
+              variant="cyan"
+              size="sm"
               to="/#pricing"
-              className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-cyan-600 text-white font-semibold rounded-xl hover:bg-cyan-700 transition-colors text-sm cursor-pointer"
+              icon={<ArrowRight className="w-4 h-4" />}
+              className="flex-shrink-0"
             >
               {t.social.ctaBanner.button}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            </PrimaryButton>
           </div>
         </div>
       </div>
