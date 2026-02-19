@@ -101,4 +101,64 @@ src/
 
 ---
 
-*Doc v1.5 — shortened from 378 to ~120 lines*
+## 7. Phase 5 — Mobile & Design Consistency
+
+*From audits: performance (scroll/profile), frontend-design skill, full-site mobile review (/, /products, /products/advisor, /products/social).*
+
+### High Priority
+
+| # | Task | File(s) | Notes |
+|---|------|---------|-------|
+| 1 | Pricing Pro card: `scale-105` → `md:scale-105` | `src/app/components/Pricing.tsx` | Tránh horizontal overflow trên mobile |
+| 2 | Typography: thêm cặp font display + body | `src/styles/fonts.css`, `theme.css` | Tránh system font generic (Inter/Roboto) |
+| 3 | Hero/Product h1: responsive text | `Hero.tsx`, `ProductCatalogPage.tsx` | Thêm `text-3xl sm:text-4xl` cho mobile |
+| 4 | Section h2: responsive | `Section.tsx`, `Benefits.tsx` | `text-3xl sm:text-4xl md:text-5xl` |
+| 5 | Chuẩn hóa buttons | `Header.tsx`, `ProductCard.tsx`, `DemoPage`, `SocialAgentPage` | Dùng PrimaryButton/SecondaryButton hoặc variant thống nhất |
+
+### Medium Priority
+
+| # | Task | File(s) | Notes |
+|---|------|---------|-------|
+| 6 | ProductCard padding mobile | `catalog/ProductCard.tsx` | `p-5 sm:p-6 lg:p-8` |
+| 7 | CustomerStoryCard padding mobile | `catalog/CustomerStoryCard.tsx` | `px-4 py-8 sm:px-6 sm:py-10` ✓ |
+| 8 | Testimonials card padding | `Testimonials.tsx` | `p-6 sm:p-8 lg:p-10` ✓ |
+| 9 | Section spacing chuẩn hóa | `ProductCatalogPage`, `DemoPage`, `SocialAgentPage` | `py-10 md:py-16`; `mb-10 md:mb-12` |
+| 10 | Footer link touch targets | `Footer.tsx` | `min-h-[44px]` hoặc `py-3` cho links |
+| 11 | ChatBox height responsive | `chat/ChatBox.tsx` | `min-h-[320px] h-[50vh] max-h-[480px]` |
+| 12 | Social tab labels trên mobile | `SocialAgentPage.tsx` | Tooltip/aria-label hoặc label dưới icon |
+| 13 | Staggered reveal / scroll animation | Hero, Features, Testimonials | Motion nhẹ (fade-in, slide) khi scroll |
+
+### Low Priority
+
+| # | Task | File(s) | Notes |
+|---|------|---------|-------|
+| 14 | Header "Get Started" → PrimaryButton | `Header.tsx` | Dùng shared component thay custom style |
+| 15 | Color palette: cân nhắc đổi accent | `src/styles/theme.css` | Nếu muốn tránh "purple on white" cliché |
+| 16 | Background: grain texture | `theme.css` hoặc global | `opacity: 0.03` |
+| 17 | Hover states: tăng cường | CTA, ProductCard | Surprise micro-interactions |
+
+### Checklist Format (copy để track)
+
+```
+[ ] 1. Pricing scale-105 → md:scale-105
+[ ] 2. Typography: font display + body
+[ ] 3. Hero/Product h1 responsive
+[ ] 4. Section h2 responsive
+[ ] 5. Chuẩn hóa buttons
+[ ] 6. ProductCard padding mobile
+[x] 7. CustomerStoryCard padding mobile
+[x] 8. Testimonials padding mobile
+[ ] 9. Section spacing
+[ ] 10. Footer touch targets
+[ ] 11. ChatBox height responsive
+[ ] 12. Social tab labels
+[ ] 13. Staggered reveal
+[ ] 14. Header Get Started → PrimaryButton
+[ ] 15. Color palette (optional)
+[ ] 16. Grain texture (optional)
+[ ] 17. Hover states (optional)
+```
+
+---
+
+*Doc v1.6 — added Phase 5 tasks from mobile & design audits*

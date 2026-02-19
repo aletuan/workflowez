@@ -21,14 +21,14 @@ export function CustomerStoryCard({
   const c = COLOR_MAP[color];
 
   return (
-    <div className="flex flex-col justify-center h-full px-6 py-10 lg:px-10">
+    <div className="flex flex-col justify-center h-full px-4 py-8 sm:px-6 sm:py-10 lg:px-10">
       {/* Opening quote mark */}
       <span className={`block text-6xl leading-none font-black ${c.openQuote} mb-4 select-none`} style={{ fontFamily: "Georgia, serif" }}>
         &ldquo;
       </span>
 
       {/* Quote text */}
-      <p className="text-xl text-gray-700 leading-relaxed mb-8">
+      <p className="text-xl text-gray-700 leading-relaxed mb-6 sm:mb-8">
         {quote}
       </p>
 
