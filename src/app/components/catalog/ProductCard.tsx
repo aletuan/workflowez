@@ -71,7 +71,7 @@ export function ProductCard({
         className={`group flex flex-col h-full rounded-[var(--card-radius)] bg-white border border-gray-100 ${c.hoverBorder} shadow-xl ${c.hoverShadow} overflow-hidden cursor-pointer`}
       >
         {/* Top visual area */}
-        <div className={`relative p-8 bg-gradient-to-br ${c.gradientFrom} ${c.gradientTo} border-b border-gray-100/80`}>
+        <div className={`relative p-5 sm:p-6 lg:p-8 bg-gradient-to-br ${c.gradientFrom} ${c.gradientTo} border-b border-gray-100/80`}>
           <div className="flex items-start justify-between mb-6">
             <div className={`w-14 h-14 rounded-2xl ${c.iconBg} flex items-center justify-center shadow-lg`}>
               <Icon className="w-7 h-7 text-white" />
@@ -95,13 +95,13 @@ export function ProductCard({
         </div>
 
         {/* Bottom info area */}
-        <div className="flex flex-col flex-1 p-8 pt-6">
+        <div className="flex flex-col flex-1 p-5 pt-5 sm:p-6 sm:pt-6 lg:p-8 lg:pt-6">
           <h3 className="font-extrabold text-gray-900 text-xl mb-2 group-hover:text-[var(--brand)]">
             {title}
           </h3>
           <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-6">{desc}</p>
 
-          <div className={`inline-flex items-center gap-2 text-sm font-semibold text-white px-5 py-2.5 rounded-xl ${c.ctaBg} w-fit shadow-sm`}>
+          <div className={`inline-flex items-center gap-2 text-sm font-bold text-white px-5 py-2 rounded-2xl ${c.ctaBg} w-fit shadow-xl`}>
             {tryDemoLabel}
             <ArrowRight className="w-4 h-4" />
           </div>

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { useLanguage } from "../context/LanguageContext";
 import { NAV_ITEMS } from "../../config/navigation";
+import { PrimaryButton } from "./shared/PrimaryButton";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,10 +77,9 @@ export function Header() {
                 <Globe className="w-3 h-3" />
                 {language === 'vi' ? 'EN' : 'VI'}
               </button>
-              <button className="px-5 py-2 bg-[var(--brand)] text-white text-sm font-semibold rounded-full hover:bg-[var(--brand-dark)] flex items-center gap-2">
+              <PrimaryButton variant="brand" size="sm" href="/#pricing" icon={<ChevronRight className="w-4 h-4" />}>
                 {t.header.getStarted}
-                <ChevronRight className="w-4 h-4" />
-              </button>
+              </PrimaryButton>
             </div>
           </div>
 
@@ -121,12 +121,16 @@ export function Header() {
               </a>
             ))}
             <div className="h-px bg-gray-100 my-2" />
-            <button
+            <PrimaryButton
+              variant="brand"
+              href="/#pricing"
+              icon={<ChevronRight className="w-4 h-4" />}
+              className="w-full focus:outline-none"
               style={{ WebkitTapHighlightColor: "transparent" }}
-              className="w-full px-4 py-3 bg-[var(--brand)] text-white text-base font-bold rounded-xl hover:bg-[var(--brand-dark)] shadow-lg shadow-[var(--brand)]/20 focus:outline-none"
+              onClick={() => setIsOpen(false)}
             >
               {t.header.getStarted}
-            </button>
+            </PrimaryButton>
           </div>
         </div>
       )}

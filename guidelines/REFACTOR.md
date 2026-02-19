@@ -113,13 +113,13 @@ src/
 | 2 | Typography: thêm cặp font display + body | `src/styles/fonts.css`, `theme.css` | Tránh system font generic (Inter/Roboto) |
 | 3 | Hero/Product h1: responsive text | `Hero.tsx`, `ProductCatalogPage.tsx` | Thêm `text-3xl sm:text-4xl` cho mobile |
 | 4 | Section h2: responsive | `Section.tsx`, `Benefits.tsx` | `text-3xl sm:text-4xl md:text-5xl` |
-| 5 | Chuẩn hóa buttons | `Header.tsx`, `ProductCard.tsx`, `DemoPage`, `SocialAgentPage` | Dùng PrimaryButton/SecondaryButton hoặc variant thống nhất |
+| 5 | Chuẩn hóa buttons | `Header.tsx`, `ProductCard.tsx`, `DemoPage`, `SocialAgentPage` | ✓ [xem chi tiết](#5-chuẩn-hóa-buttons) |
 
 ### Medium Priority
 
 | # | Task | File(s) | Notes |
 |---|------|---------|-------|
-| 6 | ProductCard padding mobile | `catalog/ProductCard.tsx` | `p-5 sm:p-6 lg:p-8` |
+| 6 | ProductCard padding mobile | `catalog/ProductCard.tsx` | `p-5 sm:p-6 lg:p-8` ✓ |
 | 7 | CustomerStoryCard padding mobile | `catalog/CustomerStoryCard.tsx` | `px-4 py-8 sm:px-6 sm:py-10` ✓ |
 | 8 | Testimonials card padding | `Testimonials.tsx` | `p-6 sm:p-8 lg:p-10` ✓ |
 | 9 | Section spacing chuẩn hóa | `ProductCatalogPage`, `DemoPage`, `SocialAgentPage` | `py-10 md:py-16`; `mb-10 md:mb-12` |
@@ -132,10 +132,32 @@ src/
 
 | # | Task | File(s) | Notes |
 |---|------|---------|-------|
-| 14 | Header "Get Started" → PrimaryButton | `Header.tsx` | Dùng shared component thay custom style |
+| 14 | Header "Get Started" → PrimaryButton | `Header.tsx` | ✓ (đã gộp vào task 5) |
 | 15 | Color palette: cân nhắc đổi accent | `src/styles/theme.css` | Nếu muốn tránh "purple on white" cliché |
 | 16 | Background: grain texture | `theme.css` hoặc global | `opacity: 0.03` |
 | 17 | Hover states: tăng cường | CTA, ProductCard | Surprise micro-interactions |
+
+### 5. Chuẩn hóa buttons — Chi tiết ✓ Done
+
+**Chuẩn shared (PrimaryButton / SecondaryButton):**
+- Padding: `px-8 py-4` (default), `px-5 py-2` (size=sm)
+- Radius: `rounded-2xl`
+- Font: `font-bold`
+- Variants: `default` | `light` | `brand` | `cyan`
+
+**Đã thực hiện:**
+
+| Vị trí | File | Hiện tại | Đề xuất |
+|--------|------|----------|---------|
+| **Header "Get Started"** (desktop) | `Header.tsx` | ✓ `PrimaryButton variant="brand" size="sm" href="/#pricing"` |
+| **Header "Get Started"** (mobile menu) | `Header.tsx` | ✓ `PrimaryButton variant="brand" href="/#pricing" className="w-full"` + onClick đóng menu |
+| **ProductCard CTA** | `ProductCard.tsx` | ✓ Align styling: `px-5 py-2 rounded-2xl font-bold shadow-xl` (giữ trong Link) |
+| **Demo CTA strip** | `DemoPage.tsx` | ✓ `PrimaryButton variant="brand" size="sm" to="/#pricing"` |
+| **Social CTA strip** | `SocialAgentPage.tsx` | ✓ `PrimaryButton variant="cyan" size="sm" to="/#pricing"` |
+
+**Giữ nguyên:** ChatInput send button (form submit trong input bar) — context khác.
+
+---
 
 ### Checklist Format (copy để track)
 
@@ -144,8 +166,8 @@ src/
 [ ] 2. Typography: font display + body
 [ ] 3. Hero/Product h1 responsive
 [ ] 4. Section h2 responsive
-[ ] 5. Chuẩn hóa buttons
-[ ] 6. ProductCard padding mobile
+[x] 5. Chuẩn hóa buttons
+[x] 6. ProductCard padding mobile
 [x] 7. CustomerStoryCard padding mobile
 [x] 8. Testimonials padding mobile
 [ ] 9. Section spacing
@@ -153,7 +175,7 @@ src/
 [ ] 11. ChatBox height responsive
 [ ] 12. Social tab labels
 [ ] 13. Staggered reveal
-[ ] 14. Header Get Started → PrimaryButton
+[x] 14. Header Get Started → PrimaryButton
 [ ] 15. Color palette (optional)
 [ ] 16. Grain texture (optional)
 [ ] 17. Hover states (optional)

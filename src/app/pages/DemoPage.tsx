@@ -1,5 +1,5 @@
-import { Link } from "react-router";
 import { ArrowRight, Zap, GraduationCap, FileText, Headphones, Users } from "lucide-react";
+import { PrimaryButton } from "../components/shared/PrimaryButton";
 import { useLanguage } from "../context/LanguageContext";
 import { ChatBox } from "../components/chat/ChatBox";
 import { useChat } from "../../hooks/useChat";
@@ -101,13 +101,15 @@ export function DemoPage() {
                 <p className="font-bold text-gray-900 text-lg">{t.demo.ctaBanner.text}</p>
                 <p className="text-sm text-gray-500 mt-0.5">{t.demo.ctaBanner.sub}</p>
               </div>
-              <Link
+              <PrimaryButton
+                variant="brand"
+                size="sm"
                 to="/#pricing"
-                className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-[var(--brand)] text-white font-semibold rounded-xl hover:bg-[var(--brand-dark)] transition-colors text-sm"
+                icon={<ArrowRight className="w-4 h-4" />}
+                className="flex-shrink-0"
               >
                 {t.demo.ctaBanner.button}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              </PrimaryButton>
             </div>
           </div>
         </div>
