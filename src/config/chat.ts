@@ -1,5 +1,5 @@
 const DEFAULT_N8N_CHAT_URL =
-  "https://andyle1.app.n8n.cloud/webhook/ebf42615-c947-46a1-bf5b-a720e6af3a13/chat";
+  "https://andyle1.app.n8n.cloud/webhook/workflowez-rag-chat/chat";
 
 /** n8n Chat webhook URL — from env or default. Empty string when unset in env. */
 export const N8N_CHAT_URL: string =
