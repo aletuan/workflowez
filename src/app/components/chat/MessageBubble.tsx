@@ -1,11 +1,46 @@
+import { useState, useEffect } from "react";
 import type { ChatMessage } from "../../../hooks/useChat";
+
+const TYPING_INTERVAL_MS = 28;
 
 interface MessageBubbleProps {
   message: ChatMessage;
+  /** When true, first assistant message reveals with typing effect (respects reduced motion) */
+  typingEffect?: boolean;
+  reducedMotion?: boolean;
 }
 
-export function MessageBubble({ message }: MessageBubbleProps) {
+export function MessageBubble({ message, typingEffect = false, reducedMotion = false }: MessageBubbleProps) {
   const isUser = message.role === "user";
+  const shouldType = typingEffect && !reducedMotion && !isUser;
+
+  const [visibleLength, setVisibleLength] = useState(() =>
+    shouldType ? 0 : message.content.length
+  );
+
+  useEffect(() => {
+    if (!shouldType) {
+      setVisibleLength(message.content.length);
+      return;
+    }
+    setVisibleLength(0);
+    const id = setInterval(() => {
+      setVisibleLength((prev) => {
+        if (prev >= message.content.length) {
+          clearInterval(id);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, TYPING_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [message.content, shouldType]);
+
+  const displayContent = shouldType
+    ? message.content.slice(0, visibleLength)
+    : message.content;
+
+  const isTyping = shouldType && visibleLength < message.content.length;
 
   return (
     <div
@@ -20,7 +55,13 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         }`}
       >
         <p className="text-sm font-medium leading-relaxed whitespace-pre-wrap">
-          {message.content}
+          {displayContent}
+          {isTyping && (
+            <span
+              className="inline-block w-0.5 h-4 ml-0.5 bg-gray-500 align-middle animate-pulse"
+              aria-hidden
+            />
+          )}
         </p>
       </div>
     </div>

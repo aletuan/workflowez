@@ -115,6 +115,7 @@
     "quickPrompts": ["Nhân viên mới cần làm gì đầu tiên?", "Chính sách làm việc từ xa?", "Gặp lỗi sản phẩm, cần hỗ trợ?", "Quy trình onboarding mất bao lâu?"],
     "chatPlaceholder": "Hỏi về onboarding, chính sách hoặc tính năng sản phẩm...",
     "chatEmpty": "Bắt đầu cuộc trò chuyện — hỏi về đào tạo, chính sách hoặc tính năng sản phẩm.",
+    "chatTypingIndicator": "Đang chờ phản hồi",
     "chatError": "Xin lỗi, đã có lỗi xảy ra. Vui lòng thử lại.",
     "mockResponses": [
       "Theo tài liệu công ty, nhân viên mới cần hoàn thành checklist onboarding trong tuần đầu tiên, bao gồm: 1) Thiết lập thiết bị IT, 2) Giới thiệu với các thành viên trong nhóm, 3) Hoàn thành các module đào tạo theo vai trò.",
