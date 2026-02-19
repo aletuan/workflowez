@@ -62,7 +62,7 @@ Translations live in `src/locales/vi.json` and `src/locales/en.json`. `LanguageC
 ### Styling
 
 - `src/styles/theme.css` — Design tokens (`--brand`, `--brand-light`, `--brand-dark`, `--section-radius`, `--blur-*`, `--accent-gradient-*`) and semantic colors
-- `src/styles/fonts.css` — Font face definitions
+- `src/styles/fonts.css` — Placeholder; no custom fonts (see Avoid / Known Issues)
 - `src/styles/tailwind.css` — Tailwind v4 directives
 - `src/styles/index.css` — Main CSS entry (imports the above)
 
@@ -106,3 +106,9 @@ Use design tokens (e.g. `var(--brand)`, `var(--brand-light)`) for brand colors. 
 Place inside a `relative` container. Swap color as needed. Do **not** add `animate-pulse` — per animation policy above.
 
 **Container alignment**: Use `container mx-auto px-4 md:px-6` for all page-level containers (not `max-w-7xl`) so Header, content, and Footer align consistently at all screen sizes.
+
+### Avoid / Known Issues
+
+- **Typography**: Do not add custom display/body fonts (e.g. Syne, DM Sans) to `theme.css` or `fonts.css`. Custom fonts caused broken rendering on desktop (especially `/products`). Use system fonts only (ui-sans-serif, system-ui via Tailwind default).
+- **Footer links**: Do not add `min-h-[44px]` or touch-target padding to footer links. Keep footer links as plain `hover:text-[var(--brand)]` — touch-target changes were reverted due to spacing concerns.
+- **Section spacing**: Page-level sections (ProductCatalogPage, DemoPage, SocialAgentPage) use `py-10 md:py-16` and `mb-10 md:mb-12`. Keep this convention when adding or modifying similar pages.

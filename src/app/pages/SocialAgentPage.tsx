@@ -70,9 +70,9 @@ export function SocialAgentPage() {
         <div className="absolute top-24 right-[-10%] w-[280px] h-[280px] md:w-[600px] md:h-[600px] rounded-full bg-cyan-400/5 blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 py-12 lg:py-16">
+      <div className="container mx-auto px-4 md:px-6 py-10 md:py-16">
         {/* Page title */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-10 md:mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-100 text-cyan-700 text-xs font-bold uppercase tracking-widest mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
             {t.social.comingSoon}
