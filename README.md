@@ -71,8 +71,3 @@ Deployed to **GitHub Pages** from the `main` branch. `index.html` is copied to `
 
 Chat integration uses an **n8n webhook** (configurable via `VITE_N8N_CHAT_URL` env var, falls back to a default URL when not set).
 
----
-
-## Design attribution
-
-Original design: [Landing page for AI automation](https://www.figma.com/design/09RUyRPimDvNbn4Uso3ro1/Landing-page-for-AI-automation)

@@ -1,7 +1,7 @@
 import React from "react";
 import { MessageList } from "./MessageList";
 import { ChatInput } from "./ChatInput";
-import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { ImageWithFallback } from "../shared/ImageWithFallback";
 import { useReducedMotion } from "../../../hooks/useReducedMotion";
 import type { ChatMessage } from "../../../hooks/useChat";
 import { useLanguage } from "../../context/LanguageContext";
