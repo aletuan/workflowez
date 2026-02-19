@@ -25,7 +25,7 @@ export function MessageList({ messages, isLoading, emptyText = "Start the conver
   const showPrompts = quickPrompts && onPromptClick && messages.length <= 1 && !isLoading;
 
   return (
-    <div ref={listRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+    <div ref={listRef} className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-4">
       {messages.length === 0 && !isLoading && (
         <div className="flex items-center justify-center h-full text-gray-400 text-sm font-medium">
           {emptyText}
