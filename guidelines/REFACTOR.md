@@ -14,7 +14,7 @@
 |-------|--------|-------|
 | **4.6** chatApi (optional) | [x] | 4.6.1 extract output, 4.6.2 nested `data.output`/`json.output`, 4.6.3 NDJSON parsing |
 | **4.7** E2E (Playwright) | [ ] | 4.7.1 Landing, 4.7.2 Products, 4.7.3 Demo chat |
-| **4.8** Coverage (≥80%) | [ ] | 4.8.1 config tests · 4.8.2 chatApi error branches · 4.8.3 page smoke (optional) |
+| **4.8** Coverage (≥80%) | [x] | 4.8.1 config tests · 4.8.2 chatApi error branches · 4.8.3 page smoke (skipped) |
 | **4.9** CI unit test | [x] | Thêm `npm run test:run` vào deploy.yml |
 
 ### Phase 4.8 — Coverage tasks (optional, PRODUCT_POLICY: ≥80% new code)
@@ -41,7 +41,7 @@
 
 ## 2. Completed
 
-**Phase 4 — Tests:** 4.1 setup (Vitest, RTL, jsdom) · 4.2 useReducedMotion · 4.3 LanguageContext · 4.4 useChat mock mode · 4.5 useChat real API · 4.6 chatApi extractOutput + NDJSON · 4.9 CI unit test
+**Phase 4 — Tests:** 4.1 setup · 4.2 useReducedMotion · 4.3 LanguageContext · 4.4 useChat mock · 4.5 useChat real API · 4.6 chatApi extractOutput · 4.8 config + chatApi error paths · 4.9 CI unit test
 
 **Phase 5 (earlier):** Items 1–9 (Pricing, typography, responsive, buttons, spacing)
 
