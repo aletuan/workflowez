@@ -13,6 +13,12 @@ const modules = import.meta.glob<string>("../../content/blog/*.md", {
   eager: true,
 });
 
+/** Extract language suffix from file path: `.en.md` → `"en"`, `.vi.md` → `"vi"` */
+function extractLang(path: string): string {
+  const m = path.match(/\.(\w+)\.md$/);
+  return m ? m[1] : "en";
+}
+
 /** Parse YAML front matter without gray-matter (which needs Node.js Buffer) */
 function parseFrontMatter(raw: string): { data: Record<string, string>; content: string } {
   const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
@@ -27,7 +33,8 @@ function parseFrontMatter(raw: string): { data: Record<string, string>; content:
 
 function parsePost(path: string, raw: string): BlogPost {
   const { data, content } = parseFrontMatter(raw);
-  const slug = data.slug ?? path.replace(/^.*\/([^/]+)\.md$/, "$1");
+  // Strip language suffix from slug: `welcome.en.md` → `welcome`
+  const slug = data.slug ?? path.replace(/^.*\/([^/]+)\.\w+\.md$/, "$1");
   return {
     slug,
     title: data.title ?? "Untitled",
@@ -38,12 +45,13 @@ function parsePost(path: string, raw: string): BlogPost {
   };
 }
 
-export function getAllPosts(): BlogPost[] {
+export function getAllPosts(language: string = "en"): BlogPost[] {
   return Object.entries(modules)
+    .filter(([path]) => extractLang(path) === language)
     .map(([path, raw]) => parsePost(path, raw))
     .sort((a, b) => (b.date > a.date ? 1 : -1));
 }
 
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return getAllPosts().find((p) => p.slug === slug);
+export function getPostBySlug(slug: string, language: string = "en"): BlogPost | undefined {
+  return getAllPosts(language).find((p) => p.slug === slug);
 }

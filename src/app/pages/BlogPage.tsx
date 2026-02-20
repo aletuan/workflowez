@@ -8,8 +8,8 @@ import { ImageWithFallback } from "../components/shared/ImageWithFallback";
 import { format } from "date-fns";
 
 export function BlogPage() {
-  const { t } = useLanguage();
-  const posts = getAllPosts();
+  const { t, language } = useLanguage();
+  const posts = getAllPosts(language);
 
   return (
     <>
