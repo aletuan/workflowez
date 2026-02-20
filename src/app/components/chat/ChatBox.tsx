@@ -31,6 +31,16 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts, onExpandCha
     onExpandChange?.(isExpanded);
   }, [isExpanded, onExpandChange]);
 
+  // Prevent body scroll when fullscreen on mobile (reduces iOS gap/scroll-through)
+  useEffect(() => {
+    if (!isExpanded || !isMobile) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isExpanded, isMobile]);
+
   useEffect(() => {
     if (!isExpanded) {
       setIsAnimatedIn(false);
@@ -97,26 +107,37 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts, onExpandCha
     return chatContent;
   }
 
-  // Mobile: fullscreen overlay with backdrop
+  // Mobile: fullscreen overlay — uses --vvh for iOS keyboard, solid bg to fully hide page
   if (isMobile) {
+    const vvhStyle = {
+      height: "var(--vvh, 100dvh)",
+      maxHeight: "var(--vvh, 100dvh)",
+    };
     const overlay = (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-end"
-        style={
-          !reducedMotion
-            ? {
-                opacity: isAnimatedIn ? 1 : 0,
-                transition: `opacity ${duration}ms ease-out`,
-              }
-            : undefined
-        }
+        className="fixed inset-0 z-50 flex overscroll-none"
+        style={{
+          ...vvhStyle,
+          ...(!reducedMotion && {
+            opacity: isAnimatedIn ? 1 : 0,
+            transition: `opacity ${duration}ms ease-out`,
+          }),
+        }}
       >
+        {/* Solid white bg — fully hides page content (fixes iOS gap/see-through) */}
         <div
-          className="absolute inset-0 bg-black/20"
-          onClick={() => setIsExpanded(false)}
+          className="absolute inset-0 bg-white"
+          style={vvhStyle}
+          onClick={() => {
+            setIsExpanded(false);
+            onExpandChange?.(false);
+          }}
           aria-hidden
         />
-        <div className="relative flex flex-col w-full h-full max-h-[100dvh]">
+        <div
+          className="relative flex flex-col w-full flex-1 min-h-0 pb-[env(safe-area-inset-bottom)]"
+          onClick={(e) => e.stopPropagation()}
+        >
           {chatContent}
         </div>
       </div>
