@@ -5,7 +5,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { NAV_ITEMS } from "../../../config/navigation";
 import { PrimaryButton } from "../shared/PrimaryButton";
 
-export function Header() {
+export function Header({ rightOffset = 0 }: { rightOffset?: number }) {
   const [isOpen, setIsOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
@@ -36,7 +36,10 @@ export function Header() {
   };
 
   return (
-    <div className="sticky top-0 z-50 md:fixed md:left-0 md:right-0 md:pointer-events-none">
+    <div
+      className="sticky top-0 z-50 md:fixed md:left-0 md:pointer-events-none transition-[right] duration-300 ease-out"
+      style={{ right: rightOffset }}
+    >
       <header
         className={`w-full md:pointer-events-auto ${
           scrolled
