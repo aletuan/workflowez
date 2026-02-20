@@ -225,5 +225,18 @@
     "readMore": "Đọc tiếp",
     "backToBlog": "Quay lại Blog",
     "publishedOn": "Đăng ngày"
+  },
+  "auth": {
+    "threadsCallback": {
+      "successTitle": "Xác thực thành công",
+      "copyHint": "Sao chép mã bên dưới và dán vào script Python để đổi lấy access token.",
+      "codeLabel": "OAuth code",
+      "copy": "Sao chép mã",
+      "copied": "Đã sao chép!",
+      "errorTitle": "Xác thực thất bại",
+      "noCodeTitle": "Không nhận được mã",
+      "noCodeHint": "Trang này là callback OAuth cho Threads. Bạn được chuyển hướng về đây nhưng không có mã xác thực. Thực hiện đầy đủ luồng xác thực từ script Python.",
+      "backHome": "Về trang chủ"
+    }
   }
 }

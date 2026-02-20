@@ -9,6 +9,7 @@ const DemoPage = lazy(() => import("./pages/DemoPage").then((m) => ({ default: m
 const SocialAgentPage = lazy(() => import("./pages/SocialAgentPage").then((m) => ({ default: m.SocialAgentPage })));
 const BlogPage = lazy(() => import("./pages/BlogPage").then((m) => ({ default: m.BlogPage })));
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage").then((m) => ({ default: m.BlogPostPage })));
+const ThreadsCallbackPage = lazy(() => import("./pages/ThreadsCallbackPage").then((m) => ({ default: m.ThreadsCallbackPage })));
 
 function PageFallback() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
               <Route path="/products/social" element={<SocialAgentPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/auth/threads/callback" element={<ThreadsCallbackPage />} />
               <Route path="/demo" element={<Navigate to="/products/advisor" replace />} />
             </Routes>
           </Suspense>
