@@ -20,6 +20,8 @@ It doesn't guess. It retrieves. It references your policies, your SOPs, your pro
 
 No more "let me find the right person to ask." No more waiting two days for a reply from another department. No more digging through 47 pages of an employee handbook.
 
+![Advisor Agent demo — an employee asks about maternity leave policy and gets an instant, accurate answer](/images/blog-advisor-demo.png)
+
 ## Real Use Cases, Real Impact
 
 ### HR & People Operations
