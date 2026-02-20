@@ -31,11 +31,25 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts, onExpandCha
     onExpandChange?.(isExpanded);
   }, [isExpanded, onExpandChange]);
 
-  // Lock body scroll on mobile when chat is fullscreen
+  // Lock body scroll on mobile when chat is fullscreen.
+  // iOS Safari ignores overflow:hidden — must use position:fixed on body
+  // to prevent the browser from scrolling the page when keyboard opens.
   useEffect(() => {
     if (!isExpanded || !isMobile) return;
+    const scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.overflow = "";
+      window.scrollTo(0, scrollY);
+    };
   }, [isExpanded, isMobile]);
 
   useEffect(() => {
