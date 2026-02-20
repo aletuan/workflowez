@@ -225,5 +225,18 @@
     "readMore": "Read more",
     "backToBlog": "Back to Blog",
     "publishedOn": "Published on"
+  },
+  "auth": {
+    "threadsCallback": {
+      "successTitle": "Authorization successful",
+      "copyHint": "Copy the code below and paste it into the Python script to exchange for an access token.",
+      "codeLabel": "OAuth code",
+      "copy": "Copy code",
+      "copied": "Copied!",
+      "errorTitle": "Authorization failed",
+      "noCodeTitle": "No code received",
+      "noCodeHint": "This page is the OAuth callback for Threads. You were redirected here but no authorization code was found. Complete the authorization flow from the Python script.",
+      "backHome": "Back to home"
+    }
   }
 }
