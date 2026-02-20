@@ -11,8 +11,8 @@ export interface ChatApiError {
   cause?: "network" | "timeout" | "parse" | "unknown";
 }
 
-/** Extract reply text from various n8n/LangChain/OpenAI response shapes */
-function extractOutput(data: unknown): string | undefined {
+/** Extract reply text from various n8n/LangChain/OpenAI response shapes. Exported for testing. */
+export function extractOutput(data: unknown): string | undefined {
   if (!data) return undefined;
 
   // n8n streaming format: [{ type: "begin" }, { type: "item", content: "..." }, { type: "end" }]

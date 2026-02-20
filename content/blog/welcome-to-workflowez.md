@@ -3,6 +3,7 @@ title: "Welcome to Workflowez"
 date: "2026-02-19"
 excerpt: "Discover how Workflowez helps SMBs automate workflows with AI — no code required."
 slug: "welcome-to-workflowez"
+image: "/images/blog-welcome.png"
 ---
 
 We're excited to introduce **Workflowez** — a platform that empowers small and medium businesses to build, deploy, and scale AI-driven automation workflows without writing a single line of code.
