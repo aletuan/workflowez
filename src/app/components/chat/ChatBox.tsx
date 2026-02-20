@@ -17,14 +17,19 @@ interface ChatBoxProps {
   isLoading: boolean;
   onSend: (message: string) => void;
   quickPrompts?: string[];
+  onExpandChange?: (expanded: boolean) => void;
 }
 
-export function ChatBox({ messages, isLoading, onSend, quickPrompts }: ChatBoxProps) {
+export function ChatBox({ messages, isLoading, onSend, quickPrompts, onExpandChange }: ChatBoxProps) {
   const { t } = useLanguage();
   const reducedMotion = useReducedMotion();
   const isMobile = useIsMobile();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isAnimatedIn, setIsAnimatedIn] = useState(false);
+
+  useEffect(() => {
+    onExpandChange?.(isExpanded);
+  }, [isExpanded, onExpandChange]);
 
   useEffect(() => {
     if (!isExpanded) {
@@ -43,7 +48,7 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts }: ChatBoxPr
     <div
       className={`flex flex-col bg-white border border-gray-100 shadow-xl overflow-hidden ${
         isExpanded
-          ? "h-full rounded-none md:rounded-l-[var(--section-radius)]"
+          ? "h-full rounded-none"
           : "h-[min(480px,75dvh)] min-h-[280px] md:h-[480px] rounded-[var(--section-radius)]"
       }`}
     >
@@ -92,45 +97,48 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts }: ChatBoxPr
     return chatContent;
   }
 
-  // Expanded: portal with fixed positioning
-  const overlay = (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-end"
-      style={
-        !reducedMotion
-          ? {
-              opacity: isAnimatedIn ? 1 : 0,
-              transition: `opacity ${duration}ms ease-out`,
-            }
-          : undefined
-      }
-    >
-      {/* Backdrop (mobile) or transparent (desktop sidebar) */}
+  // Mobile: fullscreen overlay with backdrop
+  if (isMobile) {
+    const overlay = (
       <div
-        className="absolute inset-0 bg-black/20 md:bg-black/10"
-        onClick={() => setIsExpanded(false)}
-        aria-hidden
-      />
-      {/* Chat panel — slide from right on desktop, fullscreen on mobile */}
-      <div
-        className={`relative flex flex-col ${
-          isMobile
-            ? "w-full h-full max-h-[100dvh]"
-            : "w-full max-w-[420px] h-full pt-16 shadow-2xl"
-        }`}
+        className="fixed inset-0 z-50 flex items-center justify-end"
         style={
-          !reducedMotion && !isMobile
+          !reducedMotion
             ? {
-                transform: isAnimatedIn ? "translateX(0)" : "translateX(100%)",
-                transition: `transform ${duration}ms ease-out`,
+                opacity: isAnimatedIn ? 1 : 0,
+                transition: `opacity ${duration}ms ease-out`,
               }
             : undefined
         }
       >
-        {chatContent}
+        <div
+          className="absolute inset-0 bg-black/20"
+          onClick={() => setIsExpanded(false)}
+          aria-hidden
+        />
+        <div className="relative flex flex-col w-full h-full max-h-[100dvh]">
+          {chatContent}
+        </div>
       </div>
+    );
+    return createPortal(overlay, document.body);
+  }
+
+  // Desktop: sits below header (top-16 = 64px), no backdrop, no rounded corners
+  const sidebar = (
+    <div
+      className="fixed top-0 bottom-0 right-0 w-full max-w-[420px] z-[60] shadow-2xl"
+      style={
+        !reducedMotion
+          ? {
+              transform: isAnimatedIn ? "translateX(0)" : "translateX(100%)",
+              transition: `transform ${duration}ms ease-out`,
+            }
+          : undefined
+      }
+    >
+      {chatContent}
     </div>
   );
-
-  return createPortal(overlay, document.body);
+  return createPortal(sidebar, document.body);
 }

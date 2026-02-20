@@ -1,8 +1,10 @@
+import { useState, useCallback } from "react";
 import { ArrowRight, Zap, GraduationCap, FileText, Headphones, Users } from "lucide-react";
 import { PrimaryButton } from "../components/shared/PrimaryButton";
 import { useLanguage } from "../context/LanguageContext";
 import { ChatBox } from "../components/chat/ChatBox";
 import { useChat } from "../../hooks/useChat";
+import { useIsMobile } from "../components/ui/use-mobile";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 
@@ -21,8 +23,14 @@ const ICON_GRADIENTS = [
   "bg-gradient-to-br from-violet-400 to-purple-600 shadow-violet-200",
 ];
 
+const CHAT_SIDEBAR_WIDTH = 420;
+
 export function DemoPage() {
   const { t } = useLanguage();
+  const isMobile = useIsMobile();
+  const [isChatExpanded, setIsChatExpanded] = useState(false);
+  const handleExpandChange = useCallback((expanded: boolean) => setIsChatExpanded(expanded), []);
+  const pushMargin = !isMobile && isChatExpanded ? CHAT_SIDEBAR_WIDTH : 0;
   const { messages, isLoading, sendMessage } = useChat(
     t.demo.chatWelcome,
     t.demo.mockResponses,
@@ -31,8 +39,11 @@ export function DemoPage() {
 
   return (
     <>
-      <Header />
-      <main className="min-h-screen bg-white relative overflow-x-hidden md:pt-16">
+      <Header rightOffset={pushMargin} />
+      <main
+        className="min-h-screen bg-white relative overflow-x-hidden md:pt-16 transition-[margin] duration-300 ease-out"
+        style={{ marginRight: pushMargin }}
+      >
         {/* Subtle background */}
         <div className="pointer-events-none fixed inset-0 -z-10">
           <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-[var(--brand-light)]/50 to-transparent" />
@@ -63,6 +74,7 @@ export function DemoPage() {
                 isLoading={isLoading}
                 onSend={sendMessage}
                 quickPrompts={t.demo.quickPrompts}
+                onExpandChange={handleExpandChange}
               />
             </div>
 
