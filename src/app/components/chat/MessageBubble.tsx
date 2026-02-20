@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { FileText } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import type { ChatMessage } from "../../../hooks/useChat";
+import { parseSourceReferences } from "../../utils/parseSourceReferences";
 
 const TYPING_INTERVAL_MS = 28;
 
@@ -63,10 +65,16 @@ export function MessageBubble({ message, typingEffect = false, reducedMotion = f
     return () => clearInterval(id);
   }, [message.content, shouldType]);
 
-  const displayContent = shouldType
+  const rawDisplayContent = shouldType
     ? message.content.slice(0, visibleLength)
     : message.content;
 
+  const { mainContent, sources } = useMemo(() => {
+    if (isUser) return { mainContent: rawDisplayContent, sources: [] as string[] };
+    return parseSourceReferences(rawDisplayContent);
+  }, [rawDisplayContent, isUser]);
+
+  const displayContent = mainContent;
   const isTyping = shouldType && visibleLength < message.content.length;
 
   return (
@@ -100,10 +108,26 @@ export function MessageBubble({ message, typingEffect = false, reducedMotion = f
             />
           </p>
         ) : (
-          <div className="text-sm leading-relaxed [&_a]:text-[var(--brand)] [&_a:hover]:text-[var(--brand-dark)]">
-            <ReactMarkdown components={markdownComponents}>
-              {displayContent}
-            </ReactMarkdown>
+          <div>
+            <div className="text-sm leading-relaxed [&_a]:text-[var(--brand)] [&_a:hover]:text-[var(--brand-dark)]">
+              <ReactMarkdown components={markdownComponents}>
+                {displayContent}
+              </ReactMarkdown>
+            </div>
+            {sources.length > 0 && (
+              <div className="mt-3 pt-3 border-t border-[var(--brand)]/20 flex flex-wrap gap-2">
+                {sources.map((source, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[var(--brand)]/20 text-[var(--brand-dark)] text-xs font-medium"
+                    title={source}
+                  >
+                    <FileText className="w-3.5 h-3.5 flex-shrink-0" />
+                    <span className="truncate max-w-[180px]">{source}</span>
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
