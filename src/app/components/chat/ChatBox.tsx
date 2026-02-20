@@ -67,7 +67,9 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts, onExpandCha
 
   const chatContent = (
     <div
-      className={`flex flex-col bg-white border border-gray-100 shadow-xl overflow-hidden ${
+      className={`flex flex-col border border-gray-100 shadow-xl overflow-hidden transition-colors duration-300 ${
+        isLoading ? "bg-[var(--brand-light)]/25" : "bg-white"
+      } ${
         isExpanded
           ? "h-full rounded-none"
           : "h-[min(480px,75dvh)] min-h-[280px] md:h-[480px] rounded-[var(--section-radius)]"
@@ -103,6 +105,7 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts, onExpandCha
         isLoading={isLoading}
         emptyText={t.demo.chatEmpty}
         typingIndicatorLabel={t.demo.chatTypingIndicator}
+        thinkingIndicatorLabel={t.demo.chatThinkingIndicator}
         quickPrompts={quickPrompts}
         onPromptClick={onSend}
       />
