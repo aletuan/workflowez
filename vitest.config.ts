@@ -9,6 +9,11 @@ export default defineConfig({
     setupFiles: ["./src/test/setupTests.ts"],
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
     globals: true,
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/**/*.{test,spec}.{ts,tsx}", "src/test/**", "src/main.tsx", "src/vite-env.d.ts"],
+    },
   },
   resolve: {
     alias: {

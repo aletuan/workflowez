@@ -3,6 +3,7 @@ title: "Getting Started with AI Automation"
 date: "2026-02-18"
 excerpt: "A practical guide to automating your first workflow with AI."
 slug: "getting-started-with-ai-automation"
+image: "/images/blog-ai-automation.png"
 ---
 
 Automation doesn't have to be complicated. Here's a simple path to your first AI-powered workflow.

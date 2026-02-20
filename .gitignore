@@ -19,3 +19,6 @@ build/
 
 # Vite
 *.local
+
+# Test coverage
+coverage/
