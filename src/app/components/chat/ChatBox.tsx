@@ -31,6 +31,13 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts, onExpandCha
     onExpandChange?.(isExpanded);
   }, [isExpanded, onExpandChange]);
 
+  // Lock body scroll on mobile when chat is fullscreen
+  useEffect(() => {
+    if (!isExpanded || !isMobile) return;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = ""; };
+  }, [isExpanded, isMobile]);
+
   useEffect(() => {
     if (!isExpanded) {
       setIsAnimatedIn(false);
@@ -97,28 +104,22 @@ export function ChatBox({ messages, isLoading, onSend, quickPrompts, onExpandCha
     return chatContent;
   }
 
-  // Mobile: fullscreen overlay with backdrop
+  // Mobile: fullscreen with solid white background (no bleed-through on iOS keyboard)
   if (isMobile) {
     const overlay = (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-end"
-        style={
-          !reducedMotion
+        className="fixed inset-0 z-50 bg-white flex flex-col"
+        style={{
+          height: "100%",
+          ...(!reducedMotion
             ? {
                 opacity: isAnimatedIn ? 1 : 0,
                 transition: `opacity ${duration}ms ease-out`,
               }
-            : undefined
-        }
+            : undefined),
+        }}
       >
-        <div
-          className="absolute inset-0 bg-black/20"
-          onClick={() => setIsExpanded(false)}
-          aria-hidden
-        />
-        <div className="relative flex flex-col w-full h-full max-h-[100dvh]">
-          {chatContent}
-        </div>
+        {chatContent}
       </div>
     );
     return createPortal(overlay, document.body);
