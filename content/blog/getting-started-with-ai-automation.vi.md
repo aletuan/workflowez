@@ -20,8 +20,6 @@ Nó không đoán. Nó tra cứu. Nó tham chiếu chính sách, quy trình vậ
 
 Không còn "để tôi tìm đúng người để hỏi." Không còn chờ hai ngày để nhận phản hồi từ phòng ban khác. Không còn phải lục tung 47 trang sổ tay nhân viên.
 
-![Demo Advisor Agent — nhân viên hỏi về chính sách nghỉ thai sản và nhận câu trả lời chính xác ngay lập tức](/images/blog-advisor-demo.png)
-
 ## Use Case Thực Tế, Tác Động Thực Tế
 
 ### Nhân Sự & Hành Chính Nhân Sự
