@@ -78,7 +78,7 @@ export function MessageBubble({ message, typingEffect = false, reducedMotion = f
         className={`max-w-[85%] rounded-2xl px-4 py-3 ${
           isUser
             ? "bg-[var(--brand)] text-white"
-            : "bg-gray-100 text-gray-900"
+            : "bg-[var(--brand-light)]/60 text-gray-900"
         }`}
       >
         {isUser ? (

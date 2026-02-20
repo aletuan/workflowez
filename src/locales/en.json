@@ -118,6 +118,7 @@
     "chatPlaceholder": "Ask about onboarding, policies, or product features...",
     "chatEmpty": "Start the conversation — ask about training, policies, or product features.",
     "chatTypingIndicator": "Waiting for response",
+    "chatThinkingIndicator": "Let me think...",
     "chatError": "Sorry, something went wrong. Please try again.",
     "mockResponses": [
       "Based on our company knowledge base, new members should complete the onboarding checklist within their first week. The checklist includes: 1) IT setup, 2) Team introductions, 3) Role-specific training modules.",

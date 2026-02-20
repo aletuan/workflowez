@@ -8,11 +8,12 @@ interface MessageListProps {
   isLoading?: boolean;
   emptyText?: string;
   typingIndicatorLabel?: string;
+  thinkingIndicatorLabel?: string;
   quickPrompts?: string[];
   onPromptClick?: (prompt: string) => void;
 }
 
-export function MessageList({ messages, isLoading, emptyText = "Start the conversation — ask about training, policies, or product features.", typingIndicatorLabel = "Waiting for response", quickPrompts, onPromptClick }: MessageListProps) {
+export function MessageList({ messages, isLoading, emptyText = "Start the conversation — ask about training, policies, or product features.", typingIndicatorLabel = "Waiting for response", thinkingIndicatorLabel = "Let me think...", quickPrompts, onPromptClick }: MessageListProps) {
   const listRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
 
@@ -54,18 +55,19 @@ export function MessageList({ messages, isLoading, emptyText = "Start the conver
       )}
       {isLoading && (
         <div className="flex justify-start" role="status" aria-label={typingIndicatorLabel}>
-          <div className="bg-gray-100 rounded-2xl px-4 py-3">
+          <div className="bg-[var(--brand-light)]/70 rounded-2xl px-4 py-3">
             <div className="flex gap-1.5 items-center">
               {[0, 1, 2].map((i) => (
                 <span
                   key={i}
-                  className={`w-2 h-2 rounded-full bg-gray-500 ${
+                  className={`w-2 h-2 rounded-full bg-[var(--brand)]/70 ${
                     reducedMotion ? "" : "animate-bounce"
                   }`}
                   style={reducedMotion ? undefined : { animationDelay: `${i * 160}ms` }}
                   aria-hidden
                 />
               ))}
+              <span className="text-gray-600 text-sm font-medium ml-1">{thinkingIndicatorLabel}</span>
             </div>
           </div>
         </div>
