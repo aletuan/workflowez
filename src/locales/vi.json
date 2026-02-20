@@ -111,6 +111,8 @@
     },
     "chatTitle": "Advisor Agent",
     "chatSubtitle": "Powered by Workflowez",
+    "chatExpandAria": "Mở rộng hộp chat",
+    "chatCollapseAria": "Đóng hộp chat",
     "chatWelcome": "Xin chào! Tôi là Trang, Advisor Agent của bạn.",
     "quickPrompts": ["Nhân viên mới cần làm gì đầu tiên?", "Chính sách làm việc từ xa?", "Gặp lỗi sản phẩm, cần hỗ trợ?", "Quy trình onboarding mất bao lâu?"],
     "chatPlaceholder": "Hỏi về onboarding, chính sách hoặc tính năng sản phẩm...",
