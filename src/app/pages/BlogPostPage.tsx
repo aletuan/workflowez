@@ -8,9 +8,9 @@ import { Footer } from "../components/layout/Footer";
 import { format } from "date-fns";
 
 export function BlogPostPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getPostBySlug(slug) : undefined;
+  const post = slug ? getPostBySlug(slug, language) : undefined;
 
   if (!post) {
     return <Navigate to="/blog" replace />;
