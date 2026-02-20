@@ -111,6 +111,8 @@
     },
     "chatTitle": "Advisor Agent",
     "chatSubtitle": "Powered by Workflowez",
+    "chatExpandAria": "Expand chat",
+    "chatCollapseAria": "Close chat",
     "chatWelcome": "Hi! I'm Alex, your Advisor Agent.",
     "quickPrompts": ["What should a new hire do first?", "What's the remote work policy?", "I have a product issue, need help?", "How long does onboarding take?"],
     "chatPlaceholder": "Ask about onboarding, policies, or product features...",
