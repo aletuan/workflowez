@@ -40,10 +40,11 @@ export function DemoPage() {
   return (
     <>
       <Header rightOffset={pushMargin} />
-      <main
-        className="min-h-screen bg-white relative overflow-x-hidden md:pt-16 transition-[margin] duration-300 ease-out"
+      <div
+        className="transition-[margin] duration-300 ease-out"
         style={{ marginRight: pushMargin }}
       >
+      <main className="min-h-screen bg-white relative overflow-x-hidden md:pt-16">
         {/* Subtle background */}
         <div className="pointer-events-none fixed inset-0 -z-10">
           <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-to-b from-[var(--brand-light)]/50 to-transparent" />
@@ -127,6 +128,7 @@ export function DemoPage() {
         </div>
       </main>
       <Footer />
+      </div>
     </>
   );
 }
