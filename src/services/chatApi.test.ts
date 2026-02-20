@@ -27,7 +27,7 @@ describe("chatApi extractOutput", () => {
   });
 });
 
-describe("chatApi sendMessage (NDJSON)", () => {
+describe("chatApi sendMessage", () => {
   beforeEach(() => {
     vi.stubGlobal("fetch", vi.fn());
   });
@@ -45,5 +45,87 @@ describe("chatApi sendMessage (NDJSON)", () => {
 
     const result = await sendMessage("Hi");
     expect(result.output).toBe("Streamed reply");
+  });
+
+  it("4.8.2: throws on 4xx response", async () => {
+    vi.mocked(fetch).mockResolvedValue({
+      ok: false,
+      status: 404,
+      statusText: "Not Found",
+    } as Response);
+
+    await expect(sendMessage("Hi")).rejects.toMatchObject({
+      message: "Chat API error: 404 Not Found",
+      cause: "unknown",
+    });
+  });
+
+  it("4.8.2: throws on 5xx response", async () => {
+    vi.mocked(fetch).mockResolvedValue({
+      ok: false,
+      status: 500,
+      statusText: "Internal Server Error",
+    } as Response);
+
+    await expect(sendMessage("Hi")).rejects.toMatchObject({
+      message: "Chat API error: 500 Internal Server Error",
+      cause: "unknown",
+    });
+  });
+
+  it("4.8.2: throws on parse error (invalid JSON)", async () => {
+    vi.mocked(fetch).mockResolvedValue({
+      ok: true,
+      text: () => Promise.resolve("not valid json {{{"),
+    } as Response);
+
+    await expect(sendMessage("Hi")).rejects.toMatchObject({
+      message: "Invalid response format",
+      cause: "parse",
+    });
+  });
+
+  it("4.8.2: throws on n8n error format { type: 'error' }", async () => {
+    vi.mocked(fetch).mockResolvedValue({
+      ok: true,
+      text: () => Promise.resolve('{"type":"error","content":"Workflow failed"}'),
+    } as Response);
+
+    await expect(sendMessage("Hi")).rejects.toMatchObject({
+      message: "Workflow failed",
+      cause: "unknown",
+    });
+  });
+
+  it("4.8.2: throws on invalid output (missing output field)", async () => {
+    vi.mocked(fetch).mockResolvedValue({
+      ok: true,
+      text: () => Promise.resolve('{"foo":"bar"}'),
+    } as Response);
+
+    await expect(sendMessage("Hi")).rejects.toMatchObject({
+      message: "Invalid response: missing or invalid 'output' field",
+      cause: "parse",
+    });
+  });
+
+  it("4.8.2: throws on timeout (AbortError)", async () => {
+    const abortErr = new Error("aborted");
+    abortErr.name = "AbortError";
+    vi.mocked(fetch).mockRejectedValue(abortErr);
+
+    await expect(sendMessage("Hi")).rejects.toMatchObject({
+      message: "Request timed out. Please try again.",
+      cause: "timeout",
+    });
+  });
+
+  it("4.8.2: throws on network error", async () => {
+    vi.mocked(fetch).mockRejectedValue(new Error("fetch failed"));
+
+    await expect(sendMessage("Hi")).rejects.toMatchObject({
+      message: "fetch failed",
+      cause: "network",
+    });
   });
 });

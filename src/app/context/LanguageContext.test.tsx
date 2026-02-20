@@ -35,6 +35,7 @@ describe("LanguageContext", () => {
   });
 
   it("useLanguage throws when used outside LanguageProvider", () => {
+    // Note: React logs this to stderr before expect().toThrow() catches it — expected, not a failure
     expect(() => renderHook(() => useLanguage())).toThrow(
       "useLanguage must be used within a LanguageProvider"
     );
